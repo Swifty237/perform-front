@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "perform-front": {
+    "app-front": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "perform-front:build:production"
+              "browserTarget": "app-front:build:production"
             },
             "development": {
-              "browserTarget": "perform-front:build:development"
+              "browserTarget": "app-front:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "perform-front:build"
+            "browserTarget": "app-front:build"
           }
         },
         "test": {
@@ -100,5 +100,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "1191fb7e-9773-4aac-9c39-4da7b451f24b"
   }
 }
