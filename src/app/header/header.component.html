@@ -1,0 +1,33 @@
+<div>
+    <mat-toolbar class="container">
+        <mat-toolbar-row class="bar-logo">
+            <span class="logo">Perform UFC</span>
+            <div class="form-container">
+                <form>
+                    <mat-form-field class="form-input">
+                        <input matInput placeholder="Tapez votre recherche ici !">
+                    </mat-form-field>
+
+                    <!-- <button class="search-btn" mat-button aria-label="search icon">
+                        <mat-icon class="search-icon">search</mat-icon>
+                    </button> -->
+                </form>
+            </div>
+            <div class="profil">
+                <span class="profil-content"><a class="nav-link" routerLink="#">Connexion</a></span>
+                <span class="profil-content"><a class="nav-link" routerLink="#">Inscription</a></span>
+            </div>
+        </mat-toolbar-row>
+
+        <mat-toolbar-row class="nav-container">
+            <ul class="nav-links">
+                <li class="nav-li"><a class="nav-link" routerLink='/ngr-home'>Accueil</a></li>
+                <li class="nav-li"><a class="nav-link" routerLink='/ngr-rankings'>Classements</a></li>
+                <li class="nav-li"><a class="nav-link" routerLink='/ngr-configurations'>Configurations</a></li>
+                <li class="nav-li"><a class="nav-link" routerLink='/ngr-pronostics'>Pronostics</a></li>
+                <li class="nav-li"><a class="nav-link" routerLink='/ngr-graphs'>Graphes résultats</a></li>
+                <li class="nav-li"><a class="nav-link" routerLink='/ngr-help'>Help</a></li>
+            </ul>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>
