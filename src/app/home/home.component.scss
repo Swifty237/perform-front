@@ -10,21 +10,23 @@
     display: flex;
     width: 90vw;
     height: 40vh;
-    justify-content: space-around;
     align-items: center;
     margin-top: 2em;
+    padding: 0 4em 0 4em;
+    background-color: #ecf0f1;
 }
 
 .img-content {
-    // background-color: green;
-    border: solid;
+    display: flex;
+    justify-content: center;
     width: 45vw;
     height: 40vh;
 }
 
 .txt-content {
-    // background-color: blue;
-    border: solid;
+    display: flex;
+    flex-direction: column;
+    border-bottom: #bdc3c7;
     width: 45vw;
     height: 40vh;
 }

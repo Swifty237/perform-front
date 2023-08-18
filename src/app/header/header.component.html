@@ -1,27 +1,26 @@
-<div>
-    <mat-toolbar class="container">
-        <mat-toolbar-row class="logo-bar">
-            <span class="logo">PerformMMA</span>
-            <div class="form-container">
-                <form class="input-form">
-                    <input class="search-input" placeholder="Tapez votre recherche ici !">
-                    <button class="search-btn">
-                        <mat-icon class="search-icon">search</mat-icon>
-                    </button>
-                </form>
-            </div>
-            <div class="user">
-                <button class="user-btn">
-                    <a class="user-link" routerLink="#">Connexion</a>
+<mat-toolbar class="container">
+    <mat-toolbar-row class="logo-bar">
+        <span class="logo">PerformMMA</span>
+        <div class="form-container">
+            <form class="input-form">
+                <input class="search-input" placeholder="Tapez votre recherche ici !">
+                <button class="search-btn">
+                    <mat-icon class="search-icon">search</mat-icon>
                 </button>
+            </form>
+        </div>
+        <div class="user">
+            <button class="user-btn">
+                <a class="user-link" routerLink="#">Connexion</a>
+            </button>
 
-                <button class="user-btn">
-                    <a class="user-link" routerLink="#">Inscription</a>
-                </button>
-            </div>
-        </mat-toolbar-row>
-
-        <mat-toolbar-row class="nav-container">
+            <button class="user-btn">
+                <a class="user-link" routerLink="#">Inscription</a>
+            </button>
+        </div>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+        <div class="nav-container">
             <ul class="nav-links">
                 <li class="nav-li"><a class="nav-link" routerLink='/ngr-home'>Accueil</a></li>
                 <li class="nav-li"><a class="nav-link" routerLink='/ngr-rankings'>Classements</a></li>
@@ -30,6 +29,6 @@
                 <li class="nav-li"><a class="nav-link" routerLink='/ngr-graphs'>Graphes résultats</a></li>
                 <li class="nav-li"><a class="nav-link" routerLink='/ngr-help'>Help</a></li>
             </ul>
-        </mat-toolbar-row>
-    </mat-toolbar>
-</div>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

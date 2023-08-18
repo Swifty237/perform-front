@@ -1,9 +1,3 @@
-.container {
-    background: linear-gradient(45deg, black, black, #2c3e50, #7f8c8d, #7f8c8d, #2c3e50, black, black);
-    background-size: 180% 180%;
-    animation: color 35s ease infinite;
-}
-
 @keyframes color {
     0% {
         background-position: 0 50%;
@@ -18,28 +12,29 @@
     }
 }
 
+.container {
+    background: linear-gradient(45deg, #2c3e50, #2c3e50, #7f8c8d, #2c3e50, black, black);
+    background-size: 180% 180%;
+    animation: color 35s ease infinite;
+}
+
 .logo-bar {
     justify-content: space-between;
-    height: 10vh;
 }
 
 .logo {
     font-weight: bold;
     font-size: 2em;
-    margin-top: 1em;
     color: #e74c3c;
-    text-shadow: 15px 15px #2d3436;
+    text-shadow: 15px 15px #2c3e50;
 }
 
-.nav-container {
-    justify-content: center;
-}
+.nav-container {}
 
 .nav-links {
     display: flex;
-    width: 50vw;
-    justify-content: space-around;
     list-style-type: none;
+    padding-left: 0;
 }
 
 .nav-link {
@@ -50,21 +45,19 @@
 
 .nav-link:hover {
     transform: scale(1);
-    font-weight: bolder;
+    font-weight: bold;
 }
 
 .nav-li {
-    border: 1px;
     padding: 0.3em 1em;
     border-radius: 5%;
-    // background-color: #96a4a5;
-    background: linear-gradient(135deg, #34495e, #7f8c8d, #34495e);
+    background: linear-gradient(135deg, #34495e, #34495e, #7f8c8d);
     background-size: 180% 180%;
     animation: color 35s ease infinite;
+    margin-right: 1em;
 }
 
 .user {
-    margin-top: 3em;
     display: flex;
     justify-content: space-around;
     width: 15vw;
@@ -72,10 +65,10 @@
 
 .user-btn {
     padding: 0.3em 1em;
-    border: 1px solid #262829;
+    border: 1px solid;
     border-radius: 5%;
     background-color: black;
-    box-shadow: 4px 7px #2d3436;
+    box-shadow: 10px 5px #2c3e50;
 }
 
 .user-link {
@@ -89,9 +82,7 @@
     font-weight: bold;
 }
 
-.form-container {
-    margin-top: 2em;
-}
+.form-container {}
 
 .search-input {
     width: 30vw;
@@ -111,14 +102,3 @@
     border: 1px solid aliceblue;
 
 }
-
-// .small-zoom {
-//     transform: scale(0.98);
-//     transition: 0.6s;
-// }
-
-// .small-zoom:hover {
-//     transform: scale(1);
-//     border-width: 4px;
-//     border-style: solid;
-// }
