@@ -1,21 +1,23 @@
 <div>
     <mat-toolbar class="container">
-        <mat-toolbar-row class="bar-logo">
-            <span class="logo">Perform UFC</span>
+        <mat-toolbar-row class="logo-bar">
+            <span class="logo">PerformMMA</span>
             <div class="form-container">
-                <form>
-                    <mat-form-field class="form-input">
-                        <input matInput placeholder="Tapez votre recherche ici !">
-                    </mat-form-field>
-
-                    <!-- <button class="search-btn" mat-button aria-label="search icon">
+                <form class="input-form">
+                    <input class="search-input" placeholder="Tapez votre recherche ici !">
+                    <button class="search-btn">
                         <mat-icon class="search-icon">search</mat-icon>
-                    </button> -->
+                    </button>
                 </form>
             </div>
-            <div class="profil">
-                <p class="profil-content"><a class="profil-link" routerLink="#">Connexion</a></p>
-                <p class="profil-content"><a class="profil-link" routerLink="#">Inscription</a></p>
+            <div class="user">
+                <button class="user-btn">
+                    <a class="user-link" routerLink="#">Connexion</a>
+                </button>
+
+                <button class="user-btn">
+                    <a class="user-link" routerLink="#">Inscription</a>
+                </button>
             </div>
         </mat-toolbar-row>
 

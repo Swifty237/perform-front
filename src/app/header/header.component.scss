@@ -1,7 +1,7 @@
 .container {
-    background: linear-gradient(45deg, black, black, #2d3436, #96a4a5, #2d3436, black, black);
-    background-size: 200% 200%;
-    animation: color 25s ease-in-out infinite;
+    background: linear-gradient(45deg, black, black, #2c3e50, #7f8c8d, #7f8c8d, #2c3e50, black, black);
+    background-size: 180% 180%;
+    animation: color 35s ease infinite;
 }
 
 @keyframes color {
@@ -16,6 +16,11 @@
     100% {
         background-position: 0 50%;
     }
+}
+
+.logo-bar {
+    justify-content: space-between;
+    height: 10vh;
 }
 
 .logo {
@@ -39,7 +44,7 @@
 
 .nav-link {
     text-decoration-line: none;
-    color: antiquewhite;
+    color: whitesmoke;
     transform: scale(0.98);
 }
 
@@ -49,48 +54,62 @@
 }
 
 .nav-li {
-    border: 1px solid #96a4a5;
+    border: 1px;
     padding: 0.3em 1em;
     border-radius: 5%;
+    // background-color: #96a4a5;
+    background: linear-gradient(135deg, #34495e, #7f8c8d, #34495e);
+    background-size: 180% 180%;
+    animation: color 35s ease infinite;
 }
 
-.bar-logo {
-    display: flex;
-    justify-content: space-between;
-}
-
-.profil {
+.user {
     margin-top: 3em;
+    display: flex;
+    justify-content: space-around;
+    width: 15vw;
+}
+
+.user-btn {
+    padding: 0.3em 1em;
+    border: 1px solid #262829;
+    border-radius: 5%;
+    background-color: black;
+    box-shadow: 4px 7px #2d3436;
+}
+
+.user-link {
+    color: white;
+    text-decoration-line: none;
+    transform: scale(0.98);
+}
+
+.user-link:hover {
+    transform: scale(1);
+    font-weight: bold;
 }
 
 .form-container {
     margin-top: 2em;
 }
 
-.form-input {
+.search-input {
     width: 30vw;
-    height: 4em;
+    border: 0;
 }
 
-.profil-content {
-    padding: 0.3em 1em;
-    border: 1px solid #96a4a5;
+.input-form {
+    background-color: aliceblue;
+    border-radius: 5%;
+    display: flex;
     border-radius: 5%;
 }
 
-.profil-link {
-    color: antiquewhite;
-    text-decoration-line: none;
-    transform: scale(0.98);
-}
+.search-btn {
+    border-radius: 10%;
+    background-color: aliceblue;
+    border: 1px solid aliceblue;
 
-.profil-link:hover {
-    transform: scale(1);
-    font-weight: bold;
-}
-
-.search-icon {
-    font-size: 3em;
 }
 
 // .small-zoom {
