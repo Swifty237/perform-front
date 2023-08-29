@@ -18,6 +18,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { MenRankingsComponent } from './rankings/men-rankings/men-rankings.component';
+import { WomenRankingsComponent } from './rankings/women-rankings/women-rankings.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { NgFor } from '@angular/common';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,7 +36,9 @@ import { MatIconModule } from '@angular/material/icon';
     ConfigurationsComponent,
     PronosticsComponent,
     GraphsComponent,
-    PerformHelpComponent
+    PerformHelpComponent,
+    MenRankingsComponent,
+    WomenRankingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +50,12 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatTabsModule,
+    MatSelectModule,
+    NgFor,
+    MatTableModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

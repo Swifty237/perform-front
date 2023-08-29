@@ -13,58 +13,70 @@
 }
 
 .container {
+    width: 100%;
     background: linear-gradient(45deg, #2c3e50, #2c3e50, #7f8c8d, #2c3e50, black, black);
     background-size: 180% 180%;
     animation: color 35s ease infinite;
 }
 
-.logo-bar {
+.container2 {
+    display: none;
+    width: 100%;
+    background: linear-gradient(45deg, #2c3e50, #2c3e50, #7f8c8d, #2c3e50, black, black);
+    background-size: 180% 180%;
+    animation: color 35s ease infinite;
+}
+
+.logo-row {
     justify-content: space-between;
+}
+
+.logo-row2 {
+    justify-content: space-between;
+    padding-right: 4em;
 }
 
 .logo {
     font-weight: bold;
-    font-size: 2em;
+    font-size: 1.5em;
     color: #e74c3c;
     text-shadow: 15px 15px #2c3e50;
 }
 
-.nav-container {}
+.logo2 {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #e74c3c;
+    text-shadow: 15px 15px #2c3e50;
+}
 
-.nav-links {
+.nav-items {
     display: flex;
     list-style-type: none;
-    padding-left: 0;
 }
 
-.nav-link {
-    text-decoration-line: none;
-    color: whitesmoke;
-    transform: scale(0.98);
-}
-
-.nav-link:hover {
-    transform: scale(1);
-    font-weight: bold;
-}
-
-.nav-li {
+.nav-item {
     padding: 0.3em 1em;
     border-radius: 5%;
     background: linear-gradient(135deg, #34495e, #34495e, #7f8c8d);
     background-size: 180% 180%;
     animation: color 35s ease infinite;
-    margin-right: 1em;
+    margin-right: 0.5em;
+}
+
+.nav-link {
+    text-decoration-line: none;
+    color: whitesmoke;
 }
 
 .user {
     display: flex;
     justify-content: space-around;
-    width: 15vw;
 }
 
 .user-btn {
     padding: 0.3em 1em;
+    margin-right: 1em;
     border: 1px solid;
     border-radius: 5%;
     background-color: black;
@@ -74,18 +86,10 @@
 .user-link {
     color: white;
     text-decoration-line: none;
-    transform: scale(0.98);
 }
-
-.user-link:hover {
-    transform: scale(1);
-    font-weight: bold;
-}
-
-.form-container {}
 
 .search-input {
-    width: 30vw;
+    width: 15vw;
     border: 0;
 }
 
@@ -96,9 +100,32 @@
     border-radius: 5%;
 }
 
+
 .search-btn {
     border-radius: 10%;
     background-color: aliceblue;
     border: 1px solid aliceblue;
+}
 
+.menu-btn {
+    background: linear-gradient(135deg, #34495e, #34495e, #7f8c8d);
+}
+
+@media screen and (max-width: 1580px) {
+
+    .search-input,
+    .search-btn {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+
+    .container {
+        display: none;
+    }
+
+    .container2 {
+        display: flex;
+    }
 }

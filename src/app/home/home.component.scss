@@ -15,7 +15,11 @@
 .big-content {
     display: flex;
     width: 80vw;
-    // background-color: #ecf0f1;
+    margin: 2em 0 2em 0;
+}
+
+.big-content2 {
+    display: none;
 }
 
 .small-content {
@@ -23,31 +27,146 @@
     justify-content: space-around;
     width: 70vw;
     height: 30vh;
-    margin-top: 2em;
-    // background-color: #ecf0f1;
+    margin: 4em 0 2em 0;
+}
+
+.small-content2 {
+    display: none;
+}
+
+.small-content3 {
+    display: none;
+}
+
+h4,
+.small-txt {
+    font-size: 12px;
+}
+
+.small-card {
+    display: flex;
+    flex-direction: column;
+    width: 13vw;
+}
+
+.small-card3 {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1em;
 }
 
 .simple-content {
     display: flex;
     width: 70vw;
     height: 40vh;
-    margin-top: 2em;
+    margin: 2em 0 2em 0;
+}
+
+.simple-content-reverse {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 70vw;
+    height: 40vh;
+    margin: 2em 0 2em 0;
+}
+
+.simple-container,
+.simple-container2 {
+    display: none;
 }
 
 .big-img {
     height: 65vh;
 }
 
+.big-img2 {
+    width: 100%;
+    height: 80vh;
+}
+
 .simple-img {
-    width: 40vw;
     height: 40vh;
 }
 
+.simple-img2 {
+    width: 100%;
+    height: 40vh;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+}
+
 .small-img {
-    width: 20vw;
-    height: 20vh;
+    height: 15vh;
 }
 
 .txt-content {
     padding: 0 2em 0 2em;
+}
+
+
+@media screen and (max-width: 1580px) {
+
+    .big-content,
+    .simple-content {
+        display: none;
+    }
+
+    .big-content2 {
+        display: flex;
+        flex-direction: column;
+        width: 80vw;
+    }
+
+    .simple-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .txt-content2 {
+        padding: 0 2em 0 2em;
+        width: 50vw;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+
+    .small-content,
+    .simple-container {
+        display: none;
+    }
+
+    .small-content2 {
+        display: flex;
+        justify-content: space-around;
+        width: 70vw;
+        height: 30vh;
+        margin-top: 2em;
+    }
+
+    .simple-container2 {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+
+    .small-content2 {
+        display: none;
+    }
+
+    .small-content3 {
+        display: flex;
+        flex-direction: column;
+        width: 50vw;
+        height: 30vh;
+        margin-bottom: 2em;
+    }
+
+    .big-img2 {
+        height: 50vh;
+    }
 }
