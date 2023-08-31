@@ -1,9 +1,15 @@
 <mat-tab-group>
     <mat-tab label="Classements hommes">
-        <app-men-rankings></app-men-rankings>
+        <app-men-rankings [menFlyweight]="menFlyweight" [menBantamweight]="menBantamweight"
+            [menFeatherweight]="menFeatherweight" [menLightweight]="menLightweight" [menWelterweight]="menWelterweight"
+            [menMiddleweight]="menMiddleweight" [menLightHeavyweight]="menLightHeavyweight"
+            [menHeavyweight]="menHeavyweight">
+        </app-men-rankings>
     </mat-tab>
 
     <mat-tab label="Classements femmes">
-        <app-women-rankings></app-women-rankings>
+        <app-women-rankings [womenStrawweight]="womenStrawweight" [womenFlyweight]="womenFlyweight"
+            [womenBantamweight]="womenBantamweight" [womenFeatherweight]="womenFeatherweight">
+        </app-women-rankings>
     </mat-tab>
 </mat-tab-group>

@@ -1,11 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FigthersAndFightsElement, SelectRankingLabel } from 'src/app/common/utils/rankings-elements';
 
-interface Food {
-  value: string;
-  viewValue: string;
-}
-
-export interface PeriodicElement {
+type PeriodicElement = {
   name: string;
   position: number;
   weight: number;
@@ -32,10 +28,25 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class WomenRankingsComponent implements OnInit {
 
-  foods: Food[] = [
-    { value: 'steak-0', viewValue: 'Steak' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' },
+  @Input() womenStrawweight: any[] | undefined;
+  @Input() womenFlyweight: any[] | undefined;
+  @Input() womenBantamweight: any[] | undefined;
+  @Input() womenFeatherweight: any[] | undefined;
+
+  selectLabels: SelectRankingLabel[] = [
+    { value: '#', viewValue: '-- Nombre de combats --' },
+    { value: '#', viewValue: '-- Nombre de victoires --' },
+    { value: '#', viewValue: '-- Nombre de victoires par KO --' },
+    { value: '#', viewValue: '-- Nombre de victoires par soumission --' },
+    { value: '#', viewValue: '-- Nombre de défaites par KO --' },
+    { value: '#', viewValue: '-- Nombre défaites par soumission --' },
+    { value: '#', viewValue: '-- Nombre de strikes (coup de poings) en carrière --' },
+    { value: '#', viewValue: '-- Nombre de strikes par combat --' },
+    { value: '#', viewValue: '-- Nombre de clinchs (lutte debout) en carrière --' },
+    { value: '#', viewValue: '-- Nombre de takedowns (amenés au sol) en carrière --' },
+    { value: '#', viewValue: '-- Nombre takedowns par combat --' },
+    { value: '#', viewValue: '-- Nombre takedowns défense en carrière --' },
+    { value: '#', viewValue: '-- Nombre takedowns défense par combat --' }
   ];
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];

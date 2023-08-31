@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UfcNewsService {
-  [x: string]: any;
+  // [x: string]: any;
 
-  apiUrl = "http://localhost:8282/perform-mma/ufc-news";
+  apiUrl = "http://localhost:8282/perform-mma/ufcnews";
 
   constructor(private _http: HttpClient) { }
 

@@ -50,10 +50,10 @@
             <div class="small-card" *ngFor="let news of smallCardNews">
                 <img class="small-img" src={{news.urlToImage}} alt="">
 
-                <h4>{{news.title}}</h4>
+                <h4 class="small-txt">{{news.title}}</h4>
 
                 <span class="small-txt">{{news.description}}</span>
-                <span style="font-size: small;"><a href={{news.url}}>voir l'article</a></span>
+                <span class="small-txt"><a href={{news.url}}>voir l'article</a></span>
             </div>
         </div>
 

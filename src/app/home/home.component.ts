@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UfcNewsService } from '../common/services/ufc-news.service';
-import { first, map } from 'rxjs';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-home',
