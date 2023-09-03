@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { RankingsByFigthsService } from 'src/app/common/services/rankings/rankings-by-figths.service';
 import { FigthersAndFightsElement, SelectRankingLabel } from 'src/app/common/utils/rankings-elements';
 
 type PeriodicElement = {
@@ -26,12 +28,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './women-rankings.component.html',
   styleUrls: ['./women-rankings.component.scss']
 })
-export class WomenRankingsComponent implements OnInit {
+export class WomenRankingsComponent {
 
-  @Input() womenStrawweight: any[] | undefined;
-  @Input() womenFlyweight: any[] | undefined;
-  @Input() womenBantamweight: any[] | undefined;
-  @Input() womenFeatherweight: any[] | undefined;
+  // @Input() womenStrawweight: FigthersAndFightsElement[] = [];
+  // @Input() womenFlyweight: FigthersAndFightsElement[] = [];
+  // @Input() womenBantamweight: FigthersAndFightsElement[] = [];
+  // @Input() womenFeatherweight: FigthersAndFightsElement[] = [];
 
   selectLabels: SelectRankingLabel[] = [
     { value: '#', viewValue: '-- Nombre de combats --' },
@@ -49,11 +51,12 @@ export class WomenRankingsComponent implements OnInit {
     { value: '#', viewValue: '-- Nombre takedowns défense par combat --' }
   ];
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  // dataSource = ELEMENT_DATA;
 
-  constructor() { }
-  ngOnInit(): void {
+  displayedColumns: string[] = ['division', 'name', 'numberFights'];
+  // dataSource = new MatTableDataSource<FigthersAndFightsElement>(this.womenStrawweight);
 
-  }
+  constructor(public rankingsByFigths: RankingsByFigthsService) { }
+
 }

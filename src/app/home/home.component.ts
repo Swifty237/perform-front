@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UfcNewsService } from '../common/services/ufc-news.service';
+import { UfcNewsService } from '../common/services/ufc-news/ufc-news.service';
 import { map } from 'rxjs';
 
 @Component({

@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { RankingsByFigthsService } from 'src/app/common/services/rankings/rankings-by-figths.service';
 import { FigthersAndFightsElement, SelectRankingLabel } from 'src/app/common/utils/rankings-elements';
 
 @Component({
@@ -8,15 +9,6 @@ import { FigthersAndFightsElement, SelectRankingLabel } from 'src/app/common/uti
   styleUrls: ['./men-rankings.component.scss'],
 })
 export class MenRankingsComponent {
-
-  @Input() menFlyweight: FigthersAndFightsElement[] = [];
-  @Input() menBantamweight: FigthersAndFightsElement[] = [];
-  @Input() menFeatherweight: FigthersAndFightsElement[] = [];
-  @Input() menLightweight: FigthersAndFightsElement[] = [];
-  @Input() menWelterweight: FigthersAndFightsElement[] = [];
-  @Input() menMiddleweight: FigthersAndFightsElement[] = [];
-  @Input() menLightHeavyweight: FigthersAndFightsElement[] = [];
-  @Input() menHeavyweight: FigthersAndFightsElement[] = [];
 
   selectLabels: SelectRankingLabel[] = [
     { value: '#', viewValue: '-- Nombre de combats --' },
@@ -34,11 +26,8 @@ export class MenRankingsComponent {
     { value: '#', viewValue: '-- Nombre takedowns défense par combat --' }
   ];
 
-  displayedColumns: string[] = ['division', 'name', 'numberFights'];
-  dataSource: any;
+  // displayedColumns: string[] = ['division', 'name', 'numberFights'];
+  // dataSource: MatTableDataSource<FigthersAndFightsElement> = new MatTableDataSource<FigthersAndFightsElement>(this.menFlyweight);
 
-  constructor() {
-    this.dataSource = new MatTableDataSource<FigthersAndFightsElement>(this.menFlyweight);
-    // console.log(this.dataSource)
-  }
+  constructor(public rankingsByfights: RankingsByFigthsService) { }
 }

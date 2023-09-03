@@ -11,60 +11,22 @@
 
     <div class="sub-container">
 
-        <!-- <div>
-            <div *ngFor="let elt of menFlyweight">
-
-                <h4 class="small-txt">{{elt.Name}}</h4>
-
-                <span class="small-txt">{{elt.NumberFights}}</span>
-                <br>
-                <span class="small-txt">{{elt.Division}}</span>
-            </div>
-        </div> -->
-
         <div class="item">
-
             <h4 class="cat-label">Poids Mouches</h4>
 
-            <!-- <table>
+            <table class="mat-elevation-z8">
                 <tr>
                     <th>Nom</th>
-                    <th>Nombre de combats</th>
+                    <th>Division</th>
+                    <th>Combats</th>
                 </tr>
-                <ng-container *ngFor="let element of menFlyweight">
+                <ng-container *ngFor="let element of rankingsByfights.menFlyweight">
                     <tr>
                         <td>{{element.Name}}</td>
-                        <td>{{element.NumberFights}}</td>
+                        <td>{{element.Division}}</td>
+                        <td style="display: flex; justify-content: center;">{{element.NumberFights}}</td>
                     </tr>
                 </ng-container>
-            </table> -->
-
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-                <!--- Note that these columns can be defined in any order.
-                      The actual rendered columns are set as a property on the row definition" -->
-
-                <!-- Position Column -->
-                <ng-container matColumnDef="division">
-                    <th mat-header-cell *matHeaderCellDef> No. </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Division}} </td>
-                </ng-container>
-
-                <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Nom </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
-                </ng-container>
-
-                <!-- Weight Column -->
-                <ng-container matColumnDef="numberFights">
-                    <th mat-header-cell *matHeaderCellDef> Nombre de combats </th>
-                    <td mat-cell *matCellDef="let element"> {{element.NumberFights}} </td>
-                </ng-container>
-
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
         </div>
 
@@ -72,37 +34,19 @@
 
             <h4 class="cat-label">Poids Coqs</h4>
 
-            <table mat-table [dataSource]="menBantamweight" class="mat-elevation-z8">
-
-                <!--- Note that these columns can be defined in any order.
-                      The actual rendered columns are set as a property on the row definition" -->
-
-                <!-- Position Column -->
-                <ng-container matColumnDef="division">
-                    <th mat-header-cell *matHeaderCellDef> No. </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Division}} </td>
+            <table class="mat-elevation-z8">
+                <tr>
+                    <th>Nom</th>
+                    <th>Division</th>
+                    <th>Combats</th>
+                </tr>
+                <ng-container *ngFor="let element of rankingsByfights.menBantamweight">
+                    <tr>
+                        <td>{{element.Name}}</td>
+                        <td>{{element.Division}}</td>
+                        <td style="display: flex; justify-content: center;">{{element.NumberFights}}</td>
+                    </tr>
                 </ng-container>
-
-                <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Nom </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
-                </ng-container>
-
-                <!-- Weight Column -->
-                <ng-container matColumnDef="numberFights">
-                    <th mat-header-cell *matHeaderCellDef> Nombre de combats </th>
-                    <td mat-cell *matCellDef="let element"> {{element.NumberFights}} </td>
-                </ng-container>
-
-                <!-- Symbol Column -->
-                <!-- <ng-container matColumnDef="symbol">
-                    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                </ng-container> -->
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
         </div>
 
@@ -110,37 +54,19 @@
 
             <h4 class="cat-label">Poids Plumes</h4>
 
-            <table mat-table [dataSource]="menFeatherweight" class="mat-elevation-z8">
-
-                <!--- Note that these columns can be defined in any order.
-                      The actual rendered columns are set as a property on the row definition" -->
-
-                <!-- Position Column -->
-                <ng-container matColumnDef="division">
-                    <th mat-header-cell *matHeaderCellDef> No. </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Division}} </td>
+            <table class="mat-elevation-z8">
+                <tr>
+                    <th>Nom</th>
+                    <th>Division</th>
+                    <th>Combats</th>
+                </tr>
+                <ng-container *ngFor="let element of rankingsByfights.menFeatherweight">
+                    <tr>
+                        <td>{{element.Name}}</td>
+                        <td>{{element.Division}}</td>
+                        <td style="display: flex; justify-content: center;">{{element.NumberFights}}</td>
+                    </tr>
                 </ng-container>
-
-                <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Nom </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
-                </ng-container>
-
-                <!-- Weight Column -->
-                <ng-container matColumnDef="numberFights">
-                    <th mat-header-cell *matHeaderCellDef> Nombre de combats </th>
-                    <td mat-cell *matCellDef="let element"> {{element.NumberFights}} </td>
-                </ng-container>
-
-                <!-- Symbol Column -->
-                <!-- <ng-container matColumnDef="symbol">
-                    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                </ng-container> -->
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
         </div>
 
@@ -152,114 +78,21 @@
 
             <h4 class="cat-label">Poids Légers</h4>
 
-            <table mat-table [dataSource]="menLightweight" class="mat-elevation-z8">
 
-                <!--- Note that these columns can be defined in any order.
-                      The actual rendered columns are set as a property on the row definition" -->
-
-                <!-- Position Column -->
-                <ng-container matColumnDef="division">
-                    <th mat-header-cell *matHeaderCellDef> No. </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Division}} </td>
-                </ng-container>
-
-                <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Nom </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
-                </ng-container>
-
-                <!-- Weight Column -->
-                <ng-container matColumnDef="numberFights">
-                    <th mat-header-cell *matHeaderCellDef> Nombre de combats </th>
-                    <td mat-cell *matCellDef="let element"> {{element.NumberFights}} </td>
-                </ng-container>
-
-                <!-- Symbol Column -->
-                <!-- <ng-container matColumnDef="symbol">
-                    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                </ng-container> -->
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
         </div>
 
         <div class="item">
 
             <h4 class="cat-label">Poids Mi-Moyens</h4>
 
-            <table mat-table [dataSource]="menWelterweight" class="mat-elevation-z8">
 
-                <!--- Note that these columns can be defined in any order.
-                      The actual rendered columns are set as a property on the row definition" -->
-
-                <!-- Position Column -->
-                <ng-container matColumnDef="division">
-                    <th mat-header-cell *matHeaderCellDef> No. </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Division}} </td>
-                </ng-container>
-
-                <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Nom </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
-                </ng-container>
-
-                <!-- Weight Column -->
-                <ng-container matColumnDef="numberFights">
-                    <th mat-header-cell *matHeaderCellDef> Nombre de combats </th>
-                    <td mat-cell *matCellDef="let element"> {{element.NumberFights}} </td>
-                </ng-container>
-
-                <!-- Symbol Column -->
-                <!-- <ng-container matColumnDef="symbol">
-                    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                </ng-container> -->
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
         </div>
 
         <div class="item">
 
             <h4 class="cat-label">Poids Moyens</h4>
 
-            <table mat-table [dataSource]="menMiddleweight" class="mat-elevation-z8">
 
-                <!--- Note that these columns can be defined in any order.
-                      The actual rendered columns are set as a property on the row definition" -->
-
-                <!-- Position Column -->
-                <ng-container matColumnDef="division">
-                    <th mat-header-cell *matHeaderCellDef> No. </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Division}} </td>
-                </ng-container>
-
-                <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Nom </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
-                </ng-container>
-
-                <!-- Weight Column -->
-                <ng-container matColumnDef="numberFights">
-                    <th mat-header-cell *matHeaderCellDef> Nombre de combats </th>
-                    <td mat-cell *matCellDef="let element"> {{element.NumberFights}} </td>
-                </ng-container>
-
-                <!-- Symbol Column -->
-                <!-- <ng-container matColumnDef="symbol">
-                    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                </ng-container> -->
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
         </div>
 
     </div>
@@ -270,76 +103,13 @@
 
             <h4 class="cat-label">Poids Mi-Lourds</h4>
 
-            <table mat-table [dataSource]="menLightHeavyweight" class="mat-elevation-z8">
 
-                <!--- Note that these columns can be defined in any order.
-                      The actual rendered columns are set as a property on the row definition" -->
-
-                <!-- Position Column -->
-                <ng-container matColumnDef="division">
-                    <th mat-header-cell *matHeaderCellDef> No. </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Division}} </td>
-                </ng-container>
-
-                <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Nom </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
-                </ng-container>
-
-                <!-- Weight Column -->
-                <ng-container matColumnDef="numberFights">
-                    <th mat-header-cell *matHeaderCellDef> Nombre de combats </th>
-                    <td mat-cell *matCellDef="let element"> {{element.NumberFights}} </td>
-                </ng-container>
-
-                <!-- Symbol Column -->
-                <!-- <ng-container matColumnDef="symbol">
-                    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                </ng-container> -->
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
         </div>
 
         <div class="item">
 
             <h4 class="cat-label">Poids Lourds</h4>
 
-            <table mat-table [dataSource]="menHeavyweight" class="mat-elevation-z8">
-
-                <!--- Note that these columns can be defined in any order.
-                      The actual rendered columns are set as a property on the row definition" -->
-
-                <!-- Position Column -->
-                <ng-container matColumnDef="division">
-                    <th mat-header-cell *matHeaderCellDef> No. </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Division}} </td>
-                </ng-container>
-
-                <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef> Nom </th>
-                    <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
-                </ng-container>
-
-                <!-- Weight Column -->
-                <ng-container matColumnDef="numberFights">
-                    <th mat-header-cell *matHeaderCellDef> Nombre de combats </th>
-                    <td mat-cell *matCellDef="let element"> {{element.NumberFights}} </td>
-                </ng-container>
-
-                <!-- Symbol Column -->
-                <!-- <ng-container matColumnDef="symbol">
-                    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                </ng-container> -->
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
         </div>
 
     </div>
