@@ -5,7 +5,7 @@ import { RankingsService } from './rankings.service';
 @Injectable({
   providedIn: 'root'
 })
-export class RankingsByFigthsService {
+export class RankingsByFightsService {
 
   menArray: FigthersAndFightsElement[] = [];
   womenArray: FigthersAndFightsElement[] = [];

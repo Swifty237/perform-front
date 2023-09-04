@@ -12,62 +12,22 @@
     <div class="sub-container">
 
         <div class="item">
-            <h4 class="cat-label">Poids Mouches</h4>
-
-            <table class="mat-elevation-z8">
-                <tr>
-                    <th>Nom</th>
-                    <th>Division</th>
-                    <th>Combats</th>
-                </tr>
-                <ng-container *ngFor="let element of rankingsByfights.menFlyweight">
-                    <tr>
-                        <td>{{element.Name}}</td>
-                        <td>{{element.Division}}</td>
-                        <td style="display: flex; justify-content: center;">{{element.NumberFights}}</td>
-                    </tr>
-                </ng-container>
-            </table>
+            <h4 class="cat-label">Poids Mouches <span style="font-style: italic; font-size: small;"> (Flyweight)</span>
+            </h4>
+            <app-men-flyweight [menFlyweight]="menFlyweight"></app-men-flyweight>
         </div>
 
         <div class="item">
-
-            <h4 class="cat-label">Poids Coqs</h4>
-
-            <table class="mat-elevation-z8">
-                <tr>
-                    <th>Nom</th>
-                    <th>Division</th>
-                    <th>Combats</th>
-                </tr>
-                <ng-container *ngFor="let element of rankingsByfights.menBantamweight">
-                    <tr>
-                        <td>{{element.Name}}</td>
-                        <td>{{element.Division}}</td>
-                        <td style="display: flex; justify-content: center;">{{element.NumberFights}}</td>
-                    </tr>
-                </ng-container>
-            </table>
+            <h4 class="cat-label">Poids Coqs<span style="font-style: italic; font-size: small;"> (Bantamweight)</span>
+            </h4>
+            <app-men-bantamweight [menBantamweight]="menBantamweight"></app-men-bantamweight>
         </div>
 
         <div class="item">
-
-            <h4 class="cat-label">Poids Plumes</h4>
-
-            <table class="mat-elevation-z8">
-                <tr>
-                    <th>Nom</th>
-                    <th>Division</th>
-                    <th>Combats</th>
-                </tr>
-                <ng-container *ngFor="let element of rankingsByfights.menFeatherweight">
-                    <tr>
-                        <td>{{element.Name}}</td>
-                        <td>{{element.Division}}</td>
-                        <td style="display: flex; justify-content: center;">{{element.NumberFights}}</td>
-                    </tr>
-                </ng-container>
-            </table>
+            <h4 class="cat-label">Poids Plumes<span style="font-style: italic; font-size: small;">
+                    (Featherweight)</span>
+            </h4>
+            <app-men-featherweight [menFeatherweight]="menFeatherweight"></app-men-featherweight>
         </div>
 
     </div>
@@ -75,42 +35,37 @@
     <div class="sub-container">
 
         <div class="item">
-
-            <h4 class="cat-label">Poids Légers</h4>
-
-
+            <h4 class="cat-label">Poids Légers<span style="font-style: italic; font-size: small;">(Lightweight)</span>
+            </h4>
+            <app-men-lightweight [menLightweight]="menLightweight"></app-men-lightweight>
         </div>
 
         <div class="item">
-
-            <h4 class="cat-label">Poids Mi-Moyens</h4>
-
-
+            <h4 class="cat-label">Poids Mi-Moyens<span
+                    style="font-style: italic; font-size: small;">(Welterweight)</span></h4>
+            <app-men-welterweight [menWelterweight]="menWelterweight"></app-men-welterweight>
         </div>
 
         <div class="item">
-
-            <h4 class="cat-label">Poids Moyens</h4>
-
-
+            <h4 class="cat-label">Poids Moyens<span style="font-style: italic; font-size: small;"> (Middleweight)</span>
+            </h4>
+            <app-men-middleweight [menMiddleweight]="menMiddleweight"></app-men-middleweight>
         </div>
-
     </div>
 
     <div class="sub-container">
 
         <div class="item">
-
-            <h4 class="cat-label">Poids Mi-Lourds</h4>
-
-
+            <h4 class="cat-label">Poids Mi-Lourds<span style="font-style: italic; font-size: small;"> (Light
+                    Heavyweight)</span></h4>
+            <app-men-lightheavyweight [menLightHeavyweight]="menLightHeavyweight"></app-men-lightheavyweight>
         </div>
 
         <div class="item">
-
-            <h4 class="cat-label">Poids Lourds</h4>
-
+            <h4 class="cat-label">Poids Lourds<span style="font-style: italic; font-size: small;"> (Heavyweight)</span>
+            </h4>
+            <app-men-heavyweight [menHeavyweight]="menHeavyweight">
+            </app-men-heavyweight>
         </div>
-
     </div>
 </div>
