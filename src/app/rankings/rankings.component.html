@@ -3,7 +3,12 @@
         <app-men-rankings [menFlyweight]="menFlyweight" [menBantamweight]="menBantamweight"
             [menFeatherweight]="menFeatherweight" [menLightweight]="menLightweight" [menWelterweight]="menWelterweight"
             [menMiddleweight]="menMiddleweight" [menLightHeavyweight]="menLightHeavyweight"
-            [menHeavyweight]="menHeavyweight">
+            [menHeavyweight]="menHeavyweight" [menFlyweightVictories]="menFlyweightVictories"
+            [menBantamweightVictories]="menBantamweightVictories"
+            [menFeatherweightVictories]="menFeatherweightVictories" [menLightweightVictories]="menLightweightVictories"
+            [menWelterweightVictories]="menWelterweightVictories" [menMiddleweightVictories]="menMiddleweightVictories"
+            [menLightHeavyweightVictories]="menLightHeavyweightVictories"
+            [menHeavyweightVictories]="menHeavyweightVictories">
         </app-men-rankings>
     </mat-tab>
 
@@ -11,7 +16,10 @@
 
     <mat-tab label="Classements femmes">
         <app-women-rankings [womenStrawweight]="womenStrawweight" [womenFlyweight]="womenFlyweight"
-            [womenBantamweight]="womenBantamweight" [womenFeatherweight]="womenFeatherweight">
+            [womenBantamweight]="womenBantamweight" [womenFeatherweight]="womenFeatherweight"
+            [womenStrawweightVictories]="womenStrawweightVictories" [womenFlyweightVictories]="womenFlyweightVictories"
+            [womenBantamweightVictories]="womenBantamweightVictories"
+            [womenFeatherweightVictories]="womenFeatherweightVictories">
         </app-women-rankings>
     </mat-tab>
 </mat-tab-group>

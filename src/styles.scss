@@ -1,3 +1,18 @@
 .small-txt {
   font-size: small;
 }
+
+.cat-label {
+  text-align: center;
+}
+
+.sub-container {
+  width: 80vw;
+  display: flex;
+  justify-content: space-around;
+  margin: 2em 0 2em 0;
+}
+
+.item {
+  width: 20vw;
+}

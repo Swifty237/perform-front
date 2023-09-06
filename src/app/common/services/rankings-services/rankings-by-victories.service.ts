@@ -1,34 +1,34 @@
 import { Injectable } from '@angular/core';
-import { FightersAndFightsElement } from '../../utils/rankings-elements';
+import { FightersAndWinsElement } from '../../utils/rankings-elements';
 import { RankingsService } from './rankings.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RankingsByFightsService {
+export class RankingsByVictoriesService {
 
-  menArray: FightersAndFightsElement[] = [];
-  womenArray: FightersAndFightsElement[] = [];
+  menArray: FightersAndWinsElement[] = [];
+  womenArray: FightersAndWinsElement[] = [];
 
-  menFlyweight: FightersAndFightsElement[] = [];
-  menBantamweight: FightersAndFightsElement[] = [];
-  menFeatherweight: FightersAndFightsElement[] = [];
-  menLightweight: FightersAndFightsElement[] = [];
-  menWelterweight: FightersAndFightsElement[] = [];
-  menMiddleweight: FightersAndFightsElement[] = [];
-  menLightHeavyweight: FightersAndFightsElement[] = [];
-  menHeavyweight: FightersAndFightsElement[] = [];
+  menFlyweight: FightersAndWinsElement[] = [];
+  menBantamweight: FightersAndWinsElement[] = [];
+  menFeatherweight: FightersAndWinsElement[] = [];
+  menLightweight: FightersAndWinsElement[] = [];
+  menWelterweight: FightersAndWinsElement[] = [];
+  menMiddleweight: FightersAndWinsElement[] = [];
+  menLightHeavyweight: FightersAndWinsElement[] = [];
+  menHeavyweight: FightersAndWinsElement[] = [];
 
-  womenStrawweight: FightersAndFightsElement[] = [];
-  womenFlyweight: FightersAndFightsElement[] = [];
-  womenBantamweight: FightersAndFightsElement[] = [];
-  womenFeatherweight: FightersAndFightsElement[] = [];
+  womenStrawweight: FightersAndWinsElement[] = [];
+  womenFlyweight: FightersAndWinsElement[] = [];
+  womenBantamweight: FightersAndWinsElement[] = [];
+  womenFeatherweight: FightersAndWinsElement[] = [];
 
-  defaultTab: FightersAndFightsElement[] = [];
+  defaultTab: FightersAndWinsElement[] = [];
 
   constructor(public rankingsService: RankingsService) {
 
-    this.rankingsService.getRankingsNumberFights$()
+    this.rankingsService.getRankingsVictories$()
       .subscribe(
         (items) => {
           items.forEach(item => {

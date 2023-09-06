@@ -2,7 +2,7 @@
 
     <mat-form-field style="width: 40vw;">
         <mat-label>Choisissez une catégorie de classement</mat-label>
-        <mat-select>
+        <mat-select [(ngModel)]="selectedRanking" (selectionChange)="getSelectedRanking()">
             <mat-option *ngFor="let selectLabel of selectLabels" [value]="selectLabel.value">
                 {{selectLabel.viewValue}}
             </mat-option>
@@ -12,22 +12,20 @@
     <div class="sub-container">
 
         <div class="item">
-            <h4 class="cat-label">Poids Mouches <span style="font-style: italic; font-size: small;"> (Flyweight)</span>
-            </h4>
-            <app-men-flyweight [menFlyweight]="menFlyweight"></app-men-flyweight>
+            <app-men-flyweight [menFlyweight]="menFlyweight" [menFlyweightVictories]="menFlyweightVictories"
+                [selectedRanking]="selectedRanking"></app-men-flyweight>
         </div>
 
         <div class="item">
-            <h4 class="cat-label">Poids Coqs<span style="font-style: italic; font-size: small;"> (Bantamweight)</span>
-            </h4>
-            <app-men-bantamweight [menBantamweight]="menBantamweight"></app-men-bantamweight>
+            <app-men-bantamweight [menBantamweight]="menBantamweight"
+                [menBantamweightVictories]="menBantamweightVictories"
+                [selectedRanking]="selectedRanking"></app-men-bantamweight>
         </div>
 
         <div class="item">
-            <h4 class="cat-label">Poids Plumes<span style="font-style: italic; font-size: small;">
-                    (Featherweight)</span>
-            </h4>
-            <app-men-featherweight [menFeatherweight]="menFeatherweight"></app-men-featherweight>
+            <app-men-featherweight [menFeatherweight]="menFeatherweight"
+                [menFeatherweightVictories]="menFeatherweightVictories"
+                [selectedRanking]="selectedRanking"></app-men-featherweight>
         </div>
 
     </div>
@@ -35,36 +33,34 @@
     <div class="sub-container">
 
         <div class="item">
-            <h4 class="cat-label">Poids Légers<span style="font-style: italic; font-size: small;">(Lightweight)</span>
-            </h4>
-            <app-men-lightweight [menLightweight]="menLightweight"></app-men-lightweight>
+            <app-men-lightweight [menLightweight]="menLightweight" [menLightweightVictories]="menLightweightVictories"
+                [selectedRanking]="selectedRanking"></app-men-lightweight>
         </div>
 
         <div class="item">
-            <h4 class="cat-label">Poids Mi-Moyens<span
-                    style="font-style: italic; font-size: small;">(Welterweight)</span></h4>
-            <app-men-welterweight [menWelterweight]="menWelterweight"></app-men-welterweight>
+            <app-men-welterweight [menWelterweight]="menWelterweight"
+                [menWelterweightVictories]="menWelterweightVictories"
+                [selectedRanking]="selectedRanking"></app-men-welterweight>
         </div>
 
         <div class="item">
-            <h4 class="cat-label">Poids Moyens<span style="font-style: italic; font-size: small;"> (Middleweight)</span>
-            </h4>
-            <app-men-middleweight [menMiddleweight]="menMiddleweight"></app-men-middleweight>
+            <app-men-middleweight [menMiddleweight]="menMiddleweight"
+                [menMiddleweightVictories]="menMiddleweightVictories"
+                [selectedRanking]="selectedRanking"></app-men-middleweight>
         </div>
     </div>
 
     <div class="sub-container">
 
         <div class="item">
-            <h4 class="cat-label">Poids Mi-Lourds<span style="font-style: italic; font-size: small;"> (Light
-                    Heavyweight)</span></h4>
-            <app-men-lightheavyweight [menLightHeavyweight]="menLightHeavyweight"></app-men-lightheavyweight>
+            <app-men-lightheavyweight [menLightHeavyweight]="menLightHeavyweight"
+                [menLightHeavyweightVictories]="menLightHeavyweightVictories"
+                [selectedRanking]="selectedRanking"></app-men-lightheavyweight>
         </div>
 
         <div class="item">
-            <h4 class="cat-label">Poids Lourds<span style="font-style: italic; font-size: small;"> (Heavyweight)</span>
-            </h4>
-            <app-men-heavyweight [menHeavyweight]="menHeavyweight">
+            <app-men-heavyweight [menHeavyweight]="menHeavyweight" [menHeavyweightVictories]="menHeavyweightVictories"
+                [selectedRanking]="selectedRanking">
             </app-men-heavyweight>
         </div>
     </div>

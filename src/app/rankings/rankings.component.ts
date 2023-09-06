@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FigthersAndFightsElement } from '../common/utils/rankings-elements';
+import { FightersAndFightsElement, FightersAndWinsElement } from '../common/utils/rankings-elements';
 import { RankingsByFightsService } from '../common/services/rankings-services/rankings-by-fights.service';
+import { RankingsByVictoriesService } from '../common/services/rankings-services/rankings-by-victories.service';
 
 
 @Component({
@@ -10,21 +11,36 @@ import { RankingsByFightsService } from '../common/services/rankings-services/ra
 })
 export class RankingsComponent {
 
-  womenStrawweight: FigthersAndFightsElement[] = [];
-  womenFlyweight: FigthersAndFightsElement[] = [];
-  womenBantamweight: FigthersAndFightsElement[] = [];
-  womenFeatherweight: FigthersAndFightsElement[] = [];
+  womenStrawweight: FightersAndFightsElement[] = [];
+  womenFlyweight: FightersAndFightsElement[] = [];
+  womenBantamweight: FightersAndFightsElement[] = [];
+  womenFeatherweight: FightersAndFightsElement[] = [];
 
-  menFlyweight: FigthersAndFightsElement[] = [];
-  menBantamweight: FigthersAndFightsElement[] = [];
-  menFeatherweight: FigthersAndFightsElement[] = [];
-  menLightweight: FigthersAndFightsElement[] = [];
-  menWelterweight: FigthersAndFightsElement[] = [];
-  menMiddleweight: FigthersAndFightsElement[] = [];
-  menLightHeavyweight: FigthersAndFightsElement[] = [];
-  menHeavyweight: FigthersAndFightsElement[] = [];
+  menFlyweight: FightersAndFightsElement[] = [];
+  menBantamweight: FightersAndFightsElement[] = [];
+  menFeatherweight: FightersAndFightsElement[] = [];
+  menLightweight: FightersAndFightsElement[] = [];
+  menWelterweight: FightersAndFightsElement[] = [];
+  menMiddleweight: FightersAndFightsElement[] = [];
+  menLightHeavyweight: FightersAndFightsElement[] = [];
+  menHeavyweight: FightersAndFightsElement[] = [];
 
-  constructor(public rankingsByFights: RankingsByFightsService) {
+  womenStrawweightVictories: FightersAndWinsElement[] = [];
+  womenFlyweightVictories: FightersAndWinsElement[] = [];
+  womenBantamweightVictories: FightersAndWinsElement[] = [];
+  womenFeatherweightVictories: FightersAndWinsElement[] = [];
+
+  menFlyweightVictories: FightersAndWinsElement[] = [];
+  menBantamweightVictories: FightersAndWinsElement[] = [];
+  menFeatherweightVictories: FightersAndWinsElement[] = [];
+  menLightweightVictories: FightersAndWinsElement[] = [];
+  menWelterweightVictories: FightersAndWinsElement[] = [];
+  menMiddleweightVictories: FightersAndWinsElement[] = [];
+  menLightHeavyweightVictories: FightersAndWinsElement[] = [];
+  menHeavyweightVictories: FightersAndWinsElement[] = [];
+
+  constructor(public rankingsByFights: RankingsByFightsService, public rankingsByVictories: RankingsByVictoriesService) {
+
     this.womenStrawweight = this.rankingsByFights.womenStrawweight;
     this.womenFlyweight = this.rankingsByFights.womenFlyweight;
     this.womenBantamweight = this.rankingsByFights.womenBantamweight;
@@ -38,5 +54,20 @@ export class RankingsComponent {
     this.menMiddleweight = this.rankingsByFights.menMiddleweight;
     this.menLightHeavyweight = this.rankingsByFights.menLightHeavyweight;
     this.menHeavyweight = this.rankingsByFights.menHeavyweight;
+
+
+    this.womenStrawweightVictories = this.rankingsByVictories.womenStrawweight;
+    this.womenFlyweightVictories = this.rankingsByVictories.womenFlyweight;
+    this.womenBantamweightVictories = this.rankingsByVictories.womenBantamweight;
+    this.womenFeatherweightVictories = this.rankingsByVictories.womenFeatherweight;
+
+    this.menFlyweightVictories = this.rankingsByVictories.menFlyweight;
+    this.menBantamweightVictories = this.rankingsByVictories.menBantamweight;
+    this.menFeatherweightVictories = this.rankingsByVictories.menFeatherweight;
+    this.menLightweightVictories = this.rankingsByVictories.menLightweight;
+    this.menWelterweightVictories = this.rankingsByVictories.menWelterweight;
+    this.menMiddleweightVictories = this.rankingsByVictories.menMiddleweight;
+    this.menLightHeavyweightVictories = this.rankingsByVictories.menLightHeavyweight;
+    this.menHeavyweightVictories = this.rankingsByVictories.menHeavyweight;
   }
 }

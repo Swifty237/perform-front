@@ -2,7 +2,7 @@
 
     <mat-form-field style="width: 40vw;">
         <mat-label>Choisissez une catégorie de classement</mat-label>
-        <mat-select>
+        <mat-select [(ngModel)]="selectedRanking">
             <mat-option *ngFor="let selectLabel of selectLabels" [value]="selectLabel.value">
                 {{selectLabel.viewValue}}
             </mat-option>
@@ -11,32 +11,28 @@
 
     <div class="sub-container">
         <div class="item">
-            <h4 class="cat-label">Poids Pailles <span style="font-style: italic; font-size: small;">
-                    (Starwweight)</span></h4>
-            <app-women-strawweight [womenStrawweight]="womenStrawweight">
+            <app-women-strawweight [womenStrawweight]="womenStrawweight"
+                [womenStrawweightVictories]="womenStrawweightVictories" [selectedRanking]="selectedRanking">
             </app-women-strawweight>
         </div>
 
         <div class="item">
-            <h4 class="cat-label">Poids Mouches <span style="font-style: italic; font-size: small;"> (Flyweight)</span>
-            </h4>
-            <app-women-flyweight [womenFlyweight]="womenFlyweight">
+            <app-women-flyweight [womenFlyweight]="womenFlyweight" [womenFlyweightVictories]="womenFlyweightVictories"
+                [selectedRanking]="selectedRanking">
             </app-women-flyweight>
         </div>
 
         <div class="item">
-            <h4 class="cat-label">Poids Coqs <span style="font-style: italic; font-size: small;"> (Bantamweight)</span>
-            </h4>
-            <app-women-bantamweight [womenBantamweight]="womenBantamweight">
+            <app-women-bantamweight [womenBantamweight]="womenBantamweight"
+                [womenBantamweightVictories]="womenBantamweightVictories" [selectedRanking]="selectedRanking">
             </app-women-bantamweight>
         </div>
     </div>
 
     <div class="sub-container">
         <div class="item">
-            <h4 class="cat-label">Poids Plumes <span style="font-style: italic; font-size: small;">
-                    (Featherweight)</span></h4>
-            <app-women-featherweight [womenFeatherweight]="womenFeatherweight">
+            <app-women-featherweight [womenFeatherweight]="womenFeatherweight"
+                [womenFeatherweightVictories]="womenFeatherweightVictories" [selectedRanking]="selectedRanking">
             </app-women-featherweight>
         </div>
     </div>

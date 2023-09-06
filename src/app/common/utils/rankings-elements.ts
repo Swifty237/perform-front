@@ -1,6 +1,13 @@
-export type FigthersAndFightsElement = {
+export type FightersAndFightsElement = {
   Name: string;
   Division: string;
+  NumberFights: number;
+}
+
+export type FightersAndWinsElement = {
+  Name: string;
+  Division: string;
+  Wins: number;
   NumberFights: number;
 }
 
