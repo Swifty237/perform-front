@@ -1,35 +1,34 @@
 import { Injectable } from '@angular/core';
-import { FightersAndFightsElement } from '../../utils/rankings-elements';
+import { FightersAndIpsgElement } from '../../utils/rankings-elements';
 import { RankingsService } from './rankings.service';
 
 @Injectable({
   providedIn: 'root'
 })
+export class RankingsByIpsgService {
 
-export class RankingsByFightsService {
+  menArray: FightersAndIpsgElement[] = [];
+  womenArray: FightersAndIpsgElement[] = [];
 
-  menArray: FightersAndFightsElement[] = [];
-  womenArray: FightersAndFightsElement[] = [];
+  menFlyweight: FightersAndIpsgElement[] = [];
+  menBantamweight: FightersAndIpsgElement[] = [];
+  menFeatherweight: FightersAndIpsgElement[] = [];
+  menLightweight: FightersAndIpsgElement[] = [];
+  menWelterweight: FightersAndIpsgElement[] = [];
+  menMiddleweight: FightersAndIpsgElement[] = [];
+  menLightHeavyweight: FightersAndIpsgElement[] = [];
+  menHeavyweight: FightersAndIpsgElement[] = [];
 
-  menFlyweight: FightersAndFightsElement[] = [];
-  menBantamweight: FightersAndFightsElement[] = [];
-  menFeatherweight: FightersAndFightsElement[] = [];
-  menLightweight: FightersAndFightsElement[] = [];
-  menWelterweight: FightersAndFightsElement[] = [];
-  menMiddleweight: FightersAndFightsElement[] = [];
-  menLightHeavyweight: FightersAndFightsElement[] = [];
-  menHeavyweight: FightersAndFightsElement[] = [];
+  womenStrawweight: FightersAndIpsgElement[] = [];
+  womenFlyweight: FightersAndIpsgElement[] = [];
+  womenBantamweight: FightersAndIpsgElement[] = [];
+  womenFeatherweight: FightersAndIpsgElement[] = [];
 
-  womenStrawweight: FightersAndFightsElement[] = [];
-  womenFlyweight: FightersAndFightsElement[] = [];
-  womenBantamweight: FightersAndFightsElement[] = [];
-  womenFeatherweight: FightersAndFightsElement[] = [];
-
-  defaultTab: FightersAndFightsElement[] = [];
+  defaultTab: FightersAndIpsgElement[] = [];
 
   constructor(public rankingsService: RankingsService) {
 
-    this.rankingsService.getRankingsNumberFights$()
+    this.rankingsService.getRankingsIspg$()
       .subscribe((items) => {
         items.forEach(item => {
           (item["Division"].includes("Women's")) ? this.womenArray.push(item) : this.menArray.push(item);

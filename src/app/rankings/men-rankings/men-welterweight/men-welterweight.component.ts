@@ -1,7 +1,18 @@
 import { Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { FightersAndFightsElement, FightersAndWinsElement } from 'src/app/common/utils/rankings-elements';
+import {
+  FightersAndFightsElement,
+  FightersAndIpsgElement,
+  FightersAndKoWinsElement,
+  FightersAndStrikesElement,
+  FightersAndStrkRatioElement,
+  FightersAndSubWinsElement,
+  FightersAndTkdownDElement,
+  FightersAndTkdownRElement,
+  FightersAndTkdownsElement,
+  FightersAndWinsElement
+} from 'src/app/common/utils/rankings-elements';
 
 @Component({
   selector: 'app-men-welterweight',
@@ -9,15 +20,25 @@ import { FightersAndFightsElement, FightersAndWinsElement } from 'src/app/common
   styleUrls: ['./men-welterweight.component.scss']
 })
 export class MenWelterweightComponent implements OnChanges {
+
   @Input() menWelterweight: FightersAndFightsElement[] = [];
   @Input() menWelterweightVictories: FightersAndWinsElement[] = [];
+  @Input() menWelterweightKoWins: FightersAndKoWinsElement[] = [];
+  @Input() menWelterweightIpsg: FightersAndIpsgElement[] = [];
+  @Input() menWelterweightTkdownR: FightersAndTkdownRElement[] = [];
+  @Input() menWelterweightTkdownD: FightersAndTkdownDElement[] = [];
+  @Input() menWelterweightTkdowns: FightersAndTkdownsElement[] = [];
+  @Input() menWelterweightSRatio: FightersAndStrkRatioElement[] = [];
+  @Input() menWelterweightStrikes: FightersAndStrikesElement[] = [];
+  @Input() menWelterweightSubWins: FightersAndSubWinsElement[] = [];
+
   @Input() selectedRanking = "";
 
   changingLabel = "--";
   changingColumn = "--";
 
 
-  displayedColumns: string[] = ['name', '--'];
+  displayedColumns: string[] = ['rank', 'name', '--'];
   dataSource = new MatTableDataSource<any>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -34,103 +55,83 @@ export class MenWelterweightComponent implements OnChanges {
     switch (selection) {
 
       case "fights":
-        this.displayedColumns = ['name', selection];
+        this.displayedColumns = ["rank", "name", selection];
         this.changingLabel = "Combat(s)";
         this.changingColumn = selection;
         this.dataSource = new MatTableDataSource<FightersAndFightsElement>(this.menWelterweight);
         this.dataSource.paginator = this.paginator;
         break;
 
-      case "victories":
-        this.displayedColumns = ["name", selection];
-        this.changingLabel = "Victoire(s)";
+      case "wins":
+        this.displayedColumns = ["rank", "name", selection];
+        this.changingLabel = "% Victoire(s)";
         this.changingColumn = selection;
         this.dataSource = new MatTableDataSource<FightersAndWinsElement>(this.menWelterweightVictories);
         this.dataSource.paginator = this.paginator;
         break;
 
-      case "ko-victories":
-        this.displayedColumns = ["name", selection];
-        this.changingLabel = "Victoire(s) / KO";
+      case "kowins":
+        this.displayedColumns = ["rank", "name", selection];
+        this.changingLabel = "% Victoires/KO";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
+        this.dataSource = new MatTableDataSource<FightersAndKoWinsElement>(this.menWelterweightKoWins);
+        this.dataSource.paginator = this.paginator;
         break;
 
-      case "submission-victories":
-        this.displayedColumns = ["name", selection];
-        this.changingLabel = "Victoire(s) / soumission";
+      case "submissionwins":
+        this.displayedColumns = ["rank", "name", selection];
+        this.changingLabel = "% Victoire(s)/soumission";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
+        this.dataSource = new MatTableDataSource<FightersAndSubWinsElement>(this.menWelterweightSubWins);
+        this.dataSource.paginator = this.paginator;
         break;
 
-      case "ko-defeats":
-        this.displayedColumns = ["name", selection];
-        this.changingLabel = "Défaite(s) / KO";
+      case "strikes":
+        this.displayedColumns = ["rank", "name", selection];
+        this.changingLabel = "% Défaite(s)/KO";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
+        this.dataSource = new MatTableDataSource<FightersAndStrikesElement>(this.menWelterweightStrikes);
+        this.dataSource.paginator = this.paginator;
         break;
 
-      case "submission-defeats":
-        this.displayedColumns = ["name", selection];
-        this.changingLabel = "Défaite(s) / soumission";
+      case "strikesratio":
+        this.displayedColumns = ["rank", "name", selection];
+        this.changingLabel = " % Défaite(s)/soumission";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
+        this.dataSource = new MatTableDataSource<FightersAndStrkRatioElement>(this.menWelterweightSRatio);
+        this.dataSource.paginator = this.paginator;
         break;
 
-      case "all-career-strikes":
-        this.displayedColumns = ["name", selection];
-        this.changingLabel = "Coups portés";
+      case "takedowns":
+        this.displayedColumns = ["rank", "name", selection];
+        this.changingLabel = "Strikes";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
+        this.dataSource = new MatTableDataSource<FightersAndTkdownsElement>(this.menWelterweightTkdowns);
+        this.dataSource.paginator = this.paginator;
         break;
 
-      case "fight-strikes":
-        this.displayedColumns = ["name", selection];
-        this.changingLabel = "Coups / combat";
+      case "takedowndefense":
+        this.displayedColumns = ["rank", "name", selection];
+        this.changingLabel = "Strikes/combat";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
+        this.dataSource = new MatTableDataSource<FightersAndTkdownDElement>(this.menWelterweightTkdownD);
+        this.dataSource.paginator = this.paginator;
         break;
 
-      case "all-career-clinchs":
-        this.displayedColumns = ["name", selection];
-        this.changingLabel = "Clinch(s)";
+      case "takedownsratio":
+        this.displayedColumns = ["rank", "name", selection];
+        this.changingLabel = "Ratio Takedowns";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
-        break;
-
-      case "all-career-takedowns":
-        this.displayedColumns = ["name", selection];
-        this.changingLabel = "Takedown(s)";
-        this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
-        break;
-
-      case "fight-takedowns":
-        this.displayedColumns = ["name", selection];
-        this.changingLabel = "Takedown(s) / combat";
-        this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
-        break;
-
-      case "all-career-takedown-defends":
-        this.displayedColumns = ["name", selection];
-        this.changingLabel = "Défense(s) de takedown";
-        this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
-        break;
-
-      case "fight-takedown-defends":
-        this.displayedColumns = ["name", selection];
-        this.changingLabel = "D. takedown / Combats";
-        this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
+        this.dataSource = new MatTableDataSource<FightersAndTkdownRElement>(this.menWelterweightTkdownR);
+        this.dataSource.paginator = this.paginator;
         break;
 
       default:
-        this.displayedColumns = ['name', '--'];
+        this.displayedColumns = ['rank', 'name', '--'];
         this.changingLabel = "--";
         this.changingColumn = "--";
         this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
+        this.dataSource.paginator = this.paginator;
     }
   }
 }

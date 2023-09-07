@@ -28,7 +28,7 @@ export class RankingsByVictoriesService {
 
   constructor(public rankingsService: RankingsService) {
 
-    this.rankingsService.getRankingsVictories$()
+    this.rankingsService.getRankingsWins$()
       .subscribe(
         (items) => {
           items.forEach(item => {
@@ -98,7 +98,67 @@ export class RankingsByVictoriesService {
               default:
                 this.defaultTab.push(element)
             }
-          })
+          });
+
+          for (let i = 0; i < this.menFlyweight.length; i++) {
+            let element = this.menFlyweight[i];
+            element["Rank"] = i + 1;
+          }
+
+          for (let i = 0; i < this.menBantamweight.length; i++) {
+            let element = this.menBantamweight[i];
+            element["Rank"] = i + 1;
+          }
+
+          for (let i = 0; i < this.menFeatherweight.length; i++) {
+            let element = this.menFeatherweight[i];
+            element["Rank"] = i + 1;
+          }
+
+          for (let i = 0; i < this.menLightweight.length; i++) {
+            let element = this.menLightweight[i];
+            element["Rank"] = i + 1;
+          }
+
+          for (let i = 0; i < this.menWelterweight.length; i++) {
+            let element = this.menWelterweight[i];
+            element["Rank"] = i + 1;
+          }
+
+          for (let i = 0; i < this.menMiddleweight.length; i++) {
+            let element = this.menMiddleweight[i];
+            element["Rank"] = i + 1;
+          }
+
+          for (let i = 0; i < this.menLightHeavyweight.length; i++) {
+            let element = this.menLightHeavyweight[i];
+            element["Rank"] = i + 1;
+          }
+
+          for (let i = 0; i < this.menHeavyweight.length; i++) {
+            let element = this.menHeavyweight[i];
+            element["Rank"] = i + 1;
+          }
+
+          for (let i = 0; i < this.womenStrawweight.length; i++) {
+            let element = this.womenStrawweight[i];
+            element["Rank"] = i + 1;
+          }
+
+          for (let i = 0; i < this.womenFlyweight.length; i++) {
+            let element = this.womenFlyweight[i];
+            element["Rank"] = i + 1;
+          }
+
+          for (let i = 0; i < this.womenBantamweight.length; i++) {
+            let element = this.menFlyweight[i];
+            element["Rank"] = i + 1;
+          }
+
+          for (let i = 0; i < this.womenFeatherweight.length; i++) {
+            let element = this.womenFeatherweight[i];
+            element["Rank"] = i + 1;
+          }
         })
 
     // console.log(this.menFlyweight);

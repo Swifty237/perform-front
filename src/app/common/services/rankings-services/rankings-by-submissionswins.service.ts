@@ -1,35 +1,34 @@
 import { Injectable } from '@angular/core';
-import { FightersAndFightsElement } from '../../utils/rankings-elements';
+import { FightersAndSubWinsElement } from '../../utils/rankings-elements';
 import { RankingsService } from './rankings.service';
 
 @Injectable({
   providedIn: 'root'
 })
+export class RankingsBySubmissionswinsService {
 
-export class RankingsByFightsService {
+  menArray: FightersAndSubWinsElement[] = [];
+  womenArray: FightersAndSubWinsElement[] = [];
 
-  menArray: FightersAndFightsElement[] = [];
-  womenArray: FightersAndFightsElement[] = [];
+  menFlyweight: FightersAndSubWinsElement[] = [];
+  menBantamweight: FightersAndSubWinsElement[] = [];
+  menFeatherweight: FightersAndSubWinsElement[] = [];
+  menLightweight: FightersAndSubWinsElement[] = [];
+  menWelterweight: FightersAndSubWinsElement[] = [];
+  menMiddleweight: FightersAndSubWinsElement[] = [];
+  menLightHeavyweight: FightersAndSubWinsElement[] = [];
+  menHeavyweight: FightersAndSubWinsElement[] = [];
 
-  menFlyweight: FightersAndFightsElement[] = [];
-  menBantamweight: FightersAndFightsElement[] = [];
-  menFeatherweight: FightersAndFightsElement[] = [];
-  menLightweight: FightersAndFightsElement[] = [];
-  menWelterweight: FightersAndFightsElement[] = [];
-  menMiddleweight: FightersAndFightsElement[] = [];
-  menLightHeavyweight: FightersAndFightsElement[] = [];
-  menHeavyweight: FightersAndFightsElement[] = [];
+  womenStrawweight: FightersAndSubWinsElement[] = [];
+  womenFlyweight: FightersAndSubWinsElement[] = [];
+  womenBantamweight: FightersAndSubWinsElement[] = [];
+  womenFeatherweight: FightersAndSubWinsElement[] = [];
 
-  womenStrawweight: FightersAndFightsElement[] = [];
-  womenFlyweight: FightersAndFightsElement[] = [];
-  womenBantamweight: FightersAndFightsElement[] = [];
-  womenFeatherweight: FightersAndFightsElement[] = [];
-
-  defaultTab: FightersAndFightsElement[] = [];
+  defaultTab: FightersAndSubWinsElement[] = [];
 
   constructor(public rankingsService: RankingsService) {
 
-    this.rankingsService.getRankingsNumberFights$()
+    this.rankingsService.getRankingsSubmissionsWins$()
       .subscribe((items) => {
         items.forEach(item => {
           (item["Division"].includes("Women's")) ? this.womenArray.push(item) : this.menArray.push(item);
@@ -160,21 +159,5 @@ export class RankingsByFightsService {
           element["Rank"] = i + 1;
         }
       })
-
-    // console.log(this.menFlyweight);
-    // console.log(this.menBantamweight);
-    // console.log(this.menFeatherweight);
-    // console.log(this.menLightweight);
-    // console.log(this.menWelterweight);
-    // console.log(this.menMiddleweight);
-    // console.log(this.menLightHeavyweight);
-    // console.log(this.menHeavyweight);
-
-    // console.log(this.womenStrawweight);
-    // console.log(this.womenFlyweight);
-    // console.log(this.womenBantamweight);
-    // console.log(this.womenFeatherweight);
-
-    // console.log(this.defaultTab);
   }
 }

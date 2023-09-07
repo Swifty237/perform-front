@@ -3,9 +3,15 @@
         <span style="font-style: italic; font-size: small;"> (Bantamweight)</span>
     </h4>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="rank">
+            <th mat-header-cell *matHeaderCellDef> N° </th>
+            <td mat-cell *matCellDef="let element"> {{element.Rank}}</td>
+        </ng-container>
+
         <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Nom </th>
-            <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+            <th mat-header-cell *matHeaderCellDef> Nom (Combats) </th>
+            <td mat-cell *matCellDef="let element"> {{element.Name}} ({{element.NumberFights}}) </td>
         </ng-container>
 
         <ng-container matColumnDef={{changingColumn}}>
@@ -15,8 +21,36 @@
                 <td mat-cell *matCellDef="let element"> {{element.NumberFights}} </td>
             </ng-container>
 
-            <ng-container *ngIf="changingColumn === 'victories'">
-                <td mat-cell *matCellDef="let element"> {{element.Wins}} </td>
+            <ng-container *ngIf="changingColumn === 'wins'">
+                <td mat-cell *matCellDef="let element"> {{element.WinPercentage}}</td>
+            </ng-container>
+
+            <ng-container *ngIf="changingColumn === 'kowins'">
+                <td mat-cell *matCellDef="let element"> {{element.KoTko}} </td>
+            </ng-container>
+
+            <ng-container *ngIf="changingColumn === 'submissionwins'">
+                <td mat-cell *matCellDef="let element"> {{element.SubWinsPercentage}}</td>
+            </ng-container>
+
+            <ng-container *ngIf="changingColumn === 'strikes'">
+                <td mat-cell *matCellDef="let element"> {{element.StrikingAcc}} </td>
+            </ng-container>
+
+            <ng-container *ngIf="changingColumn === 'strikesratio'">
+                <td mat-cell *matCellDef="let element"> {{element.StrikingRatio}}</td>
+            </ng-container>
+
+            <ng-container *ngIf="changingColumn === 'takedowns'">
+                <td mat-cell *matCellDef="let element"> {{element.TakedownAcc}} </td>
+            </ng-container>
+
+            <ng-container *ngIf="changingColumn === 'takedowndefense'">
+                <td mat-cell *matCellDef="let element"> {{element.TakedownDef}}</td>
+            </ng-container>
+
+            <ng-container *ngIf="changingColumn === 'takedownsratio'">
+                <td mat-cell *matCellDef="let element"> {{element.TkdownsRatio}}</td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

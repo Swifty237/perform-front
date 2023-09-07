@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FightersAndFightsElement, FightersAndWinsElement, SelectRankingLabel } from 'src/app/common/utils/rankings-elements';
+import { FightersAndFightsElement, FightersAndIpsgElement, FightersAndKoWinsElement, FightersAndStrikesElement, FightersAndStrkRatioElement, FightersAndSubWinsElement, FightersAndTkdownDElement, FightersAndTkdownRElement, FightersAndTkdownsElement, FightersAndWinsElement, SelectRankingLabel } from 'src/app/common/utils/rankings-elements';
 
 
 @Component({
@@ -19,21 +19,65 @@ export class WomenRankingsComponent {
   @Input() womenBantamweightVictories: FightersAndWinsElement[] = [];
   @Input() womenFeatherweightVictories: FightersAndWinsElement[] = [];
 
+  @Input() womenStrawweightKoWins: FightersAndKoWinsElement[] = [];
+  @Input() womenFlyweightKoWins: FightersAndKoWinsElement[] = [];
+  @Input() womenBantamweightKoWins: FightersAndKoWinsElement[] = [];
+  @Input() womenFeatherweightKoWins: FightersAndKoWinsElement[] = [];
+
+  @Input() womenStrawweightIpsg: FightersAndIpsgElement[] = [];
+  @Input() womenFlyweightIpsg: FightersAndIpsgElement[] = [];
+  @Input() womenBantamweightIpsg: FightersAndIpsgElement[] = [];
+  @Input() womenFeatherweightIpsg: FightersAndIpsgElement[] = [];
+
+  @Input() womenStrawweightTkdownR: FightersAndTkdownRElement[] = [];
+  @Input() womenFlyweightTkdownR: FightersAndTkdownRElement[] = [];
+  @Input() womenBantamweightTkdownR: FightersAndTkdownRElement[] = [];
+  @Input() womenFeatherweightTkdownR: FightersAndTkdownRElement[] = [];
+
+  @Input() womenStrawweightTkdownD: FightersAndTkdownDElement[] = [];
+  @Input() womenFlyweightTkdownD: FightersAndTkdownDElement[] = [];
+  @Input() womenBantamweightTkdownD: FightersAndTkdownDElement[] = [];
+  @Input() womenFeatherweightTkdownD: FightersAndTkdownDElement[] = [];
+
+  @Input() womenStrawweightTkdowns: FightersAndTkdownsElement[] = [];
+  @Input() womenFlyweightTkdowns: FightersAndTkdownsElement[] = [];
+  @Input() womenBantamweightTkdowns: FightersAndTkdownsElement[] = [];
+  @Input() womenFeatherweightTkdowns: FightersAndTkdownsElement[] = [];
+
+  @Input() womenStrawweightSRatio: FightersAndStrkRatioElement[] = [];
+  @Input() womenFlyweightSRatio: FightersAndStrkRatioElement[] = [];
+  @Input() womenBantamweightSRatio: FightersAndStrkRatioElement[] = [];
+  @Input() womenFeatherweightSRatio: FightersAndStrkRatioElement[] = [];
+
+  @Input() womenStrawweightStrikes: FightersAndStrikesElement[] = [];
+  @Input() womenFlyweightStrikes: FightersAndStrikesElement[] = [];
+  @Input() womenBantamweightStrikes: FightersAndStrikesElement[] = [];
+  @Input() womenFeatherweightStrikes: FightersAndStrikesElement[] = [];
+
+  @Input() womenStrawweightSubWins: FightersAndSubWinsElement[] = [];
+  @Input() womenFlyweightSubWins: FightersAndSubWinsElement[] = [];
+  @Input() womenBantamweightSubWins: FightersAndSubWinsElement[] = [];
+  @Input() womenFeatherweightSubWins: FightersAndSubWinsElement[] = [];
+
+
   selectedRanking = "";
+  selectedRankingTransfer = "";
+
 
   selectLabels: SelectRankingLabel[] = [
     { value: 'fights', viewValue: '-- Nombre de combats --' },
-    { value: 'victories', viewValue: '-- Nombre de victoires --' },
-    { value: 'ko-victories', viewValue: '-- Nombre de victoires par KO --' },
-    { value: 'submission-victories', viewValue: '-- Nombre de victoires par soumission --' },
-    { value: 'ko-defeats', viewValue: '-- Nombre de défaites par KO --' },
-    { value: 'submission-defeats', viewValue: '-- Nombre défaites par soumission --' },
-    { value: 'all-career-strikes', viewValue: '-- Nombre de strikes (coup de poings) en carrière --' },
-    { value: 'fight-strikes', viewValue: '-- Nombre de strikes par combat --' },
-    { value: 'all-career-clinchs', viewValue: '-- Nombre de clinchs (lutte debout) en carrière --' },
-    { value: 'all-career-takedowns', viewValue: '-- Nombre de takedowns (amenés au sol) en carrière --' },
-    { value: 'fight-takedowns', viewValue: '-- Nombre takedowns par combat --' },
-    { value: 'all-career-takedown-defends', viewValue: '-- Nombre takedowns défense en carrière --' },
-    { value: 'fight-takedown-defends', viewValue: '-- Nombre takedowns défense par combat --' }
+    { value: 'wins', viewValue: '-- Pourcentage de victoires --' },
+    { value: 'kowins', viewValue: '-- Pourcentage de victoires par KO --' },
+    { value: 'submissionwins', viewValue: '-- Pourcentage de victoires par soumission --' },
+    { value: 'strikes', viewValue: '-- Pourcentage de coups (strikes) reussis --' },
+    { value: 'strikesratio', viewValue: '-- Ratio coups donnés / coups encaissés --' },
+    { value: 'takedowns', viewValue: "-- Pourcentage d'amenées au sol (takedowns) reussi --" },
+    { value: 'takedowndefense', viewValue: "-- Pourcentage de défenses d'amenées au sol (takedowns) --" },
+    { value: 'takedownsratio', viewValue: '-- Ratio amenées au sol (takedowns) tentés / amenées au sol subits --' },
+    { value: 'ipsg', viewValue: '-- Indice de performance statistique globale --' }
   ];
+
+  getSelectedRanking() {
+    this.selectedRankingTransfer = this.selectedRanking;
+  }
 }
