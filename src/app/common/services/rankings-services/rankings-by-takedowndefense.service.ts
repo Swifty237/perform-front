@@ -151,7 +151,7 @@ export class RankingsByTakedowndefenseService {
         }
 
         for (let i = 0; i < this.womenBantamweight.length; i++) {
-          let element = this.menFlyweight[i];
+          let element = this.womenBantamweight[i];
           element["Rank"] = i + 1;
         }
 

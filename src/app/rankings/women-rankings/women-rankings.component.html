@@ -2,7 +2,7 @@
 
     <mat-form-field style="width: 40vw;">
         <mat-label>Choisissez une catégorie de classement</mat-label>
-        <mat-select [(ngModel)]="selectedRanking">
+        <mat-select [(ngModel)]="selectedRanking" (selectionChange)="getSelectedRanking()">
             <mat-option *ngFor="let selectLabel of selectLabels" [value]="selectLabel.value">
                 {{selectLabel.viewValue}}
             </mat-option>

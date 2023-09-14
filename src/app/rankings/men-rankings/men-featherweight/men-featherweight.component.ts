@@ -44,7 +44,7 @@ export class MenFeatherweightComponent implements OnChanges {
 
       case "fights":
         this.displayedColumns = ["rank", "name", selection];
-        this.changingLabel = "Combat(s)";
+        this.changingLabel = "Combats";
         this.changingColumn = selection;
         this.dataSource = new MatTableDataSource<FightersAndFightsElement>(this.menFeatherweight);
         this.dataSource.paginator = this.paginator;
@@ -52,7 +52,7 @@ export class MenFeatherweightComponent implements OnChanges {
 
       case "wins":
         this.displayedColumns = ["rank", "name", selection];
-        this.changingLabel = "% Victoire(s)";
+        this.changingLabel = "% Victoires";
         this.changingColumn = selection;
         this.dataSource = new MatTableDataSource<FightersAndWinsElement>(this.menFeatherweightVictories);
         this.dataSource.paginator = this.paginator;
@@ -60,58 +60,74 @@ export class MenFeatherweightComponent implements OnChanges {
 
       case "kowins":
         this.displayedColumns = ["rank", "name", selection];
-        this.changingLabel = "% Victoires / KO";
+        this.changingLabel = "% V. KO";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
+        this.dataSource = new MatTableDataSource<FightersAndKoWinsElement>(this.menFeatherweightKoWins);
+        this.dataSource.paginator = this.paginator;
         break;
 
       case "submissionwins":
         this.displayedColumns = ["rank", "name", selection];
-        this.changingLabel = "% Victoire(s) / soumission";
+        this.changingLabel = "% V. Soumissions";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
+        this.dataSource = new MatTableDataSource<FightersAndSubWinsElement>(this.menFeatherweightSubWins);
+        this.dataSource.paginator = this.paginator;
         break;
 
       case "strikes":
         this.displayedColumns = ["rank", "name", selection];
-        this.changingLabel = "% Défaite(s) / KO";
+        this.changingLabel = "% Coups réussis";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
+        this.dataSource = new MatTableDataSource<FightersAndStrikesElement>(this.menFeatherweightStrikes);
+        this.dataSource.paginator = this.paginator;
         break;
 
       case "strikesratio":
         this.displayedColumns = ["rank", "name", selection];
-        this.changingLabel = " % Défaite(s) / soumission";
+        this.changingLabel = "Ratio coups donnés/reçus";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
+        this.dataSource = new MatTableDataSource<FightersAndStrkRatioElement>(this.menFeatherweightSRatio);
+        this.dataSource.paginator = this.paginator;
         break;
 
       case "takedowns":
         this.displayedColumns = ["rank", "name", selection];
-        this.changingLabel = "Strikes";
+        this.changingLabel = "% A. sol reussis";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
+        this.dataSource = new MatTableDataSource<FightersAndTkdownsElement>(this.menFeatherweightTkdowns);
+        this.dataSource.paginator = this.paginator;
         break;
 
       case "takedowndefense":
         this.displayedColumns = ["rank", "name", selection];
-        this.changingLabel = "Strikes / combat";
+        this.changingLabel = "% A. sol défendus";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
+        this.dataSource = new MatTableDataSource<FightersAndTkdownDElement>(this.menFeatherweightTkdownD);
+        this.dataSource.paginator = this.paginator;
         break;
 
       case "takedownsratio":
         this.displayedColumns = ["rank", "name", selection];
-        this.changingLabel = "Clinch(s)";
+        this.changingLabel = "Ratio A. sol effectués/subit";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
+        this.dataSource = new MatTableDataSource<FightersAndTkdownRElement>(this.menFeatherweightTkdownR);
+        this.dataSource.paginator = this.paginator;
+        break;
+
+      case "ipsg":
+        this.displayedColumns = ["rank", "name", selection];
+        this.changingLabel = "IPSG";
+        this.changingColumn = selection;
+        this.dataSource = new MatTableDataSource<FightersAndIpsgElement>(this.menFeatherweightIpsg);
+        this.dataSource.paginator = this.paginator;
         break;
 
       default:
-        this.displayedColumns = ['rank', 'name', '--'];
+        this.displayedColumns = ["rank", "name", "--"];
         this.changingLabel = "--";
         this.changingColumn = "--";
         this.dataSource = new MatTableDataSource<FightersAndFightsElement>();
+        this.dataSource.paginator = this.paginator;
     }
   }
 }

@@ -204,18 +204,18 @@ export class RankingsComponent {
     this.menHeavyweightVictories = this.rankingsByVictories.menHeavyweight;
 
 
-    this.womenStrawweightIpsg = this.rankingsByIpsg.womenStrawweight;
-    this.womenFlyweightIpsg = this.rankingsByIpsg.womenFlyweight;
-    this.womenBantamweightIpsg = this.rankingsByIpsg.womenBantamweight;
-    this.womenFeatherweightIpsg = this.rankingsByIpsg.womenFeatherweight;
-    this.menFlyweightIpsg = this.rankingsByIpsg.menFlyweight;
-    this.menBantamweightIpsg = this.rankingsByIpsg.menBantamweight;
-    this.menFeatherweightIpsg = this.rankingsByIpsg.menFeatherweight;
-    this.menLightweightIpsg = this.rankingsByIpsg.menLightweight;
-    this.menWelterweightIpsg = this.rankingsByIpsg.menWelterweight;
-    this.menMiddleweightIpsg = this.rankingsByIpsg.menMiddleweight;
-    this.menLightHeavyweightIpsg = this.rankingsByIpsg.menLightHeavyweight;
-    this.menHeavyweightIpsg = this.rankingsByIpsg.menHeavyweight;
+    this.womenStrawweightIpsg = this.rankingsByIpsg.womenStrawweightIpsg;
+    this.womenFlyweightIpsg = this.rankingsByIpsg.womenFlyweightIpsg;
+    this.womenBantamweightIpsg = this.rankingsByIpsg.womenBantamweightIpsg;
+    this.womenFeatherweightIpsg = this.rankingsByIpsg.womenFeatherweightIpsg;
+    this.menFlyweightIpsg = this.rankingsByIpsg.menFlyweightIpsg;
+    this.menBantamweightIpsg = this.rankingsByIpsg.menBantamweightIpsg;
+    this.menFeatherweightIpsg = this.rankingsByIpsg.menFeatherweightIpsg;
+    this.menLightweightIpsg = this.rankingsByIpsg.menLightweightIpsg;
+    this.menWelterweightIpsg = this.rankingsByIpsg.menWelterweightIpsg;
+    this.menMiddleweightIpsg = this.rankingsByIpsg.menMiddleweightIpsg;
+    this.menLightHeavyweightIpsg = this.rankingsByIpsg.menLightHeavyweightIpsg;
+    this.menHeavyweightIpsg = this.rankingsByIpsg.menHeavyweightIpsg;
 
 
     this.womenStrawweightKoWins = this.rankingsByKowins.womenStrawweight;
@@ -313,5 +313,19 @@ export class RankingsComponent {
     this.menMiddleweightTkdownR = this.rankingsByTakedownRatio.menMiddleweight;
     this.menLightHeavyweightTkdownR = this.rankingsByTakedownRatio.menLightHeavyweight;
     this.menHeavyweightTkdownR = this.rankingsByTakedownRatio.menHeavyweight;
+
+
+    // console.log(this.womenStrawweightKoWins)
+    // console.log(this.womenFlyweightKoWins)
+    // console.log(this.womenBantamweightKoWins)
+    // console.log(this.womenFeatherweightKoWins)
+    // console.log(this.menFlyweightKoWins)
+    // console.log(this.menBantamweightKoWins)
+    // console.log(this.menFeatherweightKoWins)
+    // console.log(this.menLightweightKoWins)
+    // console.log(this.menWelterweightKoWins)
+    // console.log(this.menMiddleweightKoWins)
+    // console.log(this.menLightHeavyweightKoWins)
+    // console.log(this.menHeavyweightKoWins)
   }
 }

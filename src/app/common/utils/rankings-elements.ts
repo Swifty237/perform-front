@@ -32,7 +32,7 @@ export type FightersAndIpsgElement = {
   Name: string;
   Division: string;
   NumberFights: number;
-  Ispg: number;
+  Ipsg: number;
 }
 
 export type FightersAndTkdownRElement = {
