@@ -2,7 +2,7 @@ FROM node:18.17.1
 
 WORKDIR /front
 
-EXPOSE: 4200 
+EXPOSE 4200 
 
 COPY package*.json ./
 COPY angular.json angular.json
