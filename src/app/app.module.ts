@@ -78,7 +78,7 @@ import { MenFlyweightComponent } from './rankings/men-rankings/men-flyweight/men
     MatSelectModule,
     NgFor,
     HttpClientModule,
-    AppMaterialModule
+    AppMaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

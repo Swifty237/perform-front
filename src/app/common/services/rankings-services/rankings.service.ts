@@ -13,22 +13,26 @@ import {
   FightersAndStrikesElement,
   FightersAndSubWinsElement
 } from '../../utils/rankings-elements';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class RankingsService {
 
-  apiUrlFights = "http://localhost:8282/performmma/rankings/numberfights";
-  apiUrlWins = "http://localhost:8282/performmma/rankings/wins";
-  apiUrlKoWins = "http://localhost:8282/performmma/rankings/kowins";
-  apiUrlSubmissionsWins = "http://localhost:8282/performmma/rankings/submissionwins";
-  apiUrlStrikes = "http://localhost:8282/performmma/rankings/strikes";
-  apiUrlStrikesRatio = "http://localhost:8282/performmma/rankings/strikesratio";
-  apiUrlTakedowns = "http://localhost:8282/performmma/rankings/takedowns";
-  apiUrlTakedownDefense = "http://localhost:8282/performmma/rankings/takedowndefense";
-  apiUrlTakedownRatio = "http://localhost:8282/performmma/rankings/takedownsratio";
-  apiUrlIpsg = "http://localhost:8282/performmma/rankings/ipsg";
+  apiUrl = environment.apiUrl;
+
+  apiUrlFights = this.apiUrl + "/performmma/rankings/numberfights";
+  apiUrlWins = this.apiUrl + "/performmma/rankings/wins";
+  apiUrlKoWins = this.apiUrl + "/performmma/rankings/kowins";
+  apiUrlSubmissionsWins = this.apiUrl + "/performmma/rankings/submissionwins";
+  apiUrlStrikes = this.apiUrl + "/performmma/rankings/strikes";
+  apiUrlStrikesRatio = this.apiUrl + "/performmma/rankings/strikesratio";
+  apiUrlTakedowns = this.apiUrl + "performmma/rankings/takedowns";
+  apiUrlTakedownDefense = this.apiUrl + "/performmma/rankings/takedowndefense";
+  apiUrlTakedownRatio = this.apiUrl + "/performmma/rankings/takedownsratio";
+  apiUrlIpsg = this.apiUrl + "/performmma/rankings/ipsg";
 
   constructor(private _http: HttpClient) { }
 

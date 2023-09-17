@@ -25,11 +25,13 @@ export class HomeComponent implements OnInit {
       )
       .subscribe(
         () => {
+
           this.bigCardNews = this.newsArray[0][0];
           this.smallCardNews = this.newsArray[0].slice(1, 5);
           this.simpleCardNews = this.newsArray[0].slice(5);
-        },
-        (err: string) => console.error('An error occurred:', err)
+        }
+
+        // (err: string) => console.error('An error occurred:', err)
       );
   }
 }
