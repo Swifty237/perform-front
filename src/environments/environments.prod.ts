@@ -3,4 +3,4 @@ export const environment = {
     apiUrl: 'https://perform-back-nodejs.vercel.app'
 };
 
-//ng build --prod
+//ng build --configuration=production
