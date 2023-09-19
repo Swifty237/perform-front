@@ -29,7 +29,7 @@ export class RankingsService {
   apiUrlSubmissionsWins = this.apiUrl + "/performmma/rankings/submissionwins";
   apiUrlStrikes = this.apiUrl + "/performmma/rankings/strikes";
   apiUrlStrikesRatio = this.apiUrl + "/performmma/rankings/strikesratio";
-  apiUrlTakedowns = this.apiUrl + "performmma/rankings/takedowns";
+  apiUrlTakedowns = this.apiUrl + "/performmma/rankings/takedowns";
   apiUrlTakedownDefense = this.apiUrl + "/performmma/rankings/takedowndefense";
   apiUrlTakedownRatio = this.apiUrl + "/performmma/rankings/takedownsratio";
   apiUrlIpsg = this.apiUrl + "/performmma/rankings/ipsg";
