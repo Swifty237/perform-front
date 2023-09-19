@@ -8,8 +8,8 @@ import { PerformHelpComponent } from './perform-help/perform-help.component';
 import { RankingsComponent } from './rankings/rankings.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'ngr-home', pathMatch: 'full' },
   { path: 'ngr-home', component: HomeComponent },
-  { path: '', redirectTo: '/ngr-home', pathMatch: 'full' },
   { path: 'ngr-configurations', component: ConfigurationsComponent },
   { path: 'ngr-rankings', component: RankingsComponent },
   { path: 'ngr-pronostics', component: PronosticsComponent },
