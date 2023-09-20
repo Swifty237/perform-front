@@ -1,19 +1,19 @@
 <div class="container">
     <div class="sub-container">
-        <h2 style="text-align: center;"> Bienvenue sur l'application {{title ? title : ""}} </h2>
+        <h2 style="text-align: center;"> Bienvenue sur l'application {{title}} </h2>
 
         <div class="big-content">
             <div>
-                <img class="big-img" src={{bigCardNews?.urlToImage}} alt="">
+                <img class="big-img" src={{bigCardNews.urlToImage}} alt="">
             </div>
             <div class="txt-content">
                 <h2>{{bigCardNews.title}}</h2>
-                <p style="text-align: justify;">{{bigCardNews?.description}}</p>
-                <p style="text-align: justify;">{{bigCardNews?.content}}</p>
-                <div> <span>Source : </span><span style="font-style: italic;">{{bigCardNews?.source?.name}}</span></div>
-                <div> <span>Auteur : </span><span style="font-style: italic;">{{bigCardNews?.author}}</span></div>
-                <p style="margin-right: 0.3em;"><a href={{bigCardNews?.url}}>Voir l'article original</a></p>
-                <p>publié le : <span style="margin-left: 0.3em;">{{bigCardNews?.publishedAt | date:"dd/MM/yyyy"}}</span>
+                <p style="text-align: justify;">{{bigCardNews.description}}</p>
+                <p style="text-align: justify;">{{bigCardNews.content}}</p>
+                <div> <span>Source : </span><span style="font-style: italic;">{{bigCardNews.source.name}}</span></div>
+                <div> <span>Auteur : </span><span style="font-style: italic;">{{bigCardNews.author}}</span></div>
+                <p style="margin-right: 0.3em;"><a href={{bigCardNews.url}}>Voir l'article original</a></p>
+                <p>publié le : <span style="margin-left: 0.3em;">{{bigCardNews.publishedAt | date:"dd/MM/yyyy"}}</span>
                 </p>
             </div>
         </div>
@@ -42,10 +42,10 @@
         </div> -->
         <div class="small-content">
             <div class="small-card" *ngFor="let news of smallCardNews">
-                <img class="small-img" src={{news?.urlToImage}} alt="">
-                <h4 class="small-txt">{{news?.title}}</h4>
-                <span class="small-txt">{{news?.description}}</span>
-                <span class="small-txt"><a href={{news?.url}}>voir l'article</a></span>
+                <img class="small-img" src={{news.urlToImage}} alt="">
+                <h4 class="small-txt">{{news.title}}</h4>
+                <span class="small-txt">{{news.description}}</span>
+                <span class="small-txt"><a href={{news.url}}>voir l'article</a></span>
             </div>
         </div>
         <!-- <div class="small-content2">
@@ -107,15 +107,15 @@
         <div *ngFor="let news of simpleCardNews; let i = index"
             [ngClass]="{'simple-content': i % 2 === 0, 'simple-content-reverse': i % 2 !== 0}">
             <div>
-                <img class="simple-img" src={{news?.urlToImage}} alt="">
+                <img class="simple-img" src={{news.urlToImage}} alt="">
             </div>
             <div class="txt-content">
                 <h2>{{news.title}}</h2>
-                <p style="text-align: justify;">{{news?.description}}</p>
-                <p style="text-align: justify;">{{news?.content}}</p>
-                <div><span>Source : </span><span style="font-style: italic;">{{news?.source?.name}}</span></div>
-                <div><span>Auteur : </span><span style="font-style: italic;">{{news?.author}}</span></div>
-                <p style="margin-right: 0.3em;"><a href={{news?.url}}>Voir l'article original</a></p>
+                <p style="text-align: justify;">{{news.description}}</p>
+                <p style="text-align: justify;">{{news.content}}</p>
+                <div><span>Source : </span><span style="font-style: italic;">{{news.source.name}}</span></div>
+                <div><span>Auteur : </span><span style="font-style: italic;">{{news.author}}</span></div>
+                <p style="margin-right: 0.3em;"><a href={{news.url}}>Voir l'article original</a></p>
                 <p>publié le : <span style="margin-left: 0.3em;">{{news.publishedAt | date:"dd/MM/yyyy"}}</span></p>
             </div>
         </div>
