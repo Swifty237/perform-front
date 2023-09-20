@@ -1,5 +1,6 @@
 <div class="container">
     <div class="sub-container">
+        <p style="text-align: center;"> Bienvenue sur l'application {{title}} </p>
         <h2 style="text-align: center;"> Bienvenue sur l'application {{title}} </h2>
 
         <div class="big-content">
@@ -8,42 +9,145 @@
             </div>
             <div class="txt-content">
                 <h2>{{bigCardNews.title}}</h2>
-
                 <p style="text-align: justify;">{{bigCardNews.description}}</p>
                 <p style="text-align: justify;">{{bigCardNews.content}}</p>
-
                 <div> <span>Source : </span><span style="font-style: italic;">{{bigCardNews.source.name}}</span></div>
                 <div> <span>Auteur : </span><span style="font-style: italic;">{{bigCardNews.author}}</span></div>
-
                 <p style="margin-right: 0.3em;"><a href={{bigCardNews.url}}>Voir l'article original</a></p>
                 <p>publié le : <span style="margin-left: 0.3em;">{{bigCardNews.publishedAt | date:"dd/MM/yyyy"}}</span>
                 </p>
             </div>
         </div>
-
-
-
+        <!-- <div class="big-content2">
+            <div>
+                <img class="big-img2" src="assets/img/berries.jpg" alt="">
+            </div>
+            <div class="txt-content">
+                <h2>Title here !</h2>
+                <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Nemo,
+                    vero libero,
+                    quo doloribus voluptatum
+                    vitae obcaecati neque ab architecto laborum laudantium consectetur omnis! Doloremque assumenda
+                    perferendis, aperiam illo necessitatibus at laudantium eos voluptatum repellat dolore esse cumque a
+                    sit
+                    beatae maxime, veniam obcaecati, dolorem voluptate nostrum nisi ea voluptates quis.</p>
+                <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Nemo, vero libero,
+                    quo doloribus voluptatum
+                    vitae obcaecati neque ab architecto laborum laudantium consectetur omnis! Doloremque assumenda
+                    perferendis, aperiam illo necessitatibus at laudantium eos voluptatum repellat dolore esse cumque a
+                    sit
+                    beatae maxime, veniam obcaecati, dolorem voluptate nostrum nisi ea voluptates quis.</p>
+            </div>
+        </div> -->
         <div class="small-content">
             <div class="small-card" *ngFor="let news of smallCardNews">
                 <img class="small-img" src={{news.urlToImage}} alt="">
-
                 <h4 class="small-txt">{{news.title}}</h4>
-
                 <span class="small-txt">{{news.description}}</span>
                 <span class="small-txt"><a href={{news.url}}>voir l'article</a></span>
             </div>
         </div>
-
-
-
+        <!-- <div class="small-content2">
+            <div class="small-card2">
+                <img class="small-img" src="assets/img/cup-of-coffee.jpg" alt="">
+                <h4>Title here !</h4>
+                <p class="small-txt">Text sources and link here !</p>
+            </div>
+            <div class="small-card2">
+                <img class="small-img" src="assets/img/cup-of-coffee.jpg" alt="">
+                <h4>Title here !</h4>
+                <p class="small-txt">Text sources and link here !</p>
+            </div>
+            <div class="small-card2">
+                <img class="small-img" src="assets/img/cup-of-coffee.jpg" alt="">
+                <h4>Title here !</h4>
+                <p class="small-txt">Text sources and link here !</p>
+            </div>
+        </div>
+        <div class="small-content3">
+            <div class="small-card3">
+                <img class="small-img" src="assets/img/cup-of-coffee.jpg" alt="">
+                <div class="box-txt">
+                    <h4>Title here !</h4>
+                    <p>Text sources and link here !</p>
+                </div>
+            </div>
+            <div class="small-card3">
+                <img class="small-img" src="assets/img/cup-of-coffee.jpg" alt="">
+                <div class="box-txt">
+                    <h4>Title here !</h4>
+                    <p>Text sources and link here !</p>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="simple-content">
+            <div class="txt-content">
+                <h2>Title here !</h2>
+                <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Nemo,
+                    vero libero,
+                    quo doloribus voluptatum
+                    vitae obcaecati neque ab architecto laborum laudantium consectetur omnis! Doloremque assumenda
+                    perferendis, aperiam illo necessitatibus at laudantium eos voluptatum repellat dolore esse cumque a
+                    sit
+                    beatae maxime, veniam obcaecati, dolorem voluptate nostrum nisi ea voluptates quis.</p>
+                <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Nemo, vero libero,
+                    quo doloribus voluptatum
+                    vitae obcaecati neque ab architecto laborum laudantium consectetur omnis! Doloremque assumenda
+                    perferendis, aperiam illo necessitatibus at laudantium eos voluptatum repellat dolore esse cumque a
+                    sit
+                    beatae maxime, veniam obcaecati, dolorem voluptate nostrum nisi ea voluptates quis.</p>
+            </div>
+            <div>
+                <img class="simple-img" src="assets/img/forest.png" alt="">
+            </div>
+        </div> -->
+        <div *ngFor="let news of simpleCardNews; let i = index"
+            [ngClass]="{'simple-content': i % 2 === 0, 'simple-content-reverse': i % 2 !== 0}">
+            <div>
+                <img class="simple-img" src={{news.urlToImage}} alt="">
+            </div>
+            <div class="txt-content">
+                <h2>{{news.title}}</h2>
+                <p style="text-align: justify;">{{news.description}}</p>
+                <p style="text-align: justify;">{{news.content}}</p>
+                <div><span>Source : </span><span style="font-style: italic;">{{news.source.name}}</span></div>
+                <div><span>Auteur : </span><span style="font-style: italic;">{{news.author}}</span></div>
+                <p style="margin-right: 0.3em;"><a href={{news.url}}>Voir l'article original</a></p>
+                <p>publié le : <span style="margin-left: 0.3em;">{{news.publishedAt | date:"dd/MM/yyyy"}}</span></p>
+            </div>
+        </div>
+        <!-- <div class="simple-content">
+            <div class="txt-content">
+                <h2>Title here !</h2>
+                <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Nemo,
+                    vero libero,
+                    quo doloribus voluptatum
+                    vitae obcaecati neque ab architecto laborum laudantium consectetur omnis! Doloremque assumenda
+                    perferendis, aperiam illo necessitatibus at laudantium eos voluptatum repellat dolore esse cumque a
+                    sit
+                    beatae maxime, veniam obcaecati, dolorem voluptate nostrum nisi ea voluptates quis.</p>
+                <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Nemo, vero libero,
+                    quo doloribus voluptatum
+                    vitae obcaecati neque ab architecto laborum laudantium consectetur omnis! Doloremque assumenda
+                    perferendis, aperiam illo necessitatibus at laudantium eos voluptatum repellat dolore esse cumque a
+                    sit
+                    beatae maxime, veniam obcaecati, dolorem voluptate nostrum nisi ea voluptates quis.</p>
+            </div>
+            <div>
+                <img class="simple-img" src="assets/img/flower.jpg" alt="">
+            </div>
+        </div> -->
         <div class="simple-container">
-
             <div class="simple-content2">
-
                 <div class="img-container">
                     <img class="simple-img" src="assets/img/forest.png" alt="">
                 </div>
-
                 <div class="txt-content">
                     <h2>Title here !</h2>
                     <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -55,7 +159,6 @@
                         cumque a
                         sit
                         beatae maxime, veniam obcaecati, dolorem voluptate nostrum nisi ea voluptates quis.</p>
-
                     <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Nemo, vero libero,
                         quo doloribus voluptatum
@@ -65,7 +168,6 @@
                         beatae maxime, veniam obcaecati, dolorem voluptate nostrum nisi ea voluptates quis.</p>
                 </div>
             </div>
-
             <div class="simple-content2">
                 <div class="img-container">
                     <img class="simple-img" src="assets/img/desert.jpg" alt="">
@@ -81,7 +183,6 @@
                         cumque a
                         sit
                         beatae maxime, veniam obcaecati, dolorem voluptate nostrum nisi ea voluptates quis.</p>
-
                     <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Nemo, vero libero,
                         quo doloribus voluptatum
@@ -93,14 +194,11 @@
                 </div>
             </div>
         </div>
-
         <div class="simple-container">
-
             <div class="simple-content2">
                 <div class="img-container">
                     <img class="simple-img" src="assets/img/flower.jpg" alt="">
                 </div>
-
                 <div class="txt-content">
                     <h2>Title here !</h2>
                     <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -113,7 +211,6 @@
                         cumque a
                         sit
                         beatae maxime, veniam obcaecati, dolorem voluptate nostrum nisi ea voluptates quis.</p>
-
                     <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Nemo, vero libero,
                         quo doloribus voluptatum
@@ -126,15 +223,11 @@
                 </div>
             </div>
         </div>
-
         <div class="simple-container2">
-
             <div class="simple-content2">
-
                 <div class="img-container">
                     <img class="simple-img2" src="assets/img/forest.png" alt="">
                 </div>
-
                 <div class="txt-content">
                     <h2>Title here !</h2>
                     <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -146,7 +239,6 @@
                         cumque a
                         sit
                         beatae maxime, veniam obcaecati, dolorem voluptate nostrum nisi ea voluptates quis.</p>
-
                     <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Nemo, vero libero,
                         quo doloribus voluptatum
@@ -157,7 +249,6 @@
                         beatae maxime, veniam obcaecati, dolorem voluptate nostrum nisi ea voluptates quis.</p>
                 </div>
             </div>
-
             <div class="simple-content2">
                 <div class="img-container">
                     <img class="simple-img2" src="assets/img/desert.jpg" alt="">
@@ -173,7 +264,6 @@
                         cumque a
                         sit
                         beatae maxime, veniam obcaecati, dolorem voluptate nostrum nisi ea voluptates quis.</p>
-
                     <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Nemo, vero libero,
                         quo doloribus voluptatum
@@ -184,12 +274,10 @@
                         beatae maxime, veniam obcaecati, dolorem voluptate nostrum nisi ea voluptates quis.</p>
                 </div>
             </div>
-
             <div class="simple-content2">
                 <div class="img-container">
                     <img class="simple-img2" src="assets/img/flower.jpg" alt="">
                 </div>
-
                 <div class="txt-content">
                     <h2>Title here !</h2>
                     <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -202,7 +290,6 @@
                         cumque a
                         sit
                         beatae maxime, veniam obcaecati, dolorem voluptate nostrum nisi ea voluptates quis.</p>
-
                     <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Nemo, vero libero,
                         quo doloribus voluptatum
