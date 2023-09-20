@@ -1,8 +1,29 @@
 stages:
-  - local_build
-    
-local:
-  stage: local_build
+  - build
+  - deploy
+  - dregistry
+
+node:
+  stage: build
+  image: node:alpine
+  before_script:
+    - npm install
+  script:
+    - npm run build --configuration=production
+  artifacts:
+    paths:
+      - dist/perform-front/
+
+surge:
+  stage: deploy
+  image: drkms/surge.sh
+  script:
+    - surge --project=$PWD --domain="perfmma.surge.sh"
+  rules:
+    - when: manual
+
+dregistry:
+  stage: dregistry
   image: docker:latest
   services:
     - docker:dind
