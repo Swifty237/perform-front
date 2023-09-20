@@ -10,7 +10,7 @@ import { UfcNewsElement } from '../common/utils/ufc-news-elements';
 })
 export class HomeComponent implements OnInit {
   title = 'PerformMMA';
-  bigCardNews!: UfcNewsElement;
+  bigCardNews: UfcNewsElement | undefined;
   smallCardNews: UfcNewsElement[] = [];
   simpleCardNews: UfcNewsElement[] = [];
   newsArray: UfcNewsElement[] = []; // Tableau pour stocker les données
