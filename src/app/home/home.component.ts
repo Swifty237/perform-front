@@ -10,20 +10,7 @@ import { UfcNewsElement } from '../common/utils/ufc-news-elements';
 })
 export class HomeComponent implements OnInit {
   title = 'PerformMMA';
-  bigCardNews: UfcNewsElement = {
-    _id: '',
-    source: {
-      id: '',
-      name: ''
-    },
-    author: '',
-    title: '',
-    description: '',
-    url: '',
-    urlToImage: '',
-    publishedAt: '',
-    content: ''
-  };
+  bigCardNews!: UfcNewsElement;
   smallCardNews: UfcNewsElement[] = [];
   simpleCardNews: UfcNewsElement[] = [];
   newsArray: UfcNewsElement[] = []; // Tableau pour stocker les données
@@ -40,9 +27,11 @@ export class HomeComponent implements OnInit {
       .subscribe(
         () => {
 
-          this.bigCardNews = this.newsArray[0];
-          this.smallCardNews = this.newsArray.slice(1, 5);
-          this.simpleCardNews = this.newsArray.slice(5);
+          if (this.bigCardNews != undefined) {
+            this.bigCardNews = this.newsArray[0];
+            this.smallCardNews = this.newsArray.slice(1, 5);
+            this.simpleCardNews = this.newsArray.slice(5);
+          }
         }
 
         // (err: string) => console.error('An error occurred:', err)
