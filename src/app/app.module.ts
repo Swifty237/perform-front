@@ -20,7 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MenRankingsComponent } from './rankings/men-rankings/men-rankings.component';
 import { WomenRankingsComponent } from './rankings/women-rankings/women-rankings.component';
 import { MatTabsModule } from '@angular/material/tabs';
-import { NgFor } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy, NgFor } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { AppMaterialModule } from "./app.material-module";
@@ -80,7 +80,7 @@ import { MenFlyweightComponent } from './rankings/men-rankings/men-flyweight/men
     HttpClientModule,
     AppMaterialModule,
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

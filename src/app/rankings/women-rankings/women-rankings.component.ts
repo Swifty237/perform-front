@@ -1,5 +1,18 @@
 import { Component, Input } from '@angular/core';
-import { FightersAndFightsElement, FightersAndIpsgElement, FightersAndKoWinsElement, FightersAndStrikesElement, FightersAndStrkRatioElement, FightersAndSubWinsElement, FightersAndTkdownDElement, FightersAndTkdownRElement, FightersAndTkdownsElement, FightersAndWinsElement, SelectRankingLabel } from 'src/app/common/utils/rankings-elements';
+import {
+  FightersAndFightsElement,
+  FightersAndIpsgElement,
+  FightersAndKoWinsElement,
+  FightersAndStrikesElement,
+  FightersAndStrkRatioElement,
+  FightersAndSubWinsElement,
+  FightersAndTkdownDElement,
+  FightersAndTkdownRElement,
+  FightersAndTkdownsElement,
+  FightersAndWinsElement,
+  SelectRankingLabel
+}
+  from 'src/app/common/utils/rankings-elements';
 
 
 @Component({
