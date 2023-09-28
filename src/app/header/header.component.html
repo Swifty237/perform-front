@@ -1,15 +1,17 @@
 <mat-toolbar class="container">
     <mat-toolbar-row class="logo-row">
-        <span class="logo">PerformMMA</span>
+        <span class="logo">Perform MMA</span>
 
         <ul class="nav-items">
             <li><button class="nav-item"><a class="nav-link" routerLink='/ngr-home'>Accueil</a></button></li>
-            <li><button class="nav-item"><a class="nav-link" routerLink='/ngr-rankings'>Classements</a></button></li>
             <li><button class="nav-item"><a class="nav-link"
-                        routerLink='/ngr-configurations'>Configurations</a></button></li>
-            <li><button class="nav-item"><a class="nav-link" routerLink='/ngr-pronostics'>Pronostics</a></button></li>
-            <li><button class="nav-item"><a class="nav-link" routerLink='/ngr-graphs'>Graphes résultats</a></button>
-            </li>
+                        routerLink='/ngr-user/ngr-rankings'>Classements</a></button></li>
+            <li><button class="nav-item"><a class="nav-link"
+                        routerLink='/ngr-user/ngr-configurations'>Configurations</a></button></li>
+            <li><button class="nav-item"><a class="nav-link"
+                        routerLink='/ngr-user/ngr-pronostics'>Pronostics</a></button></li>
+            <li><button class="nav-item"><a class="nav-link" routerLink='/ngr-user/ngr-graphs'>Graphes
+                        résultats</a></button></li>
             <li><button class="nav-item"><a class="nav-link" routerLink='/ngr-help'>Aide</a></button></li>
         </ul>
 
@@ -22,13 +24,18 @@
 
         <div class="user">
             <button class="user-btn">
-                <a class="user-link" routerLink="#">Connexion</a>
+                <a class="user-link" routerLink="/ngr-login">Login</a>
             </button>
 
             <button class="user-btn">
-                <a class="user-link" routerLink="#">Inscription</a>
+                <a class="user-link" routerLink="#">Logout</a>
             </button>
+
         </div>
+
+        <span style="margin-right: 2em;">
+            <a style="color: antiquewhite;" class="small-txt" routerLink="ngr-register">Pas encore inscrit ?</a>
+        </span>
 
     </mat-toolbar-row>
 

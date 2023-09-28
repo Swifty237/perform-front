@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import jwtDecode from 'jwt-decode';
 
 const AUTH_API = 'http://localhost:3002/auth/';
 
@@ -13,6 +14,12 @@ const options = {
 })
 
 export class AuthService {
+
+  isAuthenticated: boolean = false;
+  roles: any;
+  username: any;
+  accessToken!: string;
+
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<any> {
@@ -24,6 +31,14 @@ export class AuthService {
       params,
       options
     );
+  }
+
+  loadProfile(data: any) {
+    this.isAuthenticated = true;
+    this.accessToken = data["access-token"];
+    let decodedJwt: any = jwtDecode(this.accessToken);
+    this.username = decodedJwt.sub;
+    this.roles = decodedJwt.scope;
   }
 
   register(username: string, email: string, password: string): Observable<any> {
