@@ -8,8 +8,9 @@ import { UfcNewsElement } from '../common/utils/ufc-news-elements';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit {
-  title = 'PerformMMA';
+  title = 'Perform MMA';
   bigCardNews: UfcNewsElement | undefined;
   smallCardNews: UfcNewsElement[] = [];
   simpleCardNews: UfcNewsElement[] = [];
@@ -25,9 +26,8 @@ export class HomeComponent implements OnInit {
           this.newsArray = data; // Insérer chaque valeur dans le tableau
         })
       )
-      .subscribe(
-        () => {
-
+      .subscribe({
+        next: () => {
           console.log("newsArray[0] : " + this.newsArray[0]);
 
           if (this.newsArray != undefined) {
@@ -37,7 +37,11 @@ export class HomeComponent implements OnInit {
           }
         },
 
-        (err: string) => console.error('An error occurred:', err)
-      );
+        error: err => console.error('An error occurred:', err)
+      });
   }
+}
+
+function next(value: void): void {
+  throw new Error('Function not implemented.');
 }

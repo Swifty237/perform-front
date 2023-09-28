@@ -7,15 +7,29 @@ import { GraphsComponent } from './graphs/graphs.component';
 import { PerformHelpComponent } from './perform-help/perform-help.component';
 import { RankingsComponent } from './rankings/rankings.component';
 
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BoardUserComponent } from './board-user/board-user.component';
+import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
+
 const routes: Routes = [
   { path: '', redirectTo: 'ngr-home', pathMatch: 'full' },
   { path: 'ngr-home', component: HomeComponent },
+
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'user', component: BoardUserComponent },
+  { path: 'mod', component: BoardModeratorComponent },
+  { path: 'admin', component: BoardAdminComponent },
+
   { path: 'ngr-configurations', component: ConfigurationsComponent },
   { path: 'ngr-rankings', component: RankingsComponent },
   { path: 'ngr-pronostics', component: PronosticsComponent },
   { path: 'ngr-graphs', component: GraphsComponent },
   { path: 'ngr-help', component: PerformHelpComponent }
-
 ];
 
 @NgModule({

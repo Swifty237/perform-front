@@ -15,7 +15,7 @@ import { GraphsComponent } from './graphs/graphs.component';
 import { PerformHelpComponent } from './perform-help/perform-help.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MenRankingsComponent } from './rankings/men-rankings/men-rankings.component';
 import { WomenRankingsComponent } from './rankings/women-rankings/women-rankings.component';
@@ -36,6 +36,13 @@ import { MenWelterweightComponent } from './rankings/men-rankings/men-welterweig
 import { MenBantamweightComponent } from './rankings/men-rankings/men-bantamweight/men-bantamweight.component';
 import { MenFeatherweightComponent } from './rankings/men-rankings/men-featherweight/men-featherweight.component';
 import { MenFlyweightComponent } from './rankings/men-rankings/men-flyweight/men-flyweight.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
+import { BoardUserComponent } from './board-user/board-user.component';
+import { httpInterceptorProviders } from './_helpers/http-request.interceptor';
 
 
 @NgModule({
@@ -62,7 +69,13 @@ import { MenFlyweightComponent } from './rankings/men-rankings/men-flyweight/men
     MenWelterweightComponent,
     MenBantamweightComponent,
     MenFeatherweightComponent,
-    MenFlyweightComponent
+    MenFlyweightComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent,
+    BoardAdminComponent,
+    BoardModeratorComponent,
+    BoardUserComponent
   ],
   imports: [
     BrowserModule,
@@ -79,8 +92,9 @@ import { MenFlyweightComponent } from './rankings/men-rankings/men-flyweight/men
     NgFor,
     HttpClientModule,
     AppMaterialModule,
+    ReactiveFormsModule
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
