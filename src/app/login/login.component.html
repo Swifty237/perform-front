@@ -1,21 +1,21 @@
-<div class="col-md-12">
-    <div class="card card-container">
+<div style="display: flex; justify-content: center;">
+    <div style="display: flex; flex-direction: column;">
         <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
 
-        <form [formGroup]="formLogin" (ngSubmit)="handleLogin()">
-            <div class="form-group">
+        <form style="margin-top: 4em;" [formGroup]="formLogin" (ngSubmit)="handleLogin()">
+            <div style="margin-bottom: 1em;" class="form-group">
 
-                <label for="username">Username</label>
+                <label style="margin-right: 2em;" for="username">Username</label>
                 <input type="text" class="form-control" formControlName="username" required />
 
             </div>
 
-            <div class="form-group">
-                <label for="password">Password</label>
+            <div style="margin-bottom: 1em;" class="form-group">
+                <label style="margin-right: 2em;" for="password">Password</label>
                 <input type="password" class="form-control" formControlName="password" required />
             </div>
 
-            <div class="form-group">
+            <div style="margin-bottom: 1em;" class="form-group">
                 <button class="btn btn-primary btn-block">
                     Login
                 </button>
