@@ -12,8 +12,8 @@
         </div>
         <div style="margin: 1em 4em;">
             <ul>
-                <li>[username]</li>
-                <li>[roles]</li>
+                <li *ngIf="authService.isAuthenticated==true">{{this.authService.username}}</li>
+                <li *ngIf="authService.isAuthenticated==true">{{this.authService.roles}}</li>
             </ul>
         </div>
     </div>
