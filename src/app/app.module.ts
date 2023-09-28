@@ -22,7 +22,7 @@ import { WomenRankingsComponent } from './rankings/women-rankings/women-rankings
 import { MatTabsModule } from '@angular/material/tabs';
 import { HashLocationStrategy, LocationStrategy, NgFor } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppMaterialModule } from "./app.material-module";
 import { WomenBantamweightComponent } from './rankings/women-rankings/women-bantamweight/women-bantamweight.component';
 import { WomenStrawweightComponent } from './rankings/women-rankings/women-strawweight/women-strawweight.component';
@@ -42,7 +42,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardUserComponent } from './board-user/board-user.component';
-import { httpInterceptorProviders } from './_helpers/http-request.interceptor';
+import { AppHttpInterceptor } from './common/interceptors/app-http.interceptor';
 
 
 @NgModule({
@@ -94,7 +94,7 @@ import { httpInterceptorProviders } from './_helpers/http-request.interceptor';
     AppMaterialModule,
     ReactiveFormsModule
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, httpInterceptorProviders],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, { provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
