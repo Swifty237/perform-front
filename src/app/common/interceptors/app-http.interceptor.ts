@@ -22,7 +22,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
       })
 
       return next.handle(newRequest).pipe(
-        catchError((err: any) => {
+        catchError(err => {
 
           if (err.status == 401 || err.status == 403) {
             this.authService.logout();

@@ -23,19 +23,19 @@
         </form>
 
         <div class="user">
-            <button class="user-btn">
-                <a class="user-link" routerLink="/ngr-login">Login</a>
-            </button>
+            <div *ngIf="this.authService.isAuthenticated==false">
+                <button class="user-btn">
+                    <a class="user-link" routerLink="/ngr-login">Login</a>
+                </button>
+                <span>
+                    <a style="color: antiquewhite;" class="small-txt" routerLink="ngr-register">Pas encore inscrit ?</a>
+                </span>
+            </div>
 
-            <button (click)="handleLogout()" class="user-btn">
+            <button *ngIf="this.authService.isAuthenticated==true" (click)="handleLogout()" class="user-btn">
                 <span class="user-link">Logout</span>
             </button>
-
         </div>
-
-        <span style="margin-right: 2em;">
-            <a style="color: antiquewhite;" class="small-txt" routerLink="ngr-register">Pas encore inscrit ?</a>
-        </span>
 
     </mat-toolbar-row>
 
