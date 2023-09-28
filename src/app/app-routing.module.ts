@@ -13,22 +13,24 @@ import { ProfileComponent } from './profile/profile.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { authenticationGuard } from './common/guards/authentication.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'ngr-home', pathMatch: 'full' },
   { path: 'ngr-home', component: HomeComponent },
-
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'user', component: BoardUserComponent },
-  { path: 'mod', component: BoardModeratorComponent },
-  { path: 'admin', component: BoardAdminComponent },
-
-  { path: 'ngr-configurations', component: ConfigurationsComponent },
-  { path: 'ngr-rankings', component: RankingsComponent },
-  { path: 'ngr-pronostics', component: PronosticsComponent },
-  { path: 'ngr-graphs', component: GraphsComponent },
+  { path: 'ngr-register', component: RegisterComponent },
+  { path: 'ngr-login', component: LoginComponent },
+  { path: 'ngr-admin', component: BoardAdminComponent, canActivate: [authenticationGuard] },
+  { path: 'ngr-mod', component: BoardModeratorComponent, canActivate: [authenticationGuard] },
+  {
+    path: 'ngr-user', component: BoardUserComponent, canActivate: [authenticationGuard], children: [
+      { path: 'ngr-configurations', component: ConfigurationsComponent },
+      { path: 'ngr-rankings', component: RankingsComponent },
+      { path: 'ngr-pronostics', component: PronosticsComponent },
+      { path: 'ngr-graphs', component: GraphsComponent },
+      { path: 'ngr-profile', component: ProfileComponent }
+    ]
+  },
   { path: 'ngr-help', component: PerformHelpComponent }
 ];
 
