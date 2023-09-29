@@ -24,15 +24,21 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   login(username: string, password: string): Observable<any> {
-
     let params = new HttpParams().set("username", username).set("password", password);
-
-    return this.http.post(
-      AUTH_API + 'login',
-      params,
-      options
-    );
+    return this.http.post(AUTH_API + 'login', params, options);
   }
+
+  register(email: string, username: string, password: string): Observable<any> {
+
+    console.log("*********************");
+    console.log("email : " + email);
+    console.log("username : " + username);
+    console.log("password : " + password);
+
+    let params = new HttpParams().set("email", email).set("username", username).set("password", password);
+    return this.http.post(AUTH_API + 'register', params, options);
+  }
+
 
   loadProfile(data: any) {
     this.isAuthenticated = true;
@@ -44,17 +50,6 @@ export class AuthService {
     window.localStorage.setItem("jwt-token", this.accessToken!);
   }
 
-  // register(username: string, email: string, password: string): Observable<any> {
-  //   return this.http.post(
-  //     AUTH_API + 'signup',
-  //     {
-  //       username,
-  //       email,
-  //       password,
-  //     },
-  //     options
-  //   );
-  // }
 
   logout() {
     this.isAuthenticated = false;

@@ -3,7 +3,9 @@ import { ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot, UrlTree } f
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/connexion/auth.service';
 
-export const authorizationGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree => {
+export const authorizationGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
+    Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree => {
+
     if (inject(AuthService).roles.includes("ADMIN")) {
         return true;
     } else {
