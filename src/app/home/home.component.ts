@@ -22,13 +22,11 @@ export class HomeComponent implements OnInit {
     this.ufcNewsService.getAllUfcNews$()
       .pipe(
         map((data) => {
-          console.log("data[0] : " + data[0]);
           this.newsArray = data; // Insérer chaque valeur dans le tableau
         })
       )
       .subscribe({
         next: () => {
-          console.log("newsArray[0] : " + this.newsArray[0]);
 
           if (this.newsArray != undefined) {
             this.bigCardNews = this.newsArray[0];

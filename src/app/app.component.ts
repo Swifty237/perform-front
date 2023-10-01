@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './common/services/connexion/auth.service';
+import { AuthService } from './common/services/spring-services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -19,11 +19,11 @@ export class AppComponent implements OnInit {
     let role: string;
 
     if (roles.includes("ADMIN")) {
-      role = "ADMIN";
+      role = "Administrator";
     } else if (roles.includes("MOD") && !roles.includes("ADMIN")) {
-      role = "MOD";
+      role = "Moderator";
     } else {
-      role = "USER"
+      role = "Simple user"
     }
     return role;
   }

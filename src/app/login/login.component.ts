@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../common/services/connexion/auth.service'
+import { AuthService } from '../common/services/spring-services/auth.service'
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   formLogin!: FormGroup;
+  message = "";
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
@@ -29,12 +30,17 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(username, password).subscribe({
       next: data => {
+
+        this.message = "";
         this.authService.loadProfile(data);
         this.router.navigateByUrl("/ngr-home");
       },
 
       error: err => {
-        console.log(err);
+
+        if (err.status == 401) {
+          this.message = "Identifiant ou mot de passe invalid"
+        }
       }
     })
   }

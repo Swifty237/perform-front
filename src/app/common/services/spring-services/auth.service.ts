@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 import jwtDecode from 'jwt-decode';
 import { Router } from '@angular/router';
 
@@ -29,12 +29,6 @@ export class AuthService {
   }
 
   register(email: string, username: string, password: string): Observable<any> {
-
-    console.log("*********************");
-    console.log("email : " + email);
-    console.log("username : " + username);
-    console.log("password : " + password);
-
     let params = new HttpParams().set("email", email).set("username", username).set("password", password);
     return this.http.post(AUTH_API + 'register', params, options);
   }

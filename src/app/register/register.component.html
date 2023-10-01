@@ -7,11 +7,13 @@
             <div style="margin-bottom: 1em;" class="form-group">
                 <label style="margin-right: 2em;" for="username">Username : </label>
                 <input type="text" class="form-control" formControlName="username" required />
+                <p style="color: red;" *ngIf="usernameExistMessage != ''">{{usernameExistMessage}}</p>
             </div>
 
             <div style="margin-bottom: 1em;" class="form-group">
                 <label style="margin-right: 2em;" for="email">Email : </label>
                 <input type="text" class="form-control" formControlName="email" required />
+                <p style="color: red;" *ngIf="emailExistMessage != ''">{{emailExistMessage}}</p>
             </div>
 
             <div style="margin-bottom: 1em;" class="form-group">
@@ -22,9 +24,9 @@
             <div style="margin-bottom: 1em;" class="form-group">
                 <label style="margin-right: 2em;" for="password">Password confirmation : </label>
                 <input type="password" class="form-control" formControlName="confirmPassword" required />
+                <p style="color: red;" *ngIf="confirmPasswordError != ''">{{confirmPasswordError}}</p>
             </div>
 
-            <p style="color: red;" *ngIf="confirmPasswordError != ''">{{confirmPasswordError}}</p>
 
             <div style="margin-bottom: 1em;" class="form-group">
                 <button class="btn btn-primary btn-block">

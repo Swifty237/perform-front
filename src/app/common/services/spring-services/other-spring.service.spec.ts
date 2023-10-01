@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { UserService } from './user.service';
+import { OtherSpringService } from './other-spring.service';
 
-describe('UserService', () => {
-  let service: UserService;
+describe('OtherSpringService', () => {
+  let service: OtherSpringService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(UserService);
+    service = TestBed.inject(OtherSpringService);
   });
 
   it('should be created', () => {

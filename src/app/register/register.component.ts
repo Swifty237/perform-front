@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../common/services/connexion/auth.service'
+import { AuthService } from '../common/services/spring-services/auth.service'
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -13,6 +13,8 @@ export class RegisterComponent implements OnInit {
 
   formRegister!: FormGroup;
   confirmPasswordError: string = "";
+  usernameExistMessage = "";
+  emailExistMessage = "";
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
@@ -37,14 +39,25 @@ export class RegisterComponent implements OnInit {
 
       this.authService.register(email, username, password).subscribe({
         next: data => {
-          console.log(data);
 
-          this.authService.loadProfile(data);
-          this.router.navigateByUrl("/ngr-home");
-        },
+          if (data["user-exist"]) {
 
-        error: err => {
-          console.log(err);
+            this.emailExistMessage = "";
+            this.usernameExistMessage = data["user-exist"];
+
+          } else if (data["email-exist"]) {
+
+            this.usernameExistMessage = "";
+            this.emailExistMessage = data["email-exist"];
+
+          } else {
+
+            this.usernameExistMessage = ""
+            this.emailExistMessage = ""
+
+            this.authService.loadProfile(data);
+            this.router.navigateByUrl("/ngr-home");
+          }
         }
       })
     } else {

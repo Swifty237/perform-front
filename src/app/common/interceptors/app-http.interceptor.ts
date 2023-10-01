@@ -6,7 +6,7 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
-import { AuthService } from '../services/connexion/auth.service';
+import { AuthService } from '../services/spring-services/auth.service';
 
 @Injectable()
 export class AppHttpInterceptor implements HttpInterceptor {
@@ -27,8 +27,7 @@ export class AppHttpInterceptor implements HttpInterceptor {
           if (err.status == 401 || err.status == 403) {
             this.authService.logout();
           }
-
-          return throwError(err);
+          return throwError(err); // => trouver la bonne syntaxe
         })
       );
     }

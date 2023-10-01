@@ -15,7 +15,7 @@ export type FightersAndWinsElement = {
   Name: string
   Division: string
   NumberFights: number
-  WinPercentage: string
+  WinPercentage: number
 }
 
 export type FightersAndKoWinsElement = {

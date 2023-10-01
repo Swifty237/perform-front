@@ -1,13 +1,25 @@
 import { AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { FightersAndFightsElement, FightersAndIpsgElement, FightersAndKoWinsElement, FightersAndStrikesElement, FightersAndStrkRatioElement, FightersAndSubWinsElement, FightersAndTkdownDElement, FightersAndTkdownRElement, FightersAndTkdownsElement, FightersAndWinsElement } from 'src/app/common/utils/rankings-elements';
+import {
+  FightersAndFightsElement,
+  FightersAndIpsgElement,
+  FightersAndKoWinsElement,
+  FightersAndStrikesElement,
+  FightersAndStrkRatioElement,
+  FightersAndSubWinsElement,
+  FightersAndTkdownDElement,
+  FightersAndTkdownRElement,
+  FightersAndTkdownsElement,
+  FightersAndWinsElement
+} from 'src/app/common/utils/rankings-elements';
 
 @Component({
   selector: 'app-men-heavyweight',
   templateUrl: './men-heavyweight.component.html',
   styleUrls: ['./men-heavyweight.component.scss']
 })
+
 export class MenHeavyweightComponent implements OnChanges {
 
   @Input() menHeavyweight: FightersAndFightsElement[] = [];
@@ -38,7 +50,6 @@ export class MenHeavyweightComponent implements OnChanges {
     }
   }
 
-
   getDataSource(selection: string) {
 
     switch (selection) {
@@ -56,6 +67,9 @@ export class MenHeavyweightComponent implements OnChanges {
         this.changingLabel = "% Victoires";
         this.changingColumn = selection;
         this.dataSource = new MatTableDataSource<FightersAndWinsElement>(this.menHeavyweightVictories);
+
+        console.log(this.dataSource);
+
         this.dataSource.paginator = this.paginator;
         break;
 
