@@ -3,8 +3,9 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, catchError } from 'rxjs';
 import jwtDecode from 'jwt-decode';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
-const AUTH_API = 'http://localhost:3002/auth/';
+const AUTH_API = environment.backSpringUrl + "/auth/";
 
 const options = {
   headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })

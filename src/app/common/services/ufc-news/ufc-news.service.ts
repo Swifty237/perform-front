@@ -10,7 +10,7 @@ import { UfcNewsElement } from '../../utils/ufc-news-elements';
 
 export class UfcNewsService {
 
-  apiUrl = environment.apiUrl;
+  apiUrl = environment.backNodeUrl;
 
   apiUrlNews = this.apiUrl + "/performmma/ufcnews";
 
