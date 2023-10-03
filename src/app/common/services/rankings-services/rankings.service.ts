@@ -21,7 +21,7 @@ import { environment } from 'src/environments/environment';
 
 export class RankingsService {
 
-  apiUrl = environment.apiUrl;
+  apiUrl = environment.backNodeUrl;
 
   apiUrlFights = this.apiUrl + "/performmma/rankings/numberfights";
   apiUrlWins = this.apiUrl + "/performmma/rankings/wins";
