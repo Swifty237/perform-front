@@ -1,14 +1,25 @@
-import { AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { FightersAndFightsElement, FightersAndIpsgElement, FightersAndKoWinsElement, FightersAndStrikesElement, FightersAndStrkRatioElement, FightersAndSubWinsElement, FightersAndTkdownDElement, FightersAndTkdownRElement, FightersAndTkdownsElement, FightersAndWinsElement } from 'src/app/common/utils/rankings-elements';
+import {
+  FightersAndFightsElement,
+  FightersAndIpsgElement,
+  FightersAndKoWinsElement,
+  FightersAndStrikesElement,
+  FightersAndStrkRatioElement,
+  FightersAndSubWinsElement,
+  FightersAndTkdownDElement,
+  FightersAndTkdownRElement,
+  FightersAndTkdownsElement,
+  FightersAndWinsElement
+} from 'src/app/common/utils/rankings-elements';
 
 @Component({
   selector: 'app-men-featherweight',
   templateUrl: './men-featherweight.component.html',
   styleUrls: ['./men-featherweight.component.scss']
 })
-export class MenFeatherweightComponent implements OnChanges {
+export class MenFeatherweightComponent implements OnChanges, OnInit {
 
   @Input() menFeatherweight: FightersAndFightsElement[] = [];
   @Input() menFeatherweightVictories: FightersAndWinsElement[] = [];
@@ -30,6 +41,14 @@ export class MenFeatherweightComponent implements OnChanges {
   displayedColumns: string[] = ['rank', 'name', '--'];
   dataSource = new MatTableDataSource<any>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngOnInit(): void {
+    this.displayedColumns = ["rank", "name", "ipsg"];
+    this.changingLabel = "IPSG";
+    this.changingColumn = "ipsg";
+    this.dataSource = new MatTableDataSource<FightersAndIpsgElement>(this.menFeatherweightIpsg);
+    this.dataSource.paginator = this.paginator;
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedRanking'] && !changes['selectedRanking'].firstChange) {

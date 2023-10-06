@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   FightersAndFightsElement,
   FightersAndIpsgElement,
@@ -18,7 +18,7 @@ import {
   templateUrl: './men-rankings.component.html',
   styleUrls: ['./men-rankings.component.scss'],
 })
-export class MenRankingsComponent {
+export class MenRankingsComponent implements OnInit {
 
   @Input() menFlyweight: FightersAndFightsElement[] = [];
   @Input() menBantamweight: FightersAndFightsElement[] = [];
@@ -125,6 +125,10 @@ export class MenRankingsComponent {
     { value: 'takedownsratio', viewValue: '-- Ratio amenées au sol (takedowns) tentés / amenées au sol subits --' },
     { value: 'ipsg', viewValue: '-- Indice de performance statistique globale --' }
   ];
+
+  ngOnInit(): void {
+    this.selectedRanking = "ipsg";
+  }
 
   getSelectedRanking() {
     this.selectedRankingTransfer = this.selectedRanking;

@@ -29,8 +29,9 @@ import { RankingsByTakedownsratioService } from '../common/services/rankings-ser
   styleUrls: ['./rankings.component.scss'],
 })
 
-export class RankingsComponent {
+export class RankingsComponent implements OnInit {
 
+  // Nombre de combats
   womenStrawweight: FightersAndFightsElement[] = [];
   womenFlyweight: FightersAndFightsElement[] = [];
   womenBantamweight: FightersAndFightsElement[] = [];
@@ -327,5 +328,9 @@ export class RankingsComponent {
     // console.log(this.menMiddleweightKoWins)
     // console.log(this.menLightHeavyweightKoWins)
     // console.log(this.menHeavyweightKoWins)
+  }
+
+  ngOnInit(): void {
+
   }
 }

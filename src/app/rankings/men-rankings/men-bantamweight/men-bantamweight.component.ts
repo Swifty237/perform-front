@@ -1,14 +1,25 @@
-import { AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { FightersAndFightsElement, FightersAndIpsgElement, FightersAndKoWinsElement, FightersAndStrikesElement, FightersAndStrkRatioElement, FightersAndSubWinsElement, FightersAndTkdownDElement, FightersAndTkdownRElement, FightersAndTkdownsElement, FightersAndWinsElement } from 'src/app/common/utils/rankings-elements';
+import {
+  FightersAndFightsElement,
+  FightersAndIpsgElement,
+  FightersAndKoWinsElement,
+  FightersAndStrikesElement,
+  FightersAndStrkRatioElement,
+  FightersAndSubWinsElement,
+  FightersAndTkdownDElement,
+  FightersAndTkdownRElement,
+  FightersAndTkdownsElement,
+  FightersAndWinsElement
+} from 'src/app/common/utils/rankings-elements';
 
 @Component({
   selector: 'app-men-bantamweight',
   templateUrl: './men-bantamweight.component.html',
   styleUrls: ['./men-bantamweight.component.scss']
 })
-export class MenBantamweightComponent implements OnChanges {
+export class MenBantamweightComponent implements OnChanges, OnInit {
 
   @Input() menBantamweight: FightersAndFightsElement[] = [];
   @Input() menBantamweightVictories: FightersAndWinsElement[] = [];
@@ -30,6 +41,14 @@ export class MenBantamweightComponent implements OnChanges {
   displayedColumns: string[] = ['rank', 'name', '--'];
   dataSource = new MatTableDataSource<any>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngOnInit(): void {
+    this.displayedColumns = ["rank", "name", "ipsg"];
+    this.changingLabel = "IPSG";
+    this.changingColumn = "ipsg";
+    this.getDataSource("ipsg");
+    console.log(this.dataSource);
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedRanking'] && !changes['selectedRanking'].firstChange) {

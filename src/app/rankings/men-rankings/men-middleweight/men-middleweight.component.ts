@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import {
@@ -19,7 +19,7 @@ import {
   templateUrl: './men-middleweight.component.html',
   styleUrls: ['./men-middleweight.component.scss']
 })
-export class MenMiddleweightComponent implements OnChanges {
+export class MenMiddleweightComponent implements OnChanges, OnInit {
 
   @Input() menMiddleweight: FightersAndFightsElement[] = [];
   @Input() menMiddleweightVictories: FightersAndWinsElement[] = [];
@@ -41,6 +41,14 @@ export class MenMiddleweightComponent implements OnChanges {
   displayedColumns: string[] = ['rank', 'name', '--'];
   dataSource = new MatTableDataSource<any>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngOnInit(): void {
+    this.displayedColumns = ["rank", "name", "ipsg"];
+    this.changingLabel = "IPSG";
+    this.changingColumn = "ipsg";
+    this.dataSource = new MatTableDataSource<FightersAndIpsgElement>(this.menMiddleweightIpsg);
+    this.dataSource.paginator = this.paginator;
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedRanking'] && !changes['selectedRanking'].firstChange) {

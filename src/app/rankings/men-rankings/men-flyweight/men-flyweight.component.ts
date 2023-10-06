@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { FightersAndFightsElement, FightersAndIpsgElement, FightersAndKoWinsElement, FightersAndStrikesElement, FightersAndStrkRatioElement, FightersAndSubWinsElement, FightersAndTkdownDElement, FightersAndTkdownRElement, FightersAndTkdownsElement, FightersAndWinsElement } from 'src/app/common/utils/rankings-elements';
@@ -8,7 +8,7 @@ import { FightersAndFightsElement, FightersAndIpsgElement, FightersAndKoWinsElem
   templateUrl: './men-flyweight.component.html',
   styleUrls: ['./men-flyweight.component.scss']
 })
-export class MenFlyweightComponent implements OnChanges {
+export class MenFlyweightComponent implements OnChanges, OnInit {
 
   @Input() menFlyweight: FightersAndFightsElement[] = [];
   @Input() menFlyweightVictories: FightersAndWinsElement[] = [];
@@ -31,6 +31,14 @@ export class MenFlyweightComponent implements OnChanges {
   displayedColumns: string[] = ['rank', 'name', '--'];
   dataSource = new MatTableDataSource<any>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngOnInit(): void {
+    this.displayedColumns = ["rank", "name", "ipsg"];
+    this.changingLabel = "IPSG";
+    this.changingColumn = "ipsg";
+    this.dataSource = new MatTableDataSource<FightersAndIpsgElement>(this.menFlyweightIpsg);
+    this.dataSource.paginator = this.paginator;
+  }
 
 
   ngOnChanges(changes: SimpleChanges): void {
