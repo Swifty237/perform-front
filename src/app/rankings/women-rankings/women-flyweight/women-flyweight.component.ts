@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { WomenFlyweight } from 'src/app/common/data/women/women-flyweight';
 import {
   FightersAndFightsElement,
   FightersAndIpsgElement,
@@ -21,16 +22,7 @@ import {
 })
 export class WomenFlyweightComponent implements OnChanges {
 
-  @Input() womenFlyweight: FightersAndFightsElement[] = [];
-  @Input() womenFlyweightVictories: FightersAndWinsElement[] = [];
-  @Input() womenFlyweightKoWins: FightersAndKoWinsElement[] = [];
-  @Input() womenFlyweightIpsg: FightersAndIpsgElement[] = [];
-  @Input() womenFlyweightTkdownR: FightersAndTkdownRElement[] = [];
-  @Input() womenFlyweightTkdownD: FightersAndTkdownDElement[] = [];
-  @Input() womenFlyweightTkdowns: FightersAndTkdownsElement[] = [];
-  @Input() womenFlyweightSRatio: FightersAndStrkRatioElement[] = [];
-  @Input() womenFlyweightStrikes: FightersAndStrikesElement[] = [];
-  @Input() womenFlyweightSubWins: FightersAndSubWinsElement[] = [];
+  @Input() womenFlyweight!: WomenFlyweight;
 
   @Input() selectedRanking = "";
 
@@ -57,7 +49,7 @@ export class WomenFlyweightComponent implements OnChanges {
         this.displayedColumns = ["rank", "name", selection];
         this.changingLabel = "Combats";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndFightsElement>(this.womenFlyweight);
+        this.dataSource = new MatTableDataSource<FightersAndFightsElement>(this.womenFlyweight.rankingByNumberFightsArray);
         this.dataSource.paginator = this.paginator;
         break;
 
@@ -65,7 +57,7 @@ export class WomenFlyweightComponent implements OnChanges {
         this.displayedColumns = ["rank", "name", selection];
         this.changingLabel = "% Victoires";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndWinsElement>(this.womenFlyweightVictories);
+        this.dataSource = new MatTableDataSource<FightersAndWinsElement>(this.womenFlyweight.rankingByVictoriesArray);
         this.dataSource.paginator = this.paginator;
         break;
 
@@ -73,7 +65,7 @@ export class WomenFlyweightComponent implements OnChanges {
         this.displayedColumns = ["rank", "name", selection];
         this.changingLabel = "% V. KO";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndKoWinsElement>(this.womenFlyweightKoWins);
+        this.dataSource = new MatTableDataSource<FightersAndKoWinsElement>(this.womenFlyweight.rankingByKowinsArray);
         this.dataSource.paginator = this.paginator;
         break;
 
@@ -81,7 +73,7 @@ export class WomenFlyweightComponent implements OnChanges {
         this.displayedColumns = ["rank", "name", selection];
         this.changingLabel = "% V. Soumissions";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndSubWinsElement>(this.womenFlyweightSubWins);
+        this.dataSource = new MatTableDataSource<FightersAndSubWinsElement>(this.womenFlyweight.rankingBySubmissionsArray);
         this.dataSource.paginator = this.paginator;
         break;
 
@@ -89,7 +81,7 @@ export class WomenFlyweightComponent implements OnChanges {
         this.displayedColumns = ["rank", "name", selection];
         this.changingLabel = "% Coups réussis";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndStrikesElement>(this.womenFlyweightStrikes);
+        this.dataSource = new MatTableDataSource<FightersAndStrikesElement>(this.womenFlyweight.rankingByStrikesArray);
         this.dataSource.paginator = this.paginator;
         break;
 
@@ -97,7 +89,7 @@ export class WomenFlyweightComponent implements OnChanges {
         this.displayedColumns = ["rank", "name", selection];
         this.changingLabel = "Ratio coups donnés/reçus";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndStrkRatioElement>(this.womenFlyweightSRatio);
+        this.dataSource = new MatTableDataSource<FightersAndStrkRatioElement>(this.womenFlyweight.rankingByStrikesRatioArray);
         this.dataSource.paginator = this.paginator;
         break;
 
@@ -105,7 +97,7 @@ export class WomenFlyweightComponent implements OnChanges {
         this.displayedColumns = ["rank", "name", selection];
         this.changingLabel = "% A. sol reussis";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndTkdownsElement>(this.womenFlyweightTkdowns);
+        this.dataSource = new MatTableDataSource<FightersAndTkdownsElement>(this.womenFlyweight.rankingByTakedownsArray);
         this.dataSource.paginator = this.paginator;
         break;
 
@@ -113,7 +105,7 @@ export class WomenFlyweightComponent implements OnChanges {
         this.displayedColumns = ["rank", "name", selection];
         this.changingLabel = "% A. sol défendus";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndTkdownDElement>(this.womenFlyweightTkdownD);
+        this.dataSource = new MatTableDataSource<FightersAndTkdownDElement>(this.womenFlyweight.rankingByTakedownDefenseArray);
         this.dataSource.paginator = this.paginator;
         break;
 
@@ -121,7 +113,7 @@ export class WomenFlyweightComponent implements OnChanges {
         this.displayedColumns = ["rank", "name", selection];
         this.changingLabel = "Ratio A. sol effectués/subit";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndTkdownRElement>(this.womenFlyweightTkdownR);
+        this.dataSource = new MatTableDataSource<FightersAndTkdownRElement>(this.womenFlyweight.rankingByTakedownRatioArray);
         this.dataSource.paginator = this.paginator;
         break;
 
@@ -129,7 +121,7 @@ export class WomenFlyweightComponent implements OnChanges {
         this.displayedColumns = ["rank", "name", selection];
         this.changingLabel = "IPSG";
         this.changingColumn = selection;
-        this.dataSource = new MatTableDataSource<FightersAndIpsgElement>(this.womenFlyweightIpsg);
+        this.dataSource = new MatTableDataSource<FightersAndIpsgElement>(this.womenFlyweight.rankingByIpsgArray);
         this.dataSource.paginator = this.paginator;
         break;
 

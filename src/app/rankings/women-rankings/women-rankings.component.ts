@@ -1,18 +1,9 @@
 import { Component, Input } from '@angular/core';
-import {
-  FightersAndFightsElement,
-  FightersAndIpsgElement,
-  FightersAndKoWinsElement,
-  FightersAndStrikesElement,
-  FightersAndStrkRatioElement,
-  FightersAndSubWinsElement,
-  FightersAndTkdownDElement,
-  FightersAndTkdownRElement,
-  FightersAndTkdownsElement,
-  FightersAndWinsElement,
-  SelectRankingLabel
-}
-  from 'src/app/common/utils/rankings-elements';
+import { WomenBantamweight } from 'src/app/common/data/women/women-bantamweight';
+import { WomenFeatherweight } from 'src/app/common/data/women/women-featherweight';
+import { WomenFlyweight } from 'src/app/common/data/women/women-flyweight';
+import { WomenStrawweight } from 'src/app/common/data/women/women-strawweight';
+import { SelectRankingLabel } from 'src/app/common/utils/rankings-elements';
 
 
 @Component({
@@ -22,58 +13,12 @@ import {
 })
 export class WomenRankingsComponent {
 
-  @Input() womenStrawweight: FightersAndFightsElement[] = [];
-  @Input() womenFlyweight: FightersAndFightsElement[] = [];
-  @Input() womenBantamweight: FightersAndFightsElement[] = [];
-  @Input() womenFeatherweight: FightersAndFightsElement[] = [];
+  @Input() womenStrawweight!: WomenStrawweight;
+  @Input() womenFlyweight!: WomenFlyweight;
+  @Input() womenBantamweight!: WomenBantamweight;
+  @Input() womenFeatherweight!: WomenFeatherweight;
 
-  @Input() womenStrawweightVictories: FightersAndWinsElement[] = [];
-  @Input() womenFlyweightVictories: FightersAndWinsElement[] = [];
-  @Input() womenBantamweightVictories: FightersAndWinsElement[] = [];
-  @Input() womenFeatherweightVictories: FightersAndWinsElement[] = [];
-
-  @Input() womenStrawweightKoWins: FightersAndKoWinsElement[] = [];
-  @Input() womenFlyweightKoWins: FightersAndKoWinsElement[] = [];
-  @Input() womenBantamweightKoWins: FightersAndKoWinsElement[] = [];
-  @Input() womenFeatherweightKoWins: FightersAndKoWinsElement[] = [];
-
-  @Input() womenStrawweightIpsg: FightersAndIpsgElement[] = [];
-  @Input() womenFlyweightIpsg: FightersAndIpsgElement[] = [];
-  @Input() womenBantamweightIpsg: FightersAndIpsgElement[] = [];
-  @Input() womenFeatherweightIpsg: FightersAndIpsgElement[] = [];
-
-  @Input() womenStrawweightTkdownR: FightersAndTkdownRElement[] = [];
-  @Input() womenFlyweightTkdownR: FightersAndTkdownRElement[] = [];
-  @Input() womenBantamweightTkdownR: FightersAndTkdownRElement[] = [];
-  @Input() womenFeatherweightTkdownR: FightersAndTkdownRElement[] = [];
-
-  @Input() womenStrawweightTkdownD: FightersAndTkdownDElement[] = [];
-  @Input() womenFlyweightTkdownD: FightersAndTkdownDElement[] = [];
-  @Input() womenBantamweightTkdownD: FightersAndTkdownDElement[] = [];
-  @Input() womenFeatherweightTkdownD: FightersAndTkdownDElement[] = [];
-
-  @Input() womenStrawweightTkdowns: FightersAndTkdownsElement[] = [];
-  @Input() womenFlyweightTkdowns: FightersAndTkdownsElement[] = [];
-  @Input() womenBantamweightTkdowns: FightersAndTkdownsElement[] = [];
-  @Input() womenFeatherweightTkdowns: FightersAndTkdownsElement[] = [];
-
-  @Input() womenStrawweightSRatio: FightersAndStrkRatioElement[] = [];
-  @Input() womenFlyweightSRatio: FightersAndStrkRatioElement[] = [];
-  @Input() womenBantamweightSRatio: FightersAndStrkRatioElement[] = [];
-  @Input() womenFeatherweightSRatio: FightersAndStrkRatioElement[] = [];
-
-  @Input() womenStrawweightStrikes: FightersAndStrikesElement[] = [];
-  @Input() womenFlyweightStrikes: FightersAndStrikesElement[] = [];
-  @Input() womenBantamweightStrikes: FightersAndStrikesElement[] = [];
-  @Input() womenFeatherweightStrikes: FightersAndStrikesElement[] = [];
-
-  @Input() womenStrawweightSubWins: FightersAndSubWinsElement[] = [];
-  @Input() womenFlyweightSubWins: FightersAndSubWinsElement[] = [];
-  @Input() womenBantamweightSubWins: FightersAndSubWinsElement[] = [];
-  @Input() womenFeatherweightSubWins: FightersAndSubWinsElement[] = [];
-
-
-  selectedRanking = "";
+  selectedRanking = "ipsg";
   selectedRankingTransfer = "";
 
 

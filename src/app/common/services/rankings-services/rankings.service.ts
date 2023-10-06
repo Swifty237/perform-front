@@ -64,7 +64,7 @@ export class RankingsService {
     return this._http.get<FightersAndTkdownsElement[]>(this.apiUrlTakedowns);
   }
 
-  public getRankingTakedownDefense$(): Observable<FightersAndTkdownDElement[]> {
+  public getRankingsTakedownDefense$(): Observable<FightersAndTkdownDElement[]> {
     return this._http.get<FightersAndTkdownDElement[]>(this.apiUrlTakedownDefense);
   }
 
