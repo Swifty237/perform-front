@@ -9,7 +9,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { RankingsComponent } from './rankings/rankings.component';
-import { ConfigurationsComponent } from './configurations/configurations.component';
 import { PronosticsComponent } from './pronostics/pronostics.component';
 import { GraphsComponent } from './graphs/graphs.component';
 import { PerformHelpComponent } from './perform-help/perform-help.component';
@@ -43,6 +42,12 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { AppHttpInterceptor } from './common/interceptors/app-http.interceptor';
+import { PreferencesComponent } from './preferences/preferences.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatExpansionModule } from '@angular/material/expansion';
+
 
 
 @NgModule({
@@ -52,7 +57,6 @@ import { AppHttpInterceptor } from './common/interceptors/app-http.interceptor';
     FooterComponent,
     HomeComponent,
     RankingsComponent,
-    ConfigurationsComponent,
     PronosticsComponent,
     GraphsComponent,
     PerformHelpComponent,
@@ -75,7 +79,8 @@ import { AppHttpInterceptor } from './common/interceptors/app-http.interceptor';
     ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
-    BoardUserComponent
+    BoardUserComponent,
+    PreferencesComponent
   ],
   imports: [
     BrowserModule,
@@ -92,7 +97,11 @@ import { AppHttpInterceptor } from './common/interceptors/app-http.interceptor';
     NgFor,
     HttpClientModule,
     AppMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDividerModule,
+    MatListModule,
+    MatRadioModule,
+    MatExpansionModule
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, { provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true }],
   bootstrap: [AppComponent]

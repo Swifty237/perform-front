@@ -1,0 +1,37 @@
+.container {
+    width: 100vw;
+    padding: 2em 0 2em 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.left-side {
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#2f3640, black, #2f3640);
+}
+
+.right-side {
+    width: 50vw;
+    // background-color: #4cd137;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 10px 10px 5px #ecf0f1;
+}
+
+.item {
+    width: 18vw;
+}
+
+.content-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.p-label {
+    color: beige;
+}

@@ -3,20 +3,19 @@
         <span class="logo">Perform MMA</span>
 
         <ul class="nav-items">
-            <li><button class="nav-item"><a class="nav-link" routerLink='/ngr-home'>Accueil</a></button></li>
+            <li><button class="nav-item"><a class="nav-link" routerLink='/ngr-home'>Home</a></button></li>
+            <li><button class="nav-item"><a class="nav-link" routerLink='/ngr-user/ngr-rankings'>Rankings</a></button>
+            </li>
             <li><button class="nav-item"><a class="nav-link"
-                        routerLink='/ngr-user/ngr-rankings'>Classements</a></button></li>
-            <li><button class="nav-item"><a class="nav-link"
-                        routerLink='/ngr-user/ngr-configurations'>Configurations</a></button></li>
+                        routerLink='/ngr-user/ngr-preferences'>Preferences</a></button></li>
             <li><button class="nav-item"><a class="nav-link"
                         routerLink='/ngr-user/ngr-pronostics'>Pronostics</a></button></li>
-            <li><button class="nav-item"><a class="nav-link" routerLink='/ngr-user/ngr-graphs'>Graphes
-                        résultats</a></button></li>
-            <li><button class="nav-item"><a class="nav-link" routerLink='/ngr-help'>Aide</a></button></li>
+            <li><button class="nav-item"><a class="nav-link" routerLink='/ngr-user/ngr-graphs'>Results</a></button></li>
+            <li><button class="nav-item"><a class="nav-link" routerLink='/ngr-help'>Help</a></button></li>
         </ul>
 
         <form class="input-form">
-            <input class="search-input" placeholder="Tapez votre recherche ici !">
+            <input class="search-input" placeholder="Search here !">
             <button class="search-btn">
                 <mat-icon class="search-icon">search</mat-icon>
             </button>
@@ -28,8 +27,7 @@
                     <a class="user-link" routerLink="/ngr-login">Login</a>
                 </button>
                 <span>
-                    <a style="color: antiquewhite;" class="small-txt" routerLink="/ngr-register">Pas encore inscrit
-                        ?</a>
+                    <a style="color: antiquewhite;" class="small-txt" routerLink="/ngr-register">Not registered ?</a>
                 </span>
             </div>
 

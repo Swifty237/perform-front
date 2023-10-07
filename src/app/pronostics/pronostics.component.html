@@ -1,1 +1,251 @@
-<p>pronostics works!</p>
+<div class="container">
+
+    <div class="sub-container">
+        <mat-list>
+            <mat-list-item class="item">
+                <span class="p-label">Event number : </span>
+                <span style="margin-left: 2em;"> UFC 284</span>
+            </mat-list-item>
+
+            <mat-list-item class="item">
+                <span class="p-label">Date of event : </span>
+                <span style="margin-left: 2em;"> 12/02/2023 </span>
+            </mat-list-item>
+
+
+            <mat-list-item class="item" style="height: fit-content; margin-top: 1em;">
+                <div style="display: flex; justify-content: space-between;">
+                    <span class="p-label">Fights of the night : </span>
+
+                    <div style="width: 45vw;">
+
+                        <mat-accordion>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        This is the expansion title
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        This is a summary of the content
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+
+                            </mat-expansion-panel>
+
+                            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title style="display: flex; justify-content: space-between;">
+                                        <span style="margin-left: 5em;">Confrontations</span>
+                                        <span style="margin-right: 5em;">Pronostics</span>
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+
+                                <mat-list-item>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <div>
+                                            <span class="p-label">Fighter 1 </span>
+                                            <span style="margin-left: 2em;">vs</span>
+                                            <span class="p-label" style="margin-left: 2em;">Fighter 2</span>
+                                        </div>
+
+                                        <div>
+                                            <span class="p-label">pronostic : </span>
+                                            <span class="p-label" style="margin-left: 3em;">
+                                                Pronostic Here !!!
+                                            </span>
+
+                                            <div
+                                                style="display: flex; justify-content: center; font-size: small; font-style: italic;">
+                                                result : <span style="margin-left: 3em;">Result here !!!</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </mat-list-item>
+
+                                <mat-divider style="margin: 0.5em;"></mat-divider>
+
+                                <mat-list-item>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <div>
+                                            <span class="p-label">Fighter 1 </span>
+                                            <span style="margin-left: 2em;">vs</span>
+                                            <span class="p-label" style="margin-left: 2em;">Fighter 2</span>
+                                        </div>
+
+                                        <div>
+                                            <span class="p-label">pronostic : </span>
+                                            <span class="p-label" style="margin-left: 3em;">
+                                                Pronostic Here !!!
+                                            </span>
+
+                                            <div
+                                                style="display: flex; justify-content: center; font-size: small; font-style: italic;">
+                                                result : <span style="margin-left: 3em;">Result here !!!</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </mat-list-item>
+
+                                <mat-divider style="margin: 0.5em;"></mat-divider>
+
+                                <mat-list-item>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <div>
+                                            <span class="p-label">Fighter 1 </span>
+                                            <span style="margin-left: 2em;">vs</span>
+                                            <span class="p-label" style="margin-left: 2em;">Fighter 2</span>
+                                        </div>
+
+                                        <div>
+                                            <span class="p-label">pronostic : </span>
+                                            <span class="p-label" style="margin-left: 3em;">
+                                                Pronostic Here !!!
+                                            </span>
+
+                                            <div
+                                                style="display: flex; justify-content: center; font-size: small; font-style: italic;">
+                                                result : <span style="margin-left: 3em;">Result here !!!</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </mat-list-item>
+
+                            </mat-expansion-panel>
+                        </mat-accordion>
+
+                    </div>
+                </div>
+            </mat-list-item>
+        </mat-list>
+
+    </div>
+
+
+    <div class="sub-container">
+        <mat-list>
+            <mat-list-item class="item">
+                <span class="p-label">Event number : </span>
+                <span style="margin-left: 2em;"> UFC 284</span>
+            </mat-list-item>
+
+            <mat-list-item class="item">
+                <span class="p-label">Date of event : </span>
+                <span style="margin-left: 2em;"> 12/02/2023 </span>
+            </mat-list-item>
+
+
+            <mat-list-item class="item" style="height: fit-content; margin-top: 1em;">
+                <div style="display: flex; justify-content: space-between;">
+                    <span class="p-label">Fights of the night : </span>
+
+                    <div style="width: 45vw;">
+
+                        <mat-accordion>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        This is the expansion title
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        This is a summary of the content
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <!-- <p>This is the primary content of the panel.</p> -->
+
+                            </mat-expansion-panel>
+
+                            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title style="display: flex; justify-content: space-between;">
+                                        <span style="margin-left: 5em;">Confrontations</span>
+                                        <span style="margin-right: 5em;">Pronostics</span>
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+
+                                <mat-list-item>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <div>
+                                            <span class="p-label">Fighter 1 </span>
+                                            <span style="margin-left: 2em;">vs</span>
+                                            <span class="p-label" style="margin-left: 2em;">Fighter 2</span>
+                                        </div>
+
+                                        <div>
+                                            <span class="p-label">pronostic : </span>
+                                            <span class="p-label" style="margin-left: 3em;">
+                                                Pronostic Here !!!
+                                            </span>
+
+                                            <div
+                                                style="display: flex; justify-content: center; font-size: small; font-style: italic;">
+                                                result : <span style="margin-left: 3em;">Result here !!!</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </mat-list-item>
+
+                                <mat-divider style="margin: 0.5em;"></mat-divider>
+
+                                <mat-list-item>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <div>
+                                            <span class="p-label">Fighter 1 </span>
+                                            <span style="margin-left: 2em;">vs</span>
+                                            <span class="p-label" style="margin-left: 2em;">Fighter 2</span>
+                                        </div>
+
+                                        <div>
+                                            <span class="p-label">pronostic : </span>
+                                            <span class="p-label" style="margin-left: 3em;">
+                                                Pronostic Here !!!
+                                            </span>
+
+                                            <div
+                                                style="display: flex; justify-content: center; font-size: small; font-style: italic;">
+                                                result : <span style="margin-left: 3em;">Result here !!!</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </mat-list-item>
+
+                                <mat-divider style="margin: 0.5em;"></mat-divider>
+
+                                <mat-list-item>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <div>
+                                            <span class="p-label">Fighter 1 </span>
+                                            <span style="margin-left: 2em;">vs</span>
+                                            <span class="p-label" style="margin-left: 2em;">Fighter 2</span>
+                                        </div>
+
+                                        <div>
+                                            <span class="p-label">pronostic : </span>
+                                            <span class="p-label" style="margin-left: 3em;">
+                                                Pronostic Here !!!
+                                            </span>
+
+                                            <div
+                                                style="display: flex; justify-content: center; font-size: small; font-style: italic;">
+                                                result : <span style="margin-left: 3em;">Result here !!!</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </mat-list-item>
+
+                            </mat-expansion-panel>
+                        </mat-accordion>
+
+                    </div>
+                </div>
+            </mat-list-item>
+        </mat-list>
+
+    </div>
+
+</div>

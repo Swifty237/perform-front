@@ -15,4 +15,5 @@ import { MatSortModule } from '@angular/material/sort';
         MatPaginatorModule
     ]
 })
+
 export class AppMaterialModule { }
