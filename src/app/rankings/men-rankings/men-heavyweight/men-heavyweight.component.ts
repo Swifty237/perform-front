@@ -37,19 +37,12 @@ export class MenHeavyweightComponent implements OnChanges, OnInit {
 
 
   ngOnInit(): void {
-    this.displayedColumns = ["rank", "name", "ipsg"];
-    this.changingLabel = "IPSG";
-    this.changingColumn = "ipsg";
-    this.dataSource = new MatTableDataSource<FightersAndIpsgElement>(this.menHeavyweight.rankingByIpsgArray);
-    this.dataSource.paginator = this.paginator;
+    this.getDataSource(this.selectedRanking);
   }
 
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['selectedRanking'] && !changes['selectedRanking'].firstChange) {
-      const newSelection = changes['selectedRanking'].currentValue;
-      this.getDataSource(newSelection);
-    }
+    this.getDataSource(this.selectedRanking);
   }
 
   getDataSource(selection: string) {

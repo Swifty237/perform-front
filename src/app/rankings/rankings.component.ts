@@ -22,19 +22,19 @@ import { MenWelterweight } from '../common/data/men/men-welterweight';
 
 export class RankingsComponent implements OnInit {
 
-  public womenStrawweight!: WomenStrawweight;
-  public womenBantamweight!: WomenBantamweight;
-  public womenFeatherweight!: WomenFeatherweight;
-  public womenFlyweight!: WomenFlyweight;
+  womenStrawweight!: WomenStrawweight;
+  womenBantamweight!: WomenBantamweight;
+  womenFeatherweight!: WomenFeatherweight;
+  womenFlyweight!: WomenFlyweight;
 
-  public menBantamweight!: MenBantamweight;
-  public menFeatherweight!: MenFeatherweight;
-  public menFlyweight!: MenFlyweight;
-  public menHeavyweight!: MenHeavyweight;
-  public menLightHeavyweight!: MenLightHeavyweight;
-  public menLightweight!: MenLightweight;
-  public menMiddleweight!: MenMiddleweight;
-  public menWelterweight!: MenWelterweight;
+  menBantamweight!: MenBantamweight;
+  menFeatherweight!: MenFeatherweight;
+  menFlyweight!: MenFlyweight;
+  menHeavyweight!: MenHeavyweight;
+  menLightHeavyweight!: MenLightHeavyweight;
+  menLightweight!: MenLightweight;
+  menMiddleweight!: MenMiddleweight;
+  menWelterweight!: MenWelterweight;
 
   constructor(private rankingsService: RankingsService) { }
 

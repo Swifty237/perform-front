@@ -12,6 +12,7 @@ export type FightersAndFightsElement = {
 
 export type FightersAndWinsElement = {
   Rank: number
+  FighterId: number
   Name: string
   Division: string
   NumberFights: number
@@ -20,6 +21,7 @@ export type FightersAndWinsElement = {
 
 export type FightersAndKoWinsElement = {
   Rank: number
+  FighterId: number
   Name: string
   Division: string
   NumberFights: number
@@ -29,6 +31,7 @@ export type FightersAndKoWinsElement = {
 
 export type FightersAndIpsgElement = {
   Rank: number
+  FighterId: number
   Name: string
   Division: string
   NumberFights: number
@@ -37,6 +40,7 @@ export type FightersAndIpsgElement = {
 
 export type FightersAndTkdownRElement = {
   Rank: number
+  FighterId: number
   Name: string
   Division: string
   NumberFights: number
@@ -45,6 +49,7 @@ export type FightersAndTkdownRElement = {
 
 export type FightersAndTkdownDElement = {
   Rank: number
+  FighterId: number
   Name: string
   Division: string
   NumberFights: number
@@ -53,6 +58,7 @@ export type FightersAndTkdownDElement = {
 
 export type FightersAndTkdownsElement = {
   Rank: number
+  FighterId: number
   Name: string
   Division: string
   NumberFights: number
@@ -61,6 +67,7 @@ export type FightersAndTkdownsElement = {
 
 export type FightersAndStrkRatioElement = {
   Rank: number
+  FighterId: number
   Name: string
   Division: string
   NumberFights: number
@@ -69,6 +76,7 @@ export type FightersAndStrkRatioElement = {
 
 export type FightersAndStrikesElement = {
   Rank: number
+  FighterId: number
   Name: string
   Division: string
   NumberFights: number
@@ -77,6 +85,7 @@ export type FightersAndStrikesElement = {
 
 export type FightersAndSubWinsElement = {
   Rank: number
+  FighterId: number
   Name: string
   Division: string
   NumberFights: number

@@ -30,22 +30,15 @@ export class MenWelterweightComponent implements OnChanges, OnInit {
 
 
   displayedColumns: string[] = ['rank', 'name', '--'];
-  dataSource = new MatTableDataSource<any>();
+  dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit(): void {
-    this.displayedColumns = ["rank", "name", "ipsg"];
-    this.changingLabel = "IPSG";
-    this.changingColumn = "ipsg";
-    this.dataSource = new MatTableDataSource<FightersAndIpsgElement>(this.menWelterweight.rankingByIpsgArray);
-    this.dataSource.paginator = this.paginator;
+    this.getDataSource(this.selectedRanking);
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['selectedRanking'] && !changes['selectedRanking'].firstChange) {
-      const newSelection = changes['selectedRanking'].currentValue;
-      this.getDataSource(newSelection);
-    }
+  ngOnChanges(): void {
+    this.getDataSource(this.selectedRanking);
   }
 
 

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { WomenBantamweight } from 'src/app/common/data/women/women-bantamweight';
 import { WomenFeatherweight } from 'src/app/common/data/women/women-featherweight';
 import { WomenFlyweight } from 'src/app/common/data/women/women-flyweight';
@@ -11,7 +11,7 @@ import { SelectRankingLabel } from 'src/app/common/utils/rankings-elements';
   templateUrl: './women-rankings.component.html',
   styleUrls: ['./women-rankings.component.scss']
 })
-export class WomenRankingsComponent {
+export class WomenRankingsComponent implements OnInit {
 
   @Input() womenStrawweight!: WomenStrawweight;
   @Input() womenFlyweight!: WomenFlyweight;
@@ -19,8 +19,6 @@ export class WomenRankingsComponent {
   @Input() womenFeatherweight!: WomenFeatherweight;
 
   selectedRanking = "ipsg";
-  selectedRankingTransfer = "";
-
 
   selectLabels: SelectRankingLabel[] = [
     { value: 'fights', viewValue: '-- Nombre de combats --' },
@@ -35,7 +33,7 @@ export class WomenRankingsComponent {
     { value: 'ipsg', viewValue: '-- Indice de performance statistique globale --' }
   ];
 
-  getSelectedRanking() {
-    this.selectedRankingTransfer = this.selectedRanking;
+  ngOnInit(): void {
+    this.selectedRanking = "ipsg";
   }
 }

@@ -208,55 +208,55 @@ export class WomenFeatherweight extends RankingCategory {
                     this.rankingByIpsgArray.forEach(ipsgItem => {
 
                         this.rankingByIpsgArray.forEach(item => {
-                            if (ipsgItem.Name === item.Name) {
+                            if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
                                 ipsgItem.Ipsg += item.Rank
                             }
                         })
 
                         this.rankingByVictoriesArray.forEach(item => {
-                            if (ipsgItem.Name === item.Name) {
+                            if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
                                 ipsgItem.Ipsg += item.Rank
                             }
                         })
 
                         this.rankingByKowinsArray.forEach(item => {
-                            if (ipsgItem.Name === item.Name) {
+                            if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
                                 ipsgItem.Ipsg += item.Rank
                             }
                         })
 
                         this.rankingByStrikesArray.forEach(item => {
-                            if (ipsgItem.Name === item.Name) {
+                            if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
                                 ipsgItem.Ipsg += item.Rank
                             }
                         })
 
                         this.rankingByStrikesRatioArray.forEach(item => {
-                            if (ipsgItem.Name === item.Name) {
+                            if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
                                 ipsgItem.Ipsg += item.Rank
                             }
                         })
 
                         this.rankingBySubmissionsArray.forEach(item => {
-                            if (ipsgItem.Name === item.Name) {
+                            if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
                                 ipsgItem.Ipsg += item.Rank
                             }
                         })
 
                         this.rankingByTakedownDefenseArray.forEach(item => {
-                            if (ipsgItem.Name === item.Name) {
+                            if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
                                 ipsgItem.Ipsg += item.Rank
                             }
                         })
 
                         this.rankingByTakedownsArray.forEach(item => {
-                            if (ipsgItem.Name === item.Name) {
+                            if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
                                 ipsgItem.Ipsg += item.Rank
                             }
                         })
 
                         this.rankingByTakedownRatioArray.forEach(item => {
-                            if (ipsgItem.Name === item.Name) {
+                            if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
                                 ipsgItem.Ipsg = parseFloat(((ipsgItem.Ipsg + item.Rank) / 9).toFixed(2))
                             }
                         })

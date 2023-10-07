@@ -23,7 +23,6 @@ import {
 export class MenMiddleweightComponent implements OnChanges, OnInit {
 
   @Input() menMiddleweight!: MenMiddleweight;
-
   @Input() selectedRanking = "";
 
   changingLabel = "--";
@@ -35,18 +34,11 @@ export class MenMiddleweightComponent implements OnChanges, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit(): void {
-    this.displayedColumns = ["rank", "name", "ipsg"];
-    this.changingLabel = "IPSG";
-    this.changingColumn = "ipsg";
-    this.dataSource = new MatTableDataSource<FightersAndIpsgElement>(this.menMiddleweight.rankingByIpsgArray);
-    this.dataSource.paginator = this.paginator;
+    this.getDataSource(this.selectedRanking);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['selectedRanking'] && !changes['selectedRanking'].firstChange) {
-      const newSelection = changes['selectedRanking'].currentValue;
-      this.getDataSource(newSelection);
-    }
+    this.getDataSource(this.selectedRanking);
   }
 
   getDataSource(selection: string) {

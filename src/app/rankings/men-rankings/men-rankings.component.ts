@@ -14,6 +14,7 @@ import { SelectRankingLabel } from 'src/app/common/utils/rankings-elements';
   templateUrl: './men-rankings.component.html',
   styleUrls: ['./men-rankings.component.scss'],
 })
+
 export class MenRankingsComponent implements OnInit {
 
   @Input() menFlyweight!: MenFlyweight;
@@ -25,8 +26,7 @@ export class MenRankingsComponent implements OnInit {
   @Input() menLightHeavyweight!: MenLightHeavyweight;
   @Input() menHeavyweight!: MenHeavyweight;
 
-  @Input() selectedRanking = "";
-  selectedRankingTransfer = "";
+  selectedRanking = "";
 
   selectLabels: SelectRankingLabel[] = [
     { value: 'fights', viewValue: '-- Nombre de combats --' },
@@ -43,9 +43,5 @@ export class MenRankingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedRanking = "ipsg";
-  }
-
-  getSelectedRanking() {
-    this.selectedRankingTransfer = this.selectedRanking;
   }
 }
