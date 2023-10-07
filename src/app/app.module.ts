@@ -10,7 +10,6 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { RankingsComponent } from './rankings/rankings.component';
 import { PronosticsComponent } from './pronostics/pronostics.component';
-import { GraphsComponent } from './graphs/graphs.component';
 import { PerformHelpComponent } from './perform-help/perform-help.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -47,6 +46,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { ChartsComponent } from './charts/charts.component';
 
 
 
@@ -58,7 +58,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
     HomeComponent,
     RankingsComponent,
     PronosticsComponent,
-    GraphsComponent,
     PerformHelpComponent,
     MenRankingsComponent,
     WomenRankingsComponent,
@@ -80,7 +79,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
-    PreferencesComponent
+    PreferencesComponent,
+    ChartsComponent
   ],
   imports: [
     BrowserModule,

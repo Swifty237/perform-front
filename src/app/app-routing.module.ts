@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { PronosticsComponent } from './pronostics/pronostics.component';
-import { GraphsComponent } from './graphs/graphs.component';
 import { PerformHelpComponent } from './perform-help/perform-help.component';
 import { RankingsComponent } from './rankings/rankings.component';
 
@@ -14,6 +13,7 @@ import { BoardModeratorComponent } from './board-moderator/board-moderator.compo
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { authenticationGuard } from './common/guards/authentication.guard';
 import { PreferencesComponent } from './preferences/preferences.component';
+import { ChartsComponent } from './charts/charts.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'ngr-home', pathMatch: 'full' },
@@ -27,7 +27,7 @@ const routes: Routes = [
       { path: 'ngr-preferences', component: PreferencesComponent },
       { path: 'ngr-rankings', component: RankingsComponent },
       { path: 'ngr-pronostics', component: PronosticsComponent },
-      { path: 'ngr-graphs', component: GraphsComponent },
+      { path: 'ngr-charts', component: ChartsComponent },
       { path: 'ngr-profile', component: ProfileComponent }
     ]
   },
