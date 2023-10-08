@@ -47,33 +47,36 @@
                                     </mat-expansion-panel-header>
 
                                     <div *ngFor="let fight of event.Fights">
-                                        <div style="display: flex; justify-content: space-between;">
+                                        <div *ngIf="fight.Fighters.length > 0">
+                                            <div style="display: flex; justify-content: space-between;">
+                                                <div>
+                                                    <span class="p-label">{{fight.Fighters[0].FirstName}}
+                                                        {{fight.Fighters[0].LastName}}</span>
 
-                                            <div>
-                                                <span class="p-label">{{fight.Fighters[0].FirstName}}
-                                                    {{fight.Fighters[0].LastName}}</span>
+                                                    <span style="margin-left: 2em;">vs</span>
 
-                                                <span style="margin-left: 2em;">vs</span>
+                                                    <span class="p-label"
+                                                        style="margin-left: 2em;">{{fight.Fighters[1].FirstName}}
+                                                        {{fight.Fighters[1].LastName}}</span>
+                                                </div>
 
-                                                <span class="p-label"
-                                                    style="margin-left: 2em;">{{fight.Fighters[1].FirstName}}
-                                                    {{fight.Fighters[1].LastName}}</span>
-                                            </div>
+                                                <div>
+                                                    <span class="p-label">pronostic : </span>
+                                                    <span class="p-label" style="margin-left: 3em;">
+                                                        Pronostic Here !!!
+                                                    </span>
 
-                                            <div>
-                                                <span class="p-label">pronostic : </span>
-                                                <span class="p-label" style="margin-left: 3em;">
-                                                    Pronostic Here !!!
-                                                </span>
-
-                                                <div
-                                                    style="display: flex; justify-content: center; font-size: small; font-style: italic;">
-                                                    result : <span style="margin-left: 3em;">Result here !!!</span>
+                                                    <div
+                                                        style="display: flex; justify-content: center; font-size: small; font-style: italic;">
+                                                        result : <span style="margin-left: 3em;">Result here !!!</span>
+                                                    </div>
                                                 </div>
                                             </div>
+
+                                            <mat-divider style="margin: 0.5em;"></mat-divider>
                                         </div>
 
-                                        <mat-divider style="margin: 0.5em;"></mat-divider>
+
                                     </div>
 
                                 </mat-expansion-panel>
