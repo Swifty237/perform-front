@@ -1,20 +1,22 @@
 <div class="container">
     <div class="sub-container">
-        <h1 style="text-align: center; font-weight: bold;"> Welcome to {{title}} application </h1>
+        <!-- <h1 style="text-align: center; font-weight: bold;"> Welcome to {{title}} application </h1> -->
+        <h1 style="text-align: center; font-weight: bolder;">{{bigCardNews?.title}}</h1>
 
         <div class="big-content">
-            <div>
-                <img class="big-img" src={{bigCardNews?.urlToImage}} alt="">
+
+            <div class="txt-big-content">
+                <span>{{bigCardNews?.description}}</span>
+                <span style="margin-left: .5em;">{{bigCardNews?.content}}</span>
+                -- Source : <span style="font-style: italic; margin: .3em;">{{bigCardNews?.source?.name}}</span>
+                -- Auteur : <span style="font-style: italic; margin: .3em;">{{bigCardNews?.author}}</span>
+                -- Publié le : <span style="margin: .3em;">{{bigCardNews?.publishedAt |
+                    date:"dd/MM/yyyy"}}</span>
+                -- <a href={{bigCardNews?.url}}>Voir l'article original</a>
             </div>
-            <div class="txt-content">
-                <h2>{{bigCardNews?.title}}</h2>
-                <p style="text-align: justify;">{{bigCardNews?.description}}</p>
-                <p style="text-align: justify;">{{bigCardNews?.content}}</p>
-                <div> <span>Source : </span><span style="font-style: italic;">{{bigCardNews?.source?.name}}</span></div>
-                <div> <span>Auteur : </span><span style="font-style: italic;">{{bigCardNews?.author}}</span></div>
-                <p style="margin-right: 0.3em;"><a href={{bigCardNews?.url}}>Voir l'article original</a></p>
-                <p>publié le : <span style="margin-left: 0.3em;">{{bigCardNews?.publishedAt | date:"dd/MM/yyyy"}}</span>
-                </p>
+
+            <div class="big-img">
+                <img style="width: 90vw;" src={{bigCardNews?.urlToImage}} alt="">
             </div>
         </div>
         <!-- <div class="big-content2">
@@ -106,9 +108,11 @@
         </div> -->
         <div *ngFor="let news of simpleCardNews; let i = index"
             [ngClass]="{'simple-content': i % 2 === 0, 'simple-content-reverse': i % 2 !== 0}">
-            <div>
-                <img class="simple-img" src={{news.urlToImage}} alt="">
+
+            <div class="simple-img">
+                <img style="width: 40vw;" src={{news.urlToImage}} alt="">
             </div>
+
             <div class="txt-content">
                 <h2>{{news.title}}</h2>
                 <p style="text-align: justify;">{{news.description}}</p>

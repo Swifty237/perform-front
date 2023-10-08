@@ -18,7 +18,9 @@ export class PronosticsComponent implements OnInit {
     this.ufcEventsService.getAllUfcEvents$()
       .subscribe({
         next: (data) => {
-          this.ufcEvents = data;
+          if (data.length > 0) {
+            this.ufcEvents = data;
+          }
         },
 
         error: err => console.error('An error occurred:', err)
