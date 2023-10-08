@@ -2,6 +2,12 @@
     width: 100vw;
     padding: 2em 0 2em 0;
     display: flex;
+    justify-content: center;
+}
+
+.sub-container {
+    width: 80vw;
+    display: flex;
     justify-content: space-around;
 }
 
@@ -16,7 +22,6 @@
 
 .right-side {
     width: 50vw;
-    // background-color: #4cd137;
     display: flex;
     flex-direction: column;
     justify-content: center;

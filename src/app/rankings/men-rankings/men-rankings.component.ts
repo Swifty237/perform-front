@@ -37,7 +37,7 @@ export class MenRankingsComponent implements OnInit {
     { value: 'strikesratio', viewValue: '-- Ratio coups donnés / coups encaissés --' },
     { value: 'takedowns', viewValue: "-- Pourcentage d'amenées au sol (takedowns) reussi --" },
     { value: 'takedowndefense', viewValue: "-- Pourcentage de défenses d'amenées au sol (takedowns) --" },
-    { value: 'takedownsratio', viewValue: '-- Ratio amenées au sol (takedowns) tentés / amenées au sol subits --' },
+    { value: 'takedownsratio', viewValue: '-- Ratio amenées au sol (takedowns) tentés / amenées au sol subies --' },
     { value: 'ipsg', viewValue: '-- Indice de performance statistique globale --' }
   ];
 

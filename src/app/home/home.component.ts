@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   simpleCardNews: UfcNewsElement[] = [];
   newsArray: UfcNewsElement[] = []; // Tableau pour stocker les données
 
-  constructor(public ufcNewsService: UfcNewsService) { }
+  constructor(private ufcNewsService: UfcNewsService) { }
 
   ngOnInit(): void {
     this.ufcNewsService.getAllUfcNews$()

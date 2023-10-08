@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
     })
   }
 
-
   handleLogin() {
     let username = this.formLogin.value.username
     let password = this.formLogin.value.password
