@@ -1,0 +1,11 @@
+.app-sub-container {
+    padding: 0;
+}
+
+.user-name::before {
+    content: "\2022";
+    color: #4cd137;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+}

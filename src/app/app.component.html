@@ -1,9 +1,9 @@
-<div class="container">
+<div class="app-sub-container">
     <app-header></app-header>
 
-    <div *ngIf="authService.isAuthenticated==true" style="display: flex; justify-content: space-between;">
+    <div *ngIf="authService.isAuthenticated==true" class="d-flex justify-content-between">
         <div style="width: 15vw;">
-            <ul style="justify-content: space-around;" class="nav-items">
+            <ul class="nav-items">
                 <li>
                     <button *ngIf="this.authService.roles.includes('ADMIN')" class="nav-item">
                         <a style="text-decoration-line: none;" routerLink='/ngr-admin'>Administration</a>
@@ -17,10 +17,10 @@
             </ul>
         </div>
 
-        <div style="margin-right: 4em;">
-            <ul>
-                <li>{{this.authService.username}}</li>
-                <li>{{this.displayRole(authService.roles)}}</li>
+        <div class="me-4">
+            <ul class="nav-items">
+                <li class="user-name">{{this.authService.username}}</li>
+                <!-- <li>{{this.displayRole(authService.roles)}}</li> -->
             </ul>
         </div>
     </div>

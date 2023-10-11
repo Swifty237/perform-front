@@ -1,6 +1,6 @@
-.global-container {
+body {
   margin: 0;
-  padding: 0;
+  overflow-x: hidden;
 }
 
 .ranking-sub-container {
@@ -10,8 +10,16 @@
   margin: 2em 0 2em 0;
 }
 
+.nav-items {
+  list-style-type: none;
+}
+
+.big-txt {
+  font-weight: bolder;
+}
+
 .small-txt {
-  font-size: small;
+  font-size: medium;
 }
 
 .cat-label {
@@ -20,9 +28,4 @@
 
 .item {
   width: 25vw;
-}
-
-.nav-items {
-  display: flex;
-  list-style-type: none;
 }

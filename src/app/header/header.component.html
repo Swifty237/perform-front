@@ -1,46 +1,88 @@
-<mat-toolbar class="container">
-    <mat-toolbar-row class="logo-row">
-        <span class="logo">Perform MMA</span>
+<div class="header-container">
+    <div class="row">
 
-        <ul class="nav-items">
-            <li><button class="nav-item"><a class="nav-link" routerLink='/ngr-home'>Home</a></button></li>
-            <li><button class="nav-item"><a class="nav-link" routerLink='/ngr-user/ngr-rankings'>Rankings</a></button>
-            </li>
-            <li><button class="nav-item"><a class="nav-link"
-                        routerLink='/ngr-user/ngr-preferences'>Preferences</a></button></li>
-            <li><button class="nav-item"><a class="nav-link"
-                        routerLink='/ngr-user/ngr-pronostics'>Pronostics</a></button></li>
-            <li><button class="nav-item"><a class="nav-link" routerLink='/ngr-user/ngr-charts'>Charts</a></button></li>
-            <li><button class="nav-item"><a class="nav-link" routerLink='/ngr-help'>Help</a></button></li>
-        </ul>
+        <div class="col-6 d-none d-xxl-block">
+            <div class="row">
+                <span class="col-4 logo">Perform MMA</span>
 
-        <!-- <form class="input-form">
-            <input class="search-input" placeholder="Search here !">
-            <button class="search-btn">
-                <mat-icon class="search-icon">search</mat-icon>
-            </button>
-        </form> -->
-
-        <div class="user">
-            <div *ngIf="this.authService.isAuthenticated==false">
-                <button class="user-btn">
-                    <a class="user-link" routerLink="/ngr-login">Login</a>
-                </button>
-                <span>
-                    <a style="color: antiquewhite;" class="small-txt" routerLink="/ngr-register">Not registered ?</a>
-                </span>
+                <ul class="col-7 d-flex justify-content-between nav-items mt-2">
+                    <li><button class="nav-item"><a class="nav-link" routerLink='/ngr-home'>Home</a></button></li>
+                    <li><button class="nav-item"><a class="nav-link"
+                                routerLink='/ngr-user/ngr-rankings'>Rankings</a></button>
+                    </li>
+                    <li><button class="nav-item"><a class="nav-link"
+                                routerLink='/ngr-user/ngr-preferences'>Preferences</a></button></li>
+                    <li><button class="nav-item"><a class="nav-link"
+                                routerLink='/ngr-user/ngr-pronostics'>Pronostics</a></button></li>
+                    <li><button class="nav-item"><a class="nav-link"
+                                routerLink='/ngr-user/ngr-charts'>Charts</a></button>
+                    </li>
+                    <li><button class="nav-item"><a class="nav-link" routerLink='/ngr-help'>Help</a></button></li>
+                </ul>
             </div>
-
-            <button *ngIf="this.authService.isAuthenticated==true" (click)="handleLogout()" class="user-btn">
-                <span class="user-link">Logout</span>
-            </button>
         </div>
 
-    </mat-toolbar-row>
+        <div class="col-7 col-md-6 d-xxl-none d-flex">
 
-</mat-toolbar>
+            <button class="menu-btn m-2">
+                <mat-icon style="color: whitesmoke;">reorder</mat-icon>
+            </button>
 
-<mat-toolbar class="container2">
+            <span class="mt-1 ms-4 logo">Perform MMA</span>
+        </div>
+
+        <div class="col-5">
+            <div class="row justify-content-end mt-2">
+
+                <div class="col-7 search-form d-none d-lg-flex justify-content-center">
+                    <form [formGroup]="searchForm">
+                        <div class="d-flex">
+                            <button class="search-btn">
+                                <mat-icon>search</mat-icon>
+                            </button>
+                            <input formControlName="searchInput" matInput placeholder="Search here !" value="">
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="col-4 me-4">
+                    <div class="d-none d-xxl-flex justify-content-around"
+                        *ngIf="this.authService.isAuthenticated==false">
+                        <button class="user-btn">
+                            <a class="user-link" routerLink="/ngr-login">Login</a>
+                        </button>
+                        <span>
+                            <a style="color: antiquewhite;" class="small-txt" routerLink="/ngr-register">Not registered
+                                ?</a>
+                        </span>
+
+                    </div>
+
+                    <div class="d-flex flex-column align-items-center d-xxl-none"
+                        *ngIf="this.authService.isAuthenticated==false">
+                        <button class="user-btn">
+                            <a class="user-link" routerLink="/ngr-login">Login</a>
+                        </button>
+                        <span class="my-2">
+                            <a style="color: antiquewhite;" class="small-txt" routerLink="/ngr-register">Not registered
+                                ?</a>
+                        </span>
+
+                    </div>
+
+                    <button *ngIf="this.authService.isAuthenticated==true" (click)="handleLogout()" class="user-btn">
+                        <span class="user-link">Logout</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- <mat-toolbar class="container2">
     <mat-toolbar-row class="logo-row2">
 
         <button class="menu-btn">
@@ -51,4 +93,4 @@
 
     </mat-toolbar-row>
 
-</mat-toolbar>
+</mat-toolbar> -->
