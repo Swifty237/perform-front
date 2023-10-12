@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AuthService } from '../common/services/spring-services/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -12,6 +12,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class HeaderComponent implements OnInit {
   searchForm!: FormGroup
 
+  @Input() opened!: boolean
+  @Output() openedChange = new EventEmitter<boolean>();
+
   constructor(public authService: AuthService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -22,5 +25,9 @@ export class HeaderComponent implements OnInit {
 
   handleLogout() {
     this.authService.logout();
+  }
+
+  handleDrawer(): void {
+    this.openedChange.emit(!this.opened);
   }
 }

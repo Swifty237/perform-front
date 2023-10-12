@@ -1,17 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './common/services/spring-services/auth.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent implements OnInit {
+  openedOnParent = false;
+  searchForm!: FormGroup
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, private formBuilder: FormBuilder) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.authService.loadJWtTokenFromLocalStorage();
+    this.searchForm = this.formBuilder.group({
+      searchInput: this.formBuilder.control("")
+    })
   }
 
   displayRole(roles: string): string {

@@ -15,15 +15,8 @@
 .header-container {
     background: linear-gradient(45deg, #2c3e50, #2c3e50, #7f8c8d, #2c3e50, black, black);
     background-size: 180% 180%;
-    animation: color 35s ease infinite;
-}
-
-.container2 {
-    display: none;
-    width: 100%;
-    background: linear-gradient(45deg, #2c3e50, #2c3e50, #7f8c8d, #2c3e50, black, black);
-    background-size: 180% 180%;
-    animation: color 35s ease infinite;
+    animation: color 45s ease infinite;
+    position: fixed;
 }
 
 .logo-row {
@@ -64,43 +57,18 @@
     color: whitesmoke;
 }
 
-.user {
-    // display: flex;
-    // justify-content: space-around;
-}
-
-.user-btn {
-    // padding: 0.3em 1em;
-    // margin-right: 1em;
-    border: 1px solid;
-    border-radius: 5%;
-    background-color: black;
-    box-shadow: 10px 5px #2c3e50;
-}
-
 .user-link {
     color: white;
     text-decoration-line: none;
+    text-align: center;
 }
 
-.search-form {
-    // width: 15vw;
-    // border: 0;
-    // background-color: #e74c3c;
-}
-
-.input-form {
-    // background-color: aliceblue;
-    // border-radius: 5%;
-    // display: flex;
-    // border-radius: 5%;
-}
-
-
-.search-btn {
-    // border-radius: 10%;
-    // background-color: aliceblue;
-    // border: 1px solid aliceblue;
+.user-name::before {
+    content: "\2022";
+    color: #4cd137;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
 }
 
 .menu-btn {

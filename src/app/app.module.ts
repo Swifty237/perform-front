@@ -47,6 +47,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ChartsComponent } from './charts/charts.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 
@@ -101,7 +102,8 @@ import { ChartsComponent } from './charts/charts.component';
     MatDividerModule,
     MatListModule,
     MatRadioModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSidenavModule
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, { provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true }],
   bootstrap: [AppComponent]
