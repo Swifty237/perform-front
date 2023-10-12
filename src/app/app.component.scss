@@ -12,6 +12,7 @@
 
 .drawer {
     position: fixed;
+    z-index: 997;
     top: 8vh;
     height: 100vh;
     background: linear-gradient(#2c3e50, #7f8c8d, #7f8c8d, #2c3e50);

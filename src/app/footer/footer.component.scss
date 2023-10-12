@@ -13,9 +13,11 @@
 }
 
 .footer-container {
-    background: linear-gradient(135deg, #2c3e50, #2c3e50, #7f8c8d, #2c3e50, black, black);
+    background: linear-gradient(45deg, #2c3e50, #2c3e50, #7f8c8d, #2c3e50, black, black);
     background-size: 180% 180%;
-    animation: color 35s ease infinite;
+    animation: color 45s ease infinite;
+    position: sticky;
+    z-index: 998;
 }
 
 .row-padding {

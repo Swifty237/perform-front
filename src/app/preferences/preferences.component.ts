@@ -21,6 +21,7 @@ export class PreferencesComponent implements OnInit {
   ipsg!: string;
 
   formPreference!: FormGroup
+  panelOpenState = false;
 
   constructor(private formBuilder: FormBuilder) {
 

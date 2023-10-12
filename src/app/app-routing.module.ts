@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'ngr-home', component: HomeComponent },
   { path: 'ngr-register', component: RegisterComponent },
   { path: 'ngr-login', component: LoginComponent },
+  { path: 'ngr-help', component: PerformHelpComponent },
   { path: 'ngr-admin', component: BoardAdminComponent, canActivate: [authenticationGuard] },
   { path: 'ngr-mod', component: BoardModeratorComponent, canActivate: [authenticationGuard] },
   {
@@ -30,8 +31,7 @@ const routes: Routes = [
       { path: 'ngr-charts', component: ChartsComponent },
       { path: 'ngr-profile', component: ProfileComponent }
     ]
-  },
-  { path: 'ngr-help', component: PerformHelpComponent }
+  }
 ];
 
 @NgModule({

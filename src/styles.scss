@@ -22,10 +22,38 @@ body {
   font-size: medium;
 }
 
+.txt-white {
+  color: white;
+}
+
+.txt-active {
+  color: #4cd137;
+}
+
+.txt-bold {
+  font-weight: bold;
+}
+
+.txt-large {
+  font-size: large;
+}
+
+.txt-center {
+  text-align: center;
+}
+
+.txt-italic {
+  font-style: italic;
+}
+
 .cat-label {
   text-align: center;
 }
 
 .item {
   width: 25vw;
+}
+
+.min-height-100 {
+  min-height: 100vh;
 }

@@ -1,93 +1,113 @@
-<div class="container">
-    <div *ngFor="let event of ufcEvents; let i = index">
+<div class="row justify-content-center my-4">
+    <div class="col-12 col-lg-10 my-4" *ngFor="let event of ufcEvents; let i = index">
 
         <div class="sub-container">
             <mat-list>
-                <mat-list-item class="item">
-                    <span style="font-weight: bold; font-size: large;">Event : </span>
-                    <span style="margin-left: 2em;">{{event.Name}}</span>
+                <mat-list-item class="row">
+                    <span class="mx-4 txt-bold txt-large">Event : </span>
+                    <span>{{event.Name}}</span>
                 </mat-list-item>
 
-                <mat-list-item class="item">
-                    <span style="font-weight: bold; font-size: large;">Date : </span>
-                    <span style="margin-left: 2em;">{{event.Day | date:"dd/MM/yyyy"}}</span>
+                <mat-list-item class="row">
+                    <span class="mx-4 txt-bold txt-large">Date : </span>
+                    <span>{{event.Day | date:"dd/MM/yyyy"}}</span>
                 </mat-list-item>
 
-                <mat-list-item class="item">
-                    <span style="font-weight: bold; font-size: large;">Status : </span>
-                    <span style="margin-left: 2em;">{{event.Status}}</span>
+                <mat-list-item class="row">
+                    <span class="mx-4 txt-bold txt-large">Status : </span>
+                    <span>{{event.Status}}</span>
                 </mat-list-item>
 
-                <mat-list-item class="item" style="height: fit-content; margin-top: 1em;">
-                    <div style="display: flex; justify-content: space-between;">
-                        <span style="font-weight: bold; font-size: large;">Fights : </span>
+                <mat-list-item class="row" style="height: fit-content">
+                    <div class="col-12 mt-4 ms-2">
 
-                        <div style="width: 45vw;">
+                        <mat-accordion>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title class="d-flex justify-content-center">
+                                        <span class="txt-center txt-bold txt-large">-- Fights --</span>
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
 
-                            <mat-accordion>
-                                <mat-expansion-panel hideToggle>
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            This is the expansion title
-                                        </mat-panel-title>
-                                        <mat-panel-description>
-                                            This is a summary of the content
-                                        </mat-panel-description>
-                                    </mat-expansion-panel-header>
+                            </mat-expansion-panel>
 
-                                </mat-expansion-panel>
+                            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
 
-                                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title class="d-none d-lg-flex justify-content-between">
+                                        <span class="ms-5">Confrontations</span>
+                                        <span class="me-5">Pronostics</span>
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
 
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title style="display: flex; justify-content: space-between;">
-                                            <span style="margin-left: 5em;">Confrontations</span>
-                                            <span style="margin-right: 5em;">Pronostics</span>
-                                        </mat-panel-title>
-                                    </mat-expansion-panel-header>
+                                <mat-divider class="m-2"></mat-divider>
 
-                                    <mat-divider style="margin: 0.5em;"></mat-divider>
+                                <div *ngFor="let fight of event.Fights">
 
-                                    <div *ngFor="let fight of event.Fights">
-                                        <div *ngIf="fight.Fighters.length > 0">
-                                            <div style="display: flex; justify-content: space-between;">
-                                                <div>
-                                                    <span class="p-label">{{fight.Fighters[0].FirstName}}
-                                                        {{fight.Fighters[0].LastName}}</span>
+                                    <div *ngIf="fight.Fighters.length > 0">
 
-                                                    <span style="margin-left: 2em;">vs</span>
+                                        <div class="d-none d-lg-flex justify-content-between">
 
-                                                    <span class="p-label"
-                                                        style="margin-left: 2em;">{{fight.Fighters[1].FirstName}}
-                                                        {{fight.Fighters[1].LastName}}</span>
-                                                </div>
+                                            <div class="mt-2">
+                                                <span class="txt-large">{{fight.Fighters[0].FirstName}}
+                                                    {{fight.Fighters[0].LastName}}</span>
 
-                                                <div>
-                                                    <span class="p-label">pronostic : </span>
-                                                    <span class="p-label" style="margin-left: 3em;">
-                                                        Pronostic Here !!!
-                                                    </span>
+                                                <span class="ms-2">-vs-</span>
 
-                                                    <div
-                                                        style="display: flex; justify-content: center; font-size: small; font-style: italic;">
-                                                        result : <span style="margin-left: 3em;">Result here !!!</span>
-                                                    </div>
-                                                </div>
+                                                <span class="ms-2 txt-large">{{fight.Fighters[1].FirstName}}
+                                                    {{fight.Fighters[1].LastName}}</span>
                                             </div>
 
-                                            <mat-divider style="margin: 0.5em;"></mat-divider>
+                                            <div>
+                                                <span class="mx-2 txt-large">pronostic : </span>
+                                                <span class=" txt-large">Pronostic Here !!!</span>
+
+                                                <div class="d-flex justify-content-center txt-small txt-italic">
+                                                    <span class="mx-2">result : </span>
+                                                    <span>Result here !!!</span>
+                                                </div>
+                                            </div>
                                         </div>
 
 
+                                        <div class="row d-lg-none">
+
+                                            <div class="col-12 mt-2 d-flex justify-content-center">
+                                                <span class="txt-large">{{fight.Fighters[0].FirstName}}
+                                                    {{fight.Fighters[0].LastName}}</span>
+
+                                                <span class="ms-2">-vs-</span>
+
+                                                <span class="ms-2 txt-large">{{fight.Fighters[1].FirstName}}
+                                                    {{fight.Fighters[1].LastName}}</span>
+                                            </div>
+
+                                            <div>
+                                                <div class="d-flex justify-content-center txt-large">
+                                                    <span class="mx-2">pronostic : </span>
+                                                    <span>Pronostic Here !!!</span>
+                                                </div>
+
+                                                <div class="d-flex justify-content-center txt-small txt-italic">
+                                                    <span class="mx-2">result : </span>
+                                                    <span>Result here !!!</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <mat-divider class="m-2"></mat-divider>
                                     </div>
 
-                                </mat-expansion-panel>
-                            </mat-accordion>
 
-                        </div>
+                                </div>
+
+                            </mat-expansion-panel>
+                        </mat-accordion>
+
                     </div>
                 </mat-list-item>
             </mat-list>
 
         </div>
     </div>
+</div>
