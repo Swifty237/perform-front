@@ -4,6 +4,7 @@
 
         <div class="row justify-content-center">
 
+            <!-- text:  s'affiche au dessus de 768px -->
             <div class="col-12 mb-4 d-none d-md-block txt-justify">
                 <span>{{bigCardNews?.description}}</span>
                 <span style="margin-left: .5em;">{{bigCardNews?.content}}</span>
@@ -53,7 +54,7 @@
                 -- <a href={{bigCardNews?.url}}>Voir l'article original</a>
             </div>
 
-            <div class="col-10 d-sm-none">
+            <div class="col-10 d-md-none">
                 <div class="d-flex flex-column align-items-center mt-4" *ngFor="let news of smallCardNews">
                     <img width="100%" src={{news.urlToImage}} alt="">
                     <h4 class="small-txt">{{news.title}}</h4>
