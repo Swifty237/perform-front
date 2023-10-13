@@ -14,10 +14,6 @@ body {
   list-style-type: none;
 }
 
-.big-txt {
-  font-weight: bolder;
-}
-
 .small-txt {
   font-size: medium;
 }
@@ -44,6 +40,10 @@ body {
 
 .txt-italic {
   font-style: italic;
+}
+
+.txt-justify {
+  text-align: justify;
 }
 
 .cat-label {

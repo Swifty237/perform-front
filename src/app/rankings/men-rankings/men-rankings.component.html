@@ -1,8 +1,8 @@
 <div class="row justify-content-center" style="margin: 0; min-height: 100vh;">
 
-    <div class="col-8">
+    <div class="col-10 col-sm-8">
         <mat-form-field style="width: 100%;">
-            <mat-label>Choisissez une catégorie de classement</mat-label>
+            <mat-label>Choose ranking category</mat-label>
             <mat-select [(value)]="selectedRanking">
                 <mat-option *ngFor="let selectLabel of selectLabels" [value]="selectLabel.value">
                     {{selectLabel.viewValue}}
@@ -68,42 +68,42 @@
         </div>
     </div>
 
-    <div class="col-10 d-xxl-none">
+    <div class="col-12 col-sm-10 d-xxl-none">
         <app-men-flyweight [menFlyweight]="menFlyweight" [selectedRanking]="selectedRanking">
         </app-men-flyweight>
     </div>
 
-    <div class="col-10 d-xxl-none">
+    <div class="col-12 col-sm-10 d-xxl-none">
         <app-men-bantamweight [menBantamweight]="menBantamweight" [selectedRanking]="selectedRanking">
         </app-men-bantamweight>
     </div>
 
-    <div class="col-10 d-xxl-none">
+    <div class="col-12 col-sm-10 d-xxl-none">
         <app-men-featherweight [menFeatherweight]="menFeatherweight" [selectedRanking]="selectedRanking">
         </app-men-featherweight>
     </div>
 
-    <div class="col-10 d-xxl-none">
+    <div class="col-12 col-sm-10 d-xxl-none">
         <app-men-lightweight [menLightweight]="menLightweight" [selectedRanking]="selectedRanking">
         </app-men-lightweight>
     </div>
 
-    <div class="col-10 d-xxl-none">
+    <div class="col-12 col-sm-10 d-xxl-none">
         <app-men-welterweight [menWelterweight]="menWelterweight" [selectedRanking]="selectedRanking">
         </app-men-welterweight>
     </div>
 
-    <div class="col-10 d-xxl-none">
+    <div class="col-12 col-sm-10 d-xxl-none">
         <app-men-middleweight [menMiddleweight]="menMiddleweight" [selectedRanking]="selectedRanking">
         </app-men-middleweight>
     </div>
 
-    <div class="col-10 d-xxl-none">
+    <div class="col-12 col-sm-10 d-xxl-none">
         <app-men-lightheavyweight [menLightHeavyweight]="menLightHeavyweight" [selectedRanking]="selectedRanking">
         </app-men-lightheavyweight>
     </div>
 
-    <div class="col-10 d-xxl-none">
+    <div class="col-12 col-sm-10 d-xxl-none">
         <app-men-heavyweight [menHeavyweight]="menHeavyweight" [selectedRanking]="selectedRanking">
         </app-men-heavyweight>
     </div>

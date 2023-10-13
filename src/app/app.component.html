@@ -1,7 +1,7 @@
 <div class="row app-sub-container">
     <app-header [(opened)]="openedOnParent"></app-header>
 
-    <div *ngIf="openedOnParent" class="col-4 d-flex flex-column justify-content-center d-xxl-none drawer">
+    <div *ngIf="openedOnParent" class="col-10 col-md-6 d-flex flex-column justify-content-center d-xxl-none drawer">
 
         <mat-sidenav-container style="background-color: transparent">
             <!-- <mat-sidenav mode="side" opened>Sidenav content</mat-sidenav> -->
@@ -61,5 +61,5 @@
         <router-outlet></router-outlet>
     </div>
 
-    <app-footer></app-footer>
+    <app-footer [opened]="openedOnParent"></app-footer>
 </div>
