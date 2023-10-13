@@ -21,6 +21,10 @@ export class AppComponent implements OnInit {
     })
   }
 
+  handleDrawer(): void {
+    this.openedOnParent = !this.openedOnParent;
+  }
+
   displayRole(roles: string): string {
 
     let role: string;
