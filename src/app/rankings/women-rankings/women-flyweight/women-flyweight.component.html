@@ -1,8 +1,6 @@
 <ng-container>
 
-    <h4 class="cat-label">Poids Mouches
-        <span style="font-style: italic; font-size: small;"> (Flyweight)</span>
-    </h4>
+    <h4 class="cat-label">Flyweight Division</h4>
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -12,7 +10,7 @@
         </ng-container>
 
         <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Nom (Combats) </th>
+            <th mat-header-cell *matHeaderCellDef> Name (Fights) </th>
             <td mat-cell *matCellDef="let element"> {{element.Name}} ({{element.NumberFights}})</td>
         </ng-container>
 

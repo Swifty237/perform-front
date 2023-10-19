@@ -20,6 +20,7 @@ export class AuthService {
   isAuthenticated: boolean = false;
   roles: any;
   username: any;
+  userId!: number;
   accessToken: string | undefined;
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -41,6 +42,7 @@ export class AuthService {
     let decodedJwt: any = jwtDecode(this.accessToken!);
     this.username = decodedJwt.sub;
     this.roles = decodedJwt.scope;
+    this.userId = decodedJwt.userId;
 
     window.localStorage.setItem("jwt-token", this.accessToken!);
   }

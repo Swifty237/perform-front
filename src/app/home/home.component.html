@@ -12,7 +12,7 @@
                 -- Auteur : <span style="font-style: italic; margin: .3em;">{{bigCardNews?.author}}</span>
                 -- Publié le : <span style="margin: .3em;">{{bigCardNews?.publishedAt |
                     date:"dd/MM/yyyy"}}</span>
-                -- <a href={{bigCardNews?.url}}>Voir l'article original</a>
+                -- <a href={{bigCardNews?.url}}>see more</a>
             </div>
 
             <!-- s'affiche au dessus de 1200px -->
@@ -24,7 +24,7 @@
                         <img width="100%" src={{news.urlToImage}} alt="">
                         <h4 class="small-txt">{{news.title}}</h4>
                         <span class="d-none d-xxl-block small-txt">{{news.description}}</span>
-                        <span class="small-txt"><a href={{news.url}}>voir l'article</a></span>
+                        <span class="small-txt"><a href={{news.url}}>see more</a></span>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                         <img width="100%" src={{news.urlToImage}} alt="">
                         <h4 class="small-txt">{{news.title}}</h4>
                         <span class="d-none d-xxl-block small-txt">{{news.description}}</span>
-                        <span class="small-txt"><a href={{news.url}}>voir l'article</a></span>
+                        <span class="small-txt"><a href={{news.url}}>see more</a></span>
                     </div>
                 </div>
             </div>
@@ -48,10 +48,10 @@
                 <span>{{bigCardNews?.description}}</span>
                 <span style="margin-left: .5em;">{{bigCardNews?.content}}</span>
                 -- Source : <span style="font-style: italic; margin: .3em;">{{bigCardNews?.source?.name}}</span>
-                -- Auteur : <span style="font-style: italic; margin: .3em;">{{bigCardNews?.author}}</span>
-                -- Publié le : <span style="margin: .3em;">{{bigCardNews?.publishedAt |
+                -- Author : <span style="font-style: italic; margin: .3em;">{{bigCardNews?.author}}</span>
+                -- published at : <span style="margin: .3em;">{{bigCardNews?.publishedAt |
                     date:"dd/MM/yyyy"}}</span>
-                -- <a href={{bigCardNews?.url}}>Voir l'article original</a>
+                -- <a href={{bigCardNews?.url}}>see more</a>
             </div>
 
             <div class="col-10 d-md-none">
@@ -59,8 +59,7 @@
                     <img width="100%" src={{news.urlToImage}} alt="">
                     <h4 class="small-txt">{{news.title}}</h4>
                     <span class="d-none d-xxl-block small-txt">{{news.description}}</span>
-                    <span class="small-txt"><a href={{news.url}}>voir
-                            l'article</a></span>
+                    <span class="small-txt"><a href={{news.url}}>see more</a></span>
                 </div>
             </div>
 
@@ -81,12 +80,11 @@
 
                         <div class="d-flex justify-content-center"><span>Source : </span><span
                                 style="font-style: italic;">{{news.source.name}}</span></div>
-                        <div class="d-flex justify-content-center"><span>Auteur : </span><span
+                        <div class="d-flex justify-content-center"><span>Author : </span><span
                                 style="font-style: italic;">{{news.author}}</span></div>
 
-                        <p class="txt-center" style="margin-right: 0.3em;"><a href={{news.url}}>Voir l'article
-                                original</a></p>
-                        <p class="txt-center">publié le : <span style="margin-left: 0.3em;">{{news.publishedAt |
+                        <p class="txt-center" style="margin-right: 0.3em;"><a href={{news.url}}>see more</a></p>
+                        <p class="txt-center">published at : <span style="margin-left: 0.3em;">{{news.publishedAt |
                                 date:"dd/MM/yyyy"}}</span>
                         </p>
                     </div>
@@ -103,9 +101,10 @@
                         <p style="text-align: justify;">{{news.description}}</p>
                         <p style="text-align: justify;">{{news.content}}</p>
                         <div><span>Source : </span><span style="font-style: italic;">{{news.source.name}}</span></div>
-                        <div><span>Auteur : </span><span style="font-style: italic;">{{news.author}}</span></div>
-                        <p style="margin-right: 0.3em;"><a href={{news.url}}>Voir l'article original</a></p>
-                        <p>publié le : <span style="margin-left: 0.3em;">{{news.publishedAt | date:"dd/MM/yyyy"}}</span>
+                        <div><span>Author : </span><span style="font-style: italic;">{{news.author}}</span></div>
+                        <p style="margin-right: 0.3em;"><a href={{news.url}}>see more</a></p>
+                        <p>published at : <span style="margin-left: 0.3em;">{{news.publishedAt |
+                                date:"dd/MM/yyyy"}}</span>
                         </p>
                     </div>
                 </div>

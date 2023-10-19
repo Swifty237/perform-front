@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { WomenBantamweight } from 'src/app/common/data/women/women-bantamweight';
 import { WomenFeatherweight } from 'src/app/common/data/women/women-featherweight';
 import { WomenFlyweight } from 'src/app/common/data/women/women-flyweight';
@@ -11,29 +11,25 @@ import { SelectRankingLabel } from 'src/app/common/utils/rankings-elements';
   templateUrl: './women-rankings.component.html',
   styleUrls: ['./women-rankings.component.scss']
 })
-export class WomenRankingsComponent implements OnInit {
+export class WomenRankingsComponent {
 
   @Input() womenStrawweight!: WomenStrawweight;
   @Input() womenFlyweight!: WomenFlyweight;
   @Input() womenBantamweight!: WomenBantamweight;
   @Input() womenFeatherweight!: WomenFeatherweight;
 
-  selectedRanking = "ipsg";
+  selectedRanking = "";
 
   selectLabels: SelectRankingLabel[] = [
-    { value: 'fights', viewValue: '-- Nombre de combats --' },
-    { value: 'wins', viewValue: '-- Pourcentage de victoires --' },
-    { value: 'kowins', viewValue: '-- Pourcentage de victoires par KO --' },
-    { value: 'submissionwins', viewValue: '-- Pourcentage de victoires par soumission --' },
-    { value: 'strikes', viewValue: '-- Pourcentage de coups (strikes) reussis --' },
-    { value: 'strikesratio', viewValue: '-- Ratio coups donnés / coups encaissés --' },
-    { value: 'takedowns', viewValue: "-- Pourcentage d'amenées au sol (takedowns) reussi --" },
-    { value: 'takedowndefense', viewValue: "-- Pourcentage de défenses d'amenées au sol (takedowns) --" },
-    { value: 'takedownsratio', viewValue: '-- Ratio amenées au sol (takedowns) tentés / amenées au sol subits --' },
-    { value: 'ipsg', viewValue: '-- Indice de performance statistique globale --' }
+    { value: 'fights', viewValue: '-- Number of fights --' },
+    { value: 'wins', viewValue: '-- Winning percentage --' },
+    { value: 'kowins', viewValue: '-- Winning percentage by knockout --' },
+    { value: 'submissionwins', viewValue: '-- Winning percentage by submission --' },
+    { value: 'strikes', viewValue: '-- Successful strikes percentage --' },
+    { value: 'strikesratio', viewValue: '-- Given / taken hits ratio --' },
+    { value: 'takedowns', viewValue: "-- Successful takedown percentage --" },
+    { value: 'takedowndefense', viewValue: "-- Takedown defense percentage --" },
+    { value: 'takedownsratio', viewValue: '-- Given / taken takedowns ratio --' },
+    { value: 'ipsg', viewValue: '-- Performance index --' }
   ];
-
-  ngOnInit(): void {
-    this.selectedRanking = "ipsg";
-  }
 }

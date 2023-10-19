@@ -2,12 +2,29 @@ import { map } from "rxjs";
 import { RankingsService } from "../../services/rankings-services/rankings.service";
 import RankingCategory from "../ranking-category";
 import { FightersAndIpsgElement } from "../../utils/rankings-elements";
+import { PreferenceElement } from "../../utils/preference-elements";
+import { OtherSpringService } from "../../services/spring-services/other-spring.service";
 
 export class WomenFlyweight extends RankingCategory {
 
-    private _division = "Women's Flyweight Division"
+    private _division = "Women's Flyweight Division";
+    private _ipsgCoefficients: PreferenceElement = {
+        id: 0,
+        name: '',
+        fights: 1,
+        wins: 1,
+        kowins: 1,
+        submissionwins: 1,
+        strikes: 1,
+        strikesratio: 1,
+        takedowns: 1,
+        takedowndefense: 1,
+        takedownsratio: 1,
+        ipsg: 1,
+        isActive: false
+    }
 
-    constructor(private rankingsService: RankingsService) {
+    constructor(private rankingsService: RankingsService, private otherSpringService: OtherSpringService) {
         super();
 
         this.rankingByNumberFights();
@@ -20,6 +37,18 @@ export class WomenFlyweight extends RankingCategory {
         this.rankingByTakedowns();
         this.rankingByTakedownRatio();
         this.rankingByIpsg();
+
+        this.otherSpringService.loadAllUserPreferences()
+            .subscribe({
+                next: data => {
+
+                    for (let element of data) {
+                        if (element.isActive == true) {
+                            this._ipsgCoefficients = element;
+                        }
+                    }
+                }
+            })
     }
 
     override rankingByNumberFights(): void {
@@ -175,6 +204,9 @@ export class WomenFlyweight extends RankingCategory {
     }
 
     override rankingByTakedownRatio(): void {
+
+        const defaultCoef = 1;
+
         this.rankingsService
             .getRankingTakedownRatio$()
             .pipe(
@@ -203,68 +235,85 @@ export class WomenFlyweight extends RankingCategory {
                     });
                 })
             )
-            .subscribe(
-                () => {
+            .subscribe({
+                next: () => {
                     this.rankingByIpsgArray.forEach(ipsgItem => {
+                        this.otherSpringService.loadAllUserPreferences()
+                            .subscribe({
+                                next: (data: PreferenceElement[]) => {
 
-                        this.rankingByIpsgArray.forEach(item => {
-                            if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
-                                ipsgItem.Ipsg += item.Rank
-                            }
-                        })
+                                    for (let element of data) {
+                                        if (element.isActive == true) {
+                                            this._ipsgCoefficients = element;
+                                        }
+                                    }
 
-                        this.rankingByVictoriesArray.forEach(item => {
-                            if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
-                                ipsgItem.Ipsg += item.Rank
-                            }
-                        })
+                                    let wins: number = parseInt(this._ipsgCoefficients.wins.toString());
+                                    let kowins: number = parseInt(this._ipsgCoefficients.kowins.toString());
+                                    let strikes: number = parseInt(this._ipsgCoefficients.strikes.toString());
+                                    let strikesratio: number = parseInt(this._ipsgCoefficients.strikesratio.toString());
+                                    let submissionwins: number = parseInt(this._ipsgCoefficients.submissionwins.toString());
+                                    let takedowndefense: number = parseInt(this._ipsgCoefficients.takedowndefense.toString());
+                                    let takedowns: number = parseInt(this._ipsgCoefficients.takedowns.toString());
+                                    let takedownsratio: number = parseInt(this._ipsgCoefficients.takedownsratio.toString());
+                                    let calculDivider: number = wins + kowins + strikes + strikesratio + submissionwins + takedowndefense + takedowns + takedownsratio;
 
-                        this.rankingByKowinsArray.forEach(item => {
-                            if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
-                                ipsgItem.Ipsg += item.Rank
-                            }
-                        })
 
-                        this.rankingByStrikesArray.forEach(item => {
-                            if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
-                                ipsgItem.Ipsg += item.Rank
-                            }
-                        })
+                                    this.rankingByVictoriesArray.forEach(item => {
+                                        if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
+                                            ipsgItem.Ipsg += item.Rank * this._ipsgCoefficients.wins;
+                                        }
+                                    })
 
-                        this.rankingByStrikesRatioArray.forEach(item => {
-                            if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
-                                ipsgItem.Ipsg += item.Rank
-                            }
-                        })
+                                    this.rankingByKowinsArray.forEach(item => {
+                                        if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
+                                            ipsgItem.Ipsg += item.Rank * this._ipsgCoefficients.kowins;
+                                        }
+                                    })
 
-                        this.rankingBySubmissionsArray.forEach(item => {
-                            if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
-                                ipsgItem.Ipsg += item.Rank
-                            }
-                        })
+                                    this.rankingByStrikesArray.forEach(item => {
+                                        if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
+                                            ipsgItem.Ipsg += item.Rank * this._ipsgCoefficients.strikes;
+                                        }
+                                    })
 
-                        this.rankingByTakedownDefenseArray.forEach(item => {
-                            if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
-                                ipsgItem.Ipsg += item.Rank
-                            }
-                        })
+                                    this.rankingByStrikesRatioArray.forEach(item => {
+                                        if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
+                                            ipsgItem.Ipsg += item.Rank * this._ipsgCoefficients.strikesratio;
+                                        }
+                                    })
 
-                        this.rankingByTakedownsArray.forEach(item => {
-                            if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
-                                ipsgItem.Ipsg += item.Rank
-                            }
-                        })
+                                    this.rankingBySubmissionsArray.forEach(item => {
+                                        if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
+                                            ipsgItem.Ipsg += item.Rank * this._ipsgCoefficients.submissionwins
+                                        }
+                                    })
 
-                        this.rankingByTakedownRatioArray.forEach(item => {
-                            if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
-                                ipsgItem.Ipsg = parseFloat(((ipsgItem.Ipsg + item.Rank) / 9).toFixed(2))
-                            }
-                        })
+                                    this.rankingByTakedownDefenseArray.forEach(item => {
+                                        if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
+                                            ipsgItem.Ipsg += item.Rank * this._ipsgCoefficients.takedowndefense;
+                                        }
+                                    })
+
+                                    this.rankingByTakedownsArray.forEach(item => {
+                                        if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
+                                            ipsgItem.Ipsg += item.Rank * this._ipsgCoefficients.takedowns;
+                                        }
+                                    })
+
+                                    this.rankingByTakedownRatioArray.forEach(item => {
+                                        if (ipsgItem.Name === item.Name && ipsgItem.FighterId === item.FighterId) {
+                                            ipsgItem.Ipsg = parseFloat(((ipsgItem.Ipsg + item.Rank) * this._ipsgCoefficients.takedownsratio / calculDivider).toFixed(2));
+                                        }
+                                    })
+
+                                    this.rankingByIpsgArray = this.rankingByIpsgArray.sort(this.compareByIpsg);
+                                    this.addRank(this.rankingByIpsgArray);
+                                }
+                            })
                     })
-
-                    this.rankingByIpsgArray = this.rankingByIpsgArray.sort(this.compareByIpsg);
-                    this.addRank(this.rankingByIpsgArray);
-                })
+                }
+            })
     }
 
     compareByIpsg = (a: FightersAndIpsgElement, b: FightersAndIpsgElement) => {

@@ -12,6 +12,7 @@ import { MenLightHeavyweight } from '../common/data/men/men-lightheavyweight';
 import { MenLightweight } from '../common/data/men/men-lightweight';
 import { MenMiddleweight } from '../common/data/men/men-middleweight';
 import { MenWelterweight } from '../common/data/men/men-welterweight';
+import { OtherSpringService } from '../common/services/spring-services/other-spring.service';
 
 
 @Component({
@@ -36,21 +37,21 @@ export class RankingsComponent implements OnInit {
   menMiddleweight!: MenMiddleweight;
   menWelterweight!: MenWelterweight;
 
-  constructor(private rankingsService: RankingsService) { }
+  constructor(private rankingsService: RankingsService, private otherSpringService: OtherSpringService) { }
 
   ngOnInit(): void {
-    this.womenStrawweight = new WomenStrawweight(this.rankingsService);
-    this.womenBantamweight = new WomenBantamweight(this.rankingsService);
-    this.womenFeatherweight = new WomenFeatherweight(this.rankingsService);
-    this.womenFlyweight = new WomenFlyweight(this.rankingsService);
+    this.womenStrawweight = new WomenStrawweight(this.rankingsService, this.otherSpringService);
+    this.womenBantamweight = new WomenBantamweight(this.rankingsService, this.otherSpringService);
+    this.womenFeatherweight = new WomenFeatherweight(this.rankingsService, this.otherSpringService);
+    this.womenFlyweight = new WomenFlyweight(this.rankingsService, this.otherSpringService);
 
-    this.menBantamweight = new MenBantamweight(this.rankingsService);
-    this.menFeatherweight = new MenFeatherweight(this.rankingsService);
-    this.menFlyweight = new MenFlyweight(this.rankingsService);
-    this.menHeavyweight = new MenHeavyweight(this.rankingsService);
-    this.menLightHeavyweight = new MenLightHeavyweight(this.rankingsService);
-    this.menLightweight = new MenLightweight(this.rankingsService);
-    this.menMiddleweight = new MenMiddleweight(this.rankingsService);
-    this.menWelterweight = new MenWelterweight(this.rankingsService);
+    this.menBantamweight = new MenBantamweight(this.rankingsService, this.otherSpringService);
+    this.menFeatherweight = new MenFeatherweight(this.rankingsService, this.otherSpringService);
+    this.menFlyweight = new MenFlyweight(this.rankingsService, this.otherSpringService);
+    this.menHeavyweight = new MenHeavyweight(this.rankingsService, this.otherSpringService);
+    this.menLightHeavyweight = new MenLightHeavyweight(this.rankingsService, this.otherSpringService);
+    this.menLightweight = new MenLightweight(this.rankingsService, this.otherSpringService);
+    this.menMiddleweight = new MenMiddleweight(this.rankingsService, this.otherSpringService);
+    this.menWelterweight = new MenWelterweight(this.rankingsService, this.otherSpringService);
   }
 }
