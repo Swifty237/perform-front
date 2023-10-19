@@ -17,7 +17,7 @@ import { ChartsComponent } from './charts/charts.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'ngr-home', pathMatch: 'full' },
-  { path: 'ngr-home', component: PronosticsComponent },
+  { path: 'ngr-home', component: HomeComponent },
   { path: 'ngr-register', component: RegisterComponent },
   { path: 'ngr-login', component: LoginComponent },
   { path: 'ngr-help', component: PerformHelpComponent },
