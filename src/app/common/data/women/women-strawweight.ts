@@ -1,4 +1,4 @@
-import { map } from "rxjs";
+import { Observable, map } from "rxjs";
 import { RankingsService } from "../../services/rankings-services/rankings.service";
 import RankingCategory from "../ranking-category";
 import { FightersAndIpsgElement } from "../../utils/rankings-elements";
@@ -235,6 +235,7 @@ export class WomenStrawweight extends RankingCategory {
             .subscribe({
                 next: () => {
                     this.rankingByIpsgArray.forEach(ipsgItem => {
+
                         this.otherSpringService.loadAllUserPreferences()
                             .subscribe({
                                 next: (data: PreferenceElement[]) => {
@@ -311,6 +312,10 @@ export class WomenStrawweight extends RankingCategory {
                     })
                 }
             })
+    }
+
+    override getRankingByIpsgArray(): FightersAndIpsgElement[] {
+        return this.rankingByIpsgArray;
     }
 
     compareByIpsg = (a: FightersAndIpsgElement, b: FightersAndIpsgElement) => {

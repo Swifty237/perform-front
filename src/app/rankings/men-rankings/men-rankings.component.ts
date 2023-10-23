@@ -29,6 +29,7 @@ export class MenRankingsComponent {
   selectedRanking = "";
 
   selectLabels: SelectRankingLabel[] = [
+    { value: 'ipsg', viewValue: '-- Performance index --' },
     { value: 'fights', viewValue: '-- Number of fights --' },
     { value: 'wins', viewValue: '-- Winning percentage --' },
     { value: 'kowins', viewValue: '-- Winning percentage by knockout --' },
@@ -37,7 +38,6 @@ export class MenRankingsComponent {
     { value: 'strikesratio', viewValue: '-- Given / taken hits ratio --' },
     { value: 'takedowns', viewValue: "-- Successful takedown percentage --" },
     { value: 'takedowndefense', viewValue: "-- Takedown defense percentage --" },
-    { value: 'takedownsratio', viewValue: '-- Given / taken takedowns ratio --' },
-    { value: 'ipsg', viewValue: '-- Performance index --' }
+    { value: 'takedownsratio', viewValue: '-- Given / taken takedowns ratio --' }
   ];
 }

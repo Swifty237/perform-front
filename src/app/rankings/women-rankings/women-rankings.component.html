@@ -1,6 +1,6 @@
-<div class="row justify-content-center" style="margin: 0; min-height: 100vh;">
+<div class="d-flex flex-column align-items-center" style="margin: 0; min-height: 100vh;">
 
-    <div class="col-10 col-sm-8">
+    <div class="col-10 col-sm-5">
         <mat-form-field style="width: 100%;">
             <mat-label>Choose ranking category</mat-label>
             <mat-select [(ngModel)]="selectedRanking">
@@ -11,7 +11,7 @@
         </mat-form-field>
     </div>
 
-    <div class="col-10 mt-4 d-none d-xxl-block">
+    <div class="col-7 mt-4 d-none d-xxl-block">
         <div class="row justify-content-between">
             <div class="col-5">
                 <app-women-strawweight [womenStrawweight]="womenStrawweight" [selectedRanking]="selectedRanking">
@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <div class="col-10 mt-4 d-none d-xxl-block">
+    <div class="col-7 mt-4 d-none d-xxl-block">
         <div class="row justify-content-between">
             <div class="col-5">
                 <app-women-bantamweight [womenBantamweight]="womenBantamweight" [selectedRanking]="selectedRanking">
@@ -38,6 +38,7 @@
             </div>
         </div>
     </div>
+
 
     <div class="col-12 col-sm-10 d-xxl-none">
         <app-women-strawweight [womenStrawweight]="womenStrawweight" [selectedRanking]="selectedRanking">

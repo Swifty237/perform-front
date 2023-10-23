@@ -1,6 +1,6 @@
 <div class="row justify-content-center mt-4">
-    <div class="col-12 col-sm-11 col-xl-10">
-        <h1 class="txt-bold txt-center">{{bigCardNews?.title}}</h1>
+    <div class="col-12 col-sm-11 col-xl-7">
+        <h3 class="txt-bold txt-center">{{bigCardNews?.title}}</h3>
 
         <div class="row justify-content-center">
 
@@ -9,8 +9,8 @@
                 <span>{{bigCardNews?.description}}</span>
                 <span style="margin-left: .5em;">{{bigCardNews?.content}}</span>
                 -- Source : <span style="font-style: italic; margin: .3em;">{{bigCardNews?.source?.name}}</span>
-                -- Auteur : <span style="font-style: italic; margin: .3em;">{{bigCardNews?.author}}</span>
-                -- Publié le : <span style="margin: .3em;">{{bigCardNews?.publishedAt |
+                -- Author : <span style="font-style: italic; margin: .3em;">{{bigCardNews?.author}}</span>
+                -- Published at : <span style="margin: .3em;">{{bigCardNews?.publishedAt |
                     date:"dd/MM/yyyy"}}</span>
                 -- <a href={{bigCardNews?.url}}>see more</a>
             </div>

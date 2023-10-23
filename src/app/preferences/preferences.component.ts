@@ -16,7 +16,6 @@ export class PreferencesComponent implements OnInit {
   errorMessage!: String
   preferences!: PreferenceElement[];
   afterDeletePreferences!: PreferenceElement[];
-  isActiveView = false;
 
   formPreference!: FormGroup
   panelOpenState = false;

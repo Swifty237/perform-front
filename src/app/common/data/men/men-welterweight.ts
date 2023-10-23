@@ -313,6 +313,10 @@ export class MenWelterweight extends RankingCategory {
             })
     }
 
+    override getRankingByIpsgArray(): FightersAndIpsgElement[] {
+        return this.rankingByIpsgArray;
+    }
+
     compareByIpsg = (a: FightersAndIpsgElement, b: FightersAndIpsgElement) => {
         return a.Ipsg - b.Ipsg;
     }

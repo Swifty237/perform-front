@@ -1,28 +1,32 @@
-<div style="display: flex; justify-content: center;">
-    <div style="display: flex; flex-direction: column;">
-        <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
+<div class="register-container d-flex justify-content-center align-items-center mb-1">
+    <div class="p-5" style="display: flex; flex-direction: column; background-color: #34495e;">
+        <!-- <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" /> -->
+
+        <div class="mb-5">
+            <span class="col-4 logo txt-center">Perform MMA</span>
+        </div>
 
         <form style="margin-top: 4em;" [formGroup]="formRegister" (ngSubmit)="handleRegister()">
 
             <div style="margin-bottom: 1em;" class="form-group">
-                <label style="margin-right: 2em;" for="username">Username : </label>
+                <label class="txt-white" style="margin-right: 2em;" for="username">Username : </label>
                 <input type="text" class="form-control" formControlName="username" required />
                 <p style="color: red;" *ngIf="usernameExistMessage != ''">{{usernameExistMessage}}</p>
             </div>
 
             <div style="margin-bottom: 1em;" class="form-group">
-                <label style="margin-right: 2em;" for="email">Email : </label>
+                <label class="txt-white" style="margin-right: 2em;" for="email">Email : </label>
                 <input type="text" class="form-control" formControlName="email" required />
                 <p style="color: red;" *ngIf="emailExistMessage != ''">{{emailExistMessage}}</p>
             </div>
 
             <div style="margin-bottom: 1em;" class="form-group">
-                <label style="margin-right: 2em;" for="password">Password : </label>
+                <label class="txt-white" style="margin-right: 2em;" for="password">Password : </label>
                 <input type="password" class="form-control" formControlName="password" required />
             </div>
 
             <div style="margin-bottom: 1em;" class="form-group">
-                <label style="margin-right: 2em;" for="password">Password confirmation : </label>
+                <label class="txt-white" style="margin-right: 2em;" for="password">Password confirmation : </label>
                 <input type="password" class="form-control" formControlName="confirmPassword" required />
                 <p style="color: red;" *ngIf="confirmPasswordError != ''">{{confirmPasswordError}}</p>
             </div>

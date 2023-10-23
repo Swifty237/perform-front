@@ -1,27 +1,528 @@
 <div class="row my-4 justify-content-center">
-    <div class="col-12 col-sm-10">
+    <div class="col-12 col-sm-7">
 
-        <div class="row">
+        <div class="row justify-content-between d-none d-xxl-flex">
+            <div class="col-5 mt-5 right-section">
+                <p class="txt-italic txt-center">In this section you see the profiles you have created</p>
 
-            <div class="col-12 d-xl-none mt-4">
+                <div class="right-side-color" style="height: fit-content;">
+                    <h2 class="txt-white" style="font-weight: bold; text-align: center;">Created profiles</h2>
+
+                    <mat-list *ngFor="let element of preferences">
+                        <mat-list-item class="item">
+                            <div class="content-item d-flex justify-content-between small-txt">
+                                <p (click)="loadPreference(element.id)" class="txt-white">{{element.name}}</p>
+
+                                <div *ngIf="element.isActive == false">
+                                    <button (click)="handleActivate(element)" class="p-2 ms-2"
+                                        style="border-radius: 15%;">activate</button>
+
+                                    <button (click)="handleDelete(element.id)" class="p-2 ms-2"
+                                        style="border-radius: 15%;">delete</button>
+                                </div>
+
+                                <div *ngIf="element.isActive == true">
+                                    <p class="txt-active">active</p>
+                                </div>
+                            </div>
+                        </mat-list-item>
+
+                        <mat-divider style="border-color: beige;"></mat-divider>
+                    </mat-list>
+
+                    <mat-list>
+                        <mat-list-item class="item">
+                            <div class="content-item d-flex justify-content-between align-items-center small-txt">
+                                <p class="txt-white">Default</p>
+                                <div>
+                                    <button class="p-2 ms-2"
+                                        style="background-color: #e1b12c; border-radius: 15%;">activate</button>
+                                </div>
+                            </div>
+                        </mat-list-item>
+                    </mat-list>
+
+                </div>
+            </div>
+
+            <div class="col-12 col-xl-6 txt-center mt-5" style="border: solid;">
+                <div>
+                    <h2 class="txt-bold txt-center">Create fighter profile</h2>
+                    <p class="txt-italic mb-4">In this section we suggest you to create a fighter profile according to
+                        very
+                        specific criteria.</p>
+
+                    <div class="d-flex align-items-center justify-content-around">
+                        <form [formGroup]="formPreference" (ngSubmit)="handlePreference()"
+                            class="col-10 d-flex justify-content-around align-items-center">
+                            <mat-form-field>
+                                <mat-label>Set name</mat-label>
+                                <input formControlName="preferenceName" matInput placeholder="Ex. Striker profile"
+                                    [value]="inputValue">
+                            </mat-form-field>
+
+                            <button class="p-2" style="background-color: #44bd32; border-radius: 15%;">Validate /
+                                Modify</button>
+                        </form>
+
+                        <button (click)="handleResetPreference()" class="p-2 me-4"
+                            style="background-color: #bdc3c7; border-radius: 15%;">Reset</button>
+                    </div>
+
+                    <mat-divider class="my-4"></mat-divider>
+                </div>
+
+
+                <mat-list class="d-none d-md-block left-section">
+                    <mat-list-item class="" style="height: fit-content;">
+                        <div class="d-flex justify-content-between">
+                            <p class="d-flex col-8 txt-bold txt-center">Number of fights : </p>
+
+                            <mat-radio-group class="col-4 d-flex flex-column align-items-start"
+                                [(ngModel)]="preferenceToPost.fights" aria-label="Select an option">
+                                <mat-radio-button value="1">Not important</mat-radio-button>
+                                <mat-radio-button value="2">Important</mat-radio-button>
+                                <mat-radio-button value="3">Very important</mat-radio-button>
+                                <mat-radio-button value="4">Essential</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </mat-list-item>
+
+                    <mat-divider class="my-4"></mat-divider>
+
+                    <mat-list-item class="" style="height: fit-content;">
+                        <div class="d-flex justify-content-between">
+                            <p class="d-flex col-8 txt-bold txt-center">Wins :
+                            </p>
+
+                            <mat-radio-group class="col-4 d-flex flex-column align-items-start"
+                                [(ngModel)]="preferenceToPost.wins" aria-label="Select an option">
+                                <mat-radio-button value="1">Not important</mat-radio-button>
+                                <mat-radio-button value="2">Important</mat-radio-button>
+                                <mat-radio-button value="3">Very important</mat-radio-button>
+                                <mat-radio-button value="4">Essential</mat-radio-button>
+                            </mat-radio-group>
+
+                        </div>
+                    </mat-list-item>
+
+                    <mat-divider class="my-4"></mat-divider>
+
+                    <mat-list-item class="" style="height: fit-content;">
+                        <div class="d-flex justify-content-between">
+                            <p class="d-flex col-8 txt-bold txt-center">Wins by knockout : </p>
+
+                            <mat-radio-group class="col-4 d-flex flex-column align-items-start"
+                                [(ngModel)]="preferenceToPost.kowins" aria-label="Select an option">
+                                <mat-radio-button value="1">Not important</mat-radio-button>
+                                <mat-radio-button value="2">Important</mat-radio-button>
+                                <mat-radio-button value="3">Very important</mat-radio-button>
+                                <mat-radio-button value="4">Essential</mat-radio-button>
+                            </mat-radio-group>
+
+                        </div>
+                    </mat-list-item>
+
+                    <mat-divider class="my-4"></mat-divider>
+
+                    <mat-list-item class="" style="height: fit-content;">
+                        <div class="d-flex justify-content-between">
+                            <p class="d-flex col-8 txt-bold txt-center">Wins by submission : </p>
+
+                            <mat-radio-group class="col-4 d-flex flex-column align-items-start"
+                                [(ngModel)]="preferenceToPost.submissionwins" aria-label="Select an option">
+                                <mat-radio-button value="1">Not important</mat-radio-button>
+                                <mat-radio-button value="2">Important</mat-radio-button>
+                                <mat-radio-button value="3">Very important</mat-radio-button>
+                                <mat-radio-button value="4">Essential</mat-radio-button>
+                            </mat-radio-group>
+
+                        </div>
+                    </mat-list-item>
+
+                    <mat-divider class="my-4"></mat-divider>
+
+                    <mat-list-item class="" style="height: fit-content;">
+                        <div class="d-flex justify-content-between">
+                            <p class="d-flex col-8 txt-bold txt-center">Successful strikes : </p>
+
+                            <mat-radio-group class="col-4 d-flex flex-column align-items-start"
+                                [(ngModel)]="preferenceToPost.strikes" aria-label="Select an option">
+                                <mat-radio-button value="1">Not important</mat-radio-button>
+                                <mat-radio-button value="2">Important</mat-radio-button>
+                                <mat-radio-button value="3">Very important</mat-radio-button>
+                                <mat-radio-button value="4">Essential</mat-radio-button>
+                            </mat-radio-group>
+
+                        </div>
+                    </mat-list-item>
+
+                    <mat-divider class="my-4"></mat-divider>
+
+                    <mat-list-item class="" style="height: fit-content;">
+                        <div class="d-flex justify-content-between">
+                            <p class="d-flex col-8 txt-bold txt-center">Blows given / taken ratio : </p>
+
+                            <mat-radio-group class="col-4 d-flex flex-column align-items-start"
+                                [(ngModel)]="preferenceToPost.strikesratio" aria-label="Select an option">
+                                <mat-radio-button value="1">Not important</mat-radio-button>
+                                <mat-radio-button value="2">Important</mat-radio-button>
+                                <mat-radio-button value="3">Very important</mat-radio-button>
+                                <mat-radio-button value="4">Essential</mat-radio-button>
+                            </mat-radio-group>
+
+                        </div>
+                    </mat-list-item>
+
+                    <mat-divider class="my-4"></mat-divider>
+
+                    <mat-list-item class="" style="height: fit-content;">
+                        <div class="d-flex justify-content-between">
+                            <p class="d-flex col-8 txt-bold txt-center">Successful takedowns : </p>
+
+                            <mat-radio-group class="col-4 d-flex flex-column align-items-start"
+                                [(ngModel)]="preferenceToPost.takedowns" aria-label="Select an option">
+                                <mat-radio-button value="1">Not important</mat-radio-button>
+                                <mat-radio-button value="2">Important</mat-radio-button>
+                                <mat-radio-button value="3">Very important</mat-radio-button>
+                                <mat-radio-button value="4">Essential</mat-radio-button>
+                            </mat-radio-group>
+
+                        </div>
+                    </mat-list-item>
+
+                    <mat-divider class="my-4"></mat-divider>
+
+                    <mat-list-item class="" style="height: fit-content;">
+                        <div class="d-flex justify-content-between">
+                            <p class="d-flex col-8 txt-bold txt-center">Takedown defenses : </p>
+
+                            <mat-radio-group class="col-4 d-flex flex-column align-items-start"
+                                [(ngModel)]="preferenceToPost.takedowndefense" aria-label="Select an option">
+                                <mat-radio-button value="1">Not important</mat-radio-button>
+                                <mat-radio-button value="2">Important</mat-radio-button>
+                                <mat-radio-button value="3">Very important</mat-radio-button>
+                                <mat-radio-button value="4">Essential</mat-radio-button>
+                            </mat-radio-group>
+
+                        </div>
+                    </mat-list-item>
+
+                    <mat-divider class="my-4"></mat-divider>
+
+                    <mat-list-item class="" style="height: fit-content;">
+                        <div class="d-flex justify-content-between">
+                            <p class="d-flex col-8 txt-bold txt-center">Takedowns attempted / suffered ratio : </p>
+
+                            <mat-radio-group class="col-4 d-flex flex-column align-items-start"
+                                [(ngModel)]="preferenceToPost.takedownsratio" aria-label="Select an option">
+                                <mat-radio-button value="1">Not important</mat-radio-button>
+                                <mat-radio-button value="2">Important</mat-radio-button>
+                                <mat-radio-button value="3">Very important</mat-radio-button>
+                                <mat-radio-button value="4">Essential</mat-radio-button>
+                            </mat-radio-group>
+
+                        </div>
+                    </mat-list-item>
+
+                    <mat-divider class="my-4"></mat-divider>
+
+                    <mat-list-item class="mb-4" style="height: fit-content;">
+                        <div class="d-flex justify-content-between">
+                            <p class="d-flex col-8 txt-bold txt-center">Performance index : </p>
+
+                            <mat-radio-group class="col-4 d-flex flex-column align-items-start"
+                                [(ngModel)]="preferenceToPost.ipsg" aria-label="Select an option">
+                                <mat-radio-button value="1">Not important</mat-radio-button>
+                                <mat-radio-button value="2">Important</mat-radio-button>
+                                <mat-radio-button value="3">Very important</mat-radio-button>
+                                <mat-radio-button value="4">Essential</mat-radio-button>
+                            </mat-radio-group>
+
+                        </div>
+                    </mat-list-item>
+
+                </mat-list>
+
+                <mat-list class="d-md-none">
+                    <mat-list-item class="pb-4" style="height: fit-content;">
+                        <div>
+                            <p class="txt-bold txt-center">Number of fights : </p>
+
+                            <mat-radio-group class="row justify-content-center" [(ngModel)]="preferenceToPost.fights"
+                                aria-label="Select an option">
+
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="1">Not
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="2">Important</mat-radio-button>
+                                </div>
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="3">Very
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="4">Essential</mat-radio-button>
+                                </div>
+                            </mat-radio-group>
+
+                        </div>
+                    </mat-list-item>
+
+                    <mat-divider></mat-divider>
+
+                    <mat-list-item class="pb-4" style="height: fit-content; background-color: #ecf0f1;">
+                        <div>
+                            <p class="txt-bold txt-center">Wins : </p>
+
+                            <mat-radio-group class="row justify-content-around" [(ngModel)]="preferenceToPost.wins"
+                                aria-label="Select an option">
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="1">Not
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="2">Important</mat-radio-button>
+                                </div>
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="3">Very
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="4">Essential</mat-radio-button>
+                                </div>
+                            </mat-radio-group>
+
+                        </div>
+                    </mat-list-item>
+
+                    <mat-divider></mat-divider>
+
+                    <mat-list-item class="pb-4" style="height: fit-content;">
+                        <div>
+
+                            <p class="txt-bold txt-center">Wins by knockout : </p>
+
+                            <mat-radio-group class="row justify-content-around" [(ngModel)]="preferenceToPost.kowins"
+                                aria-label="Select an option">
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="1">Not
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="2">Important</mat-radio-button>
+                                </div>
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="3">Very
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="4">Essential</mat-radio-button>
+                                </div>
+                            </mat-radio-group>
+
+                        </div>
+                    </mat-list-item>
+
+                    <mat-divider></mat-divider>
+
+                    <mat-list-item class="pb-4" style="height: fit-content; background-color: #ecf0f1;">
+                        <div>
+
+                            <p class="txt-bold txt-center">Wins by submission : </p>
+
+                            <mat-radio-group class="row justify-content-around"
+                                [(ngModel)]="preferenceToPost.submissionwins" aria-label="Select an option">
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="1">Not
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="2">Important</mat-radio-button>
+                                </div>
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="3">Very
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="4">Essential</mat-radio-button>
+                                </div>
+                            </mat-radio-group>
+
+                        </div>
+                    </mat-list-item>
+
+                    <mat-divider></mat-divider>
+
+                    <mat-list-item class="pb-4" style="height: fit-content;">
+                        <div>
+
+                            <p class="txt-bold txt-center">Successful strikes : </p>
+
+                            <mat-radio-group class="row justify-content-around" [(ngModel)]="preferenceToPost.strikes"
+                                aria-label="Select an option">
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="1">Not
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="2">Important</mat-radio-button>
+                                </div>
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="3">Very
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="4">Essential</mat-radio-button>
+                                </div>
+                            </mat-radio-group>
+
+                        </div>
+                    </mat-list-item>
+
+                    <mat-divider></mat-divider>
+
+                    <mat-list-item class="pb-4" style="height: fit-content; background-color: #ecf0f1;">
+                        <div>
+
+                            <p class="txt-bold txt-center">Blows given / taken ratio : </p>
+
+                            <mat-radio-group class="row justify-content-around"
+                                [(ngModel)]="preferenceToPost.strikesratio" aria-label="Select an option">
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="1">Not
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="2">Important</mat-radio-button>
+                                </div>
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="3">Very
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="4">Essential</mat-radio-button>
+                                </div>
+                            </mat-radio-group>
+
+                        </div>
+                    </mat-list-item>
+
+                    <mat-divider></mat-divider>
+
+                    <mat-list-item class="pb-4" style="height: fit-content;">
+                        <div>
+
+                            <p class="txt-bold txt-center">Successful takedowns : </p>
+
+                            <mat-radio-group class="row justify-content-around" [(ngModel)]="preferenceToPost.takedowns"
+                                aria-label="Select an option">
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="1">Not
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="2">Important</mat-radio-button>
+                                </div>
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="3">Very
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="4">Essential</mat-radio-button>
+                                </div>
+                            </mat-radio-group>
+
+                        </div>
+                    </mat-list-item>
+
+                    <mat-divider></mat-divider>
+
+                    <mat-list-item class="pb-4" style="height: fit-content; background-color: #ecf0f1;">
+                        <div>
+
+                            <p class="txt-bold txt-center">Takedown defenses : </p>
+
+                            <mat-radio-group class="row justify-content-around"
+                                [(ngModel)]="preferenceToPost.takedowndefense" aria-label="Select an option">
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="1">Not
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="2">Important</mat-radio-button>
+                                </div>
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="3">Very
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="4">Essential</mat-radio-button>
+                                </div>
+                            </mat-radio-group>
+
+                        </div>
+                    </mat-list-item>
+
+                    <mat-divider></mat-divider>
+
+                    <mat-list-item class="pb-4" style="height: fit-content;">
+                        <div>
+
+                            <p class="txt-bold txt-center">Takedowns attempted / suffered ratio : </p>
+
+                            <mat-radio-group class="row justify-content-around"
+                                [(ngModel)]="preferenceToPost.takedownsratio" aria-label="Select an option">
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="1">Not
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="2">Important</mat-radio-button>
+                                </div>
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="3">Very
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="4">Essential</mat-radio-button>
+                                </div>
+                            </mat-radio-group>
+
+                        </div>
+                    </mat-list-item>
+
+                    <mat-divider></mat-divider>
+
+                    <mat-list-item class="pb-4" style="height: fit-content; background-color: #ecf0f1;">
+                        <div>
+
+                            <p class="txt-bold txt-center">Overall performance index : </p>
+
+                            <mat-radio-group class="row justify-content-around" [(ngModel)]="preferenceToPost.ipsg"
+                                aria-label="Select an option">
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="1">Not
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="2">Important</mat-radio-button>
+                                </div>
+                                <div class="col-12 col-sm-10 d-flex">
+                                    <mat-radio-button class="col-5 txt-center" value="3">Very
+                                        important</mat-radio-button>
+                                    <mat-radio-button class="col-5 txt-center" value="4">Essential</mat-radio-button>
+                                </div>
+                            </mat-radio-group>
+
+                        </div>
+                    </mat-list-item>
+
+                    <mat-divider style="margin-bottom: 2em;"></mat-divider>
+
+                    <mat-list-item class="pb-4" style="height: fit-content;">
+                        <form [formGroup]="formPreference" (ngSubmit)="handlePreference()"
+                            class="mt-4 d-flex justify-content-around align-items-center">
+
+                            <mat-form-field>
+                                <mat-label>Set name</mat-label>
+                                <input formControlName="preferenceName" matInput placeholder="Ex. Preference"
+                                    value={{inputValue}}>
+                            </mat-form-field>
+
+                            <button class="p-2" style="background-color: #44bd32; border-radius: 15%;">Validate /
+                                modify</button>
+                            <!-- <button (click)="handleResetPreference()" class="p-2"
+                                style="background-color: #bdc3c7; border-radius: 15%;">Reset</button> -->
+                        </form>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+        </div>
+
+        <div class="row justify-content-between d-xxl-none">
+            <div class="col-12 mt-4">
                 <mat-accordion>
 
                     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <p class="txt-italic txt-center">In this section you see the profiles you have created</p>
 
                         <mat-expansion-panel-header class="right-side-color">
                             <mat-panel-title class="d-flex justify-content-center">
-                                <h1 class="txt-white" style="font-weight: bold; text-align: center;">My preferences</h1>
+                                <h2 class="txt-white" style="font-weight: bold; text-align: center;">Created profiles
+                                </h2>
                             </mat-panel-title>
                         </mat-expansion-panel-header>
 
-                        <div class="d-flex flex-column justify-content-center right-side-color"
-                            style="height: fit-content;">
-                            <h1 class="txt-white" style="font-weight: bold; text-align: center;">My preferences</h1>
+                        <div class="right-side-color" style="height: fit-content;">
 
                             <mat-list *ngFor="let element of preferences">
                                 <mat-list-item class="item">
-                                    <div
-                                        class="content-item d-flex flex-column-reverse justify-content-between align-items-center">
+                                    <div class="content-item d-flex justify-content-between align-items-center">
                                         <p (click)="loadPreference(element.id)" class="txt-white">{{element.name}}</p>
 
                                         <div *ngIf="element.isActive == false">
@@ -58,8 +559,11 @@
                 </mat-accordion>
             </div>
 
-            <div class="col-12 col-xl-8">
-                <h1 class="txt-bold txt-center">Set a preference</h1>
+            <div class="col-12 txt-center">
+                <h2 class="txt-bold txt-center">Create fighter profile</h2>
+                <p class="txt-italic">In this section we suggest you to create a fighter profile according to very
+                    specific criteria.</p>
+
                 <mat-divider></mat-divider>
 
                 <mat-list class="d-none d-md-block">
@@ -518,46 +1022,6 @@
 
                 <button (click)="handleResetPreference()" class="p-2"
                     style="background-color: #bdc3c7; border-radius: 15%;">Reset</button>
-            </div>
-
-            <div class="col-4 d-none d-xl-flex flex-column justify-content-center mt-5 right-side-color"
-                style="height: fit-content;">
-                <h1 class="txt-white" style="font-weight: bold; text-align: center;">My preferences</h1>
-
-                <mat-list *ngFor="let element of preferences">
-                    <mat-list-item class="item">
-                        <div class="content-item d-flex justify-content-between">
-                            <p (click)="loadPreference(element.id)" class="txt-white">{{element.name}}</p>
-
-                            <div *ngIf="element.isActive == false">
-                                <button (click)="handleActivate(element)" class="p-2 ms-2"
-                                    style="border-radius: 15%;">activate</button>
-
-                                <button (click)="handleDelete(element.id)" class="p-2 ms-2"
-                                    style="border-radius: 15%;">delete</button>
-                            </div>
-
-                            <div *ngIf="element.isActive == true">
-                                <p class="txt-active">active</p>
-                            </div>
-                        </div>
-                    </mat-list-item>
-
-                    <mat-divider style="border-color: beige;"></mat-divider>
-                </mat-list>
-
-                <mat-list>
-                    <mat-list-item class="item">
-                        <div class="content-item d-flex justify-content-between align-items-center">
-                            <p class="txt-white">Default</p>
-                            <div>
-                                <button class="p-2 ms-2"
-                                    style="background-color: #e1b12c; border-radius: 15%;">activate</button>
-                            </div>
-                        </div>
-                    </mat-list-item>
-                </mat-list>
-
             </div>
         </div>
 

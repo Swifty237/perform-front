@@ -13,6 +13,7 @@ import { MenLightweight } from '../common/data/men/men-lightweight';
 import { MenMiddleweight } from '../common/data/men/men-middleweight';
 import { MenWelterweight } from '../common/data/men/men-welterweight';
 import { OtherSpringService } from '../common/services/spring-services/other-spring.service';
+import { AuthService } from '../common/services/spring-services/auth.service';
 
 
 @Component({
@@ -37,7 +38,9 @@ export class RankingsComponent implements OnInit {
   menMiddleweight!: MenMiddleweight;
   menWelterweight!: MenWelterweight;
 
-  constructor(private rankingsService: RankingsService, private otherSpringService: OtherSpringService) { }
+  errorMessage = "";
+
+  constructor(private rankingsService: RankingsService, private otherSpringService: OtherSpringService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.womenStrawweight = new WomenStrawweight(this.rankingsService, this.otherSpringService);

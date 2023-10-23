@@ -11,6 +11,7 @@ import {
     FightersAndTkdownsElement,
     FightersAndWinsElement
 } from "../utils/rankings-elements";
+import { Observable } from "rxjs";
 
 abstract class RankingCategory {
 
@@ -35,6 +36,7 @@ abstract class RankingCategory {
     abstract rankingByTakedowns(): void
     abstract rankingByTakedownRatio(): void
     abstract rankingByIpsg(): void;
+    abstract getRankingByIpsgArray(): FightersAndIpsgElement[]
 }
 
 export default RankingCategory;

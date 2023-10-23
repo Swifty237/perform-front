@@ -1,21 +1,21 @@
 <div class="row justify-content-center my-4">
-    <div class="col-12 col-lg-10 my-4" *ngFor="let event of ufcEvents; let i = index">
+    <div class="col-12 col-lg-7 my-4" *ngFor="let event of ufcEvents; let i = index">
 
         <div class="sub-container">
             <mat-list>
                 <mat-list-item class="row">
-                    <span class="mx-4 txt-bold txt-large">Event : </span>
-                    <span>{{event.Name}}</span>
+                    <span class="txt-white mx-4 txt-bold txt-large">Event : </span>
+                    <span class="txt-white">{{event.Name}}</span>
                 </mat-list-item>
 
                 <mat-list-item class="row">
-                    <span class="mx-4 txt-bold txt-large">Date : </span>
-                    <span>{{event.Day | date:"dd/MM/yyyy"}}</span>
+                    <span class="txt-white mx-4 txt-bold txt-large">Date : </span>
+                    <span class="txt-white">{{event.Day | date:"dd/MM/yyyy"}}</span>
                 </mat-list-item>
 
                 <mat-list-item class="row">
-                    <span class="mx-4 txt-bold txt-large">Status : </span>
-                    <span>{{event.Status}}</span>
+                    <span class="txt-white mx-4 txt-bold txt-large">Status : </span>
+                    <span class="txt-white">{{event.Status}}</span>
                 </mat-list-item>
 
                 <mat-list-item class="row" style="height: fit-content">
@@ -35,8 +35,8 @@
 
                                 <mat-expansion-panel-header>
                                     <mat-panel-title class="d-none d-lg-flex justify-content-between">
-                                        <span class="ms-5">Confrontations</span>
-                                        <span class="me-5">Pronostics</span>
+                                        <!-- <span class="ms-5">Confrontations</span> -->
+                                        <!-- <span class="me-5">Pronostics</span> -->
                                     </mat-panel-title>
                                 </mat-expansion-panel-header>
 
@@ -46,7 +46,7 @@
 
                                     <div *ngIf="fight.Fighters.length > 0">
 
-                                        <div class="d-none d-lg-flex justify-content-between">
+                                        <div class="d-none d-lg-flex justify-content-center">
 
                                             <div class="mt-2">
                                                 <span class="txt-large">{{fight.Fighters[0].FirstName}}
@@ -58,7 +58,7 @@
                                                     {{fight.Fighters[1].LastName}}</span>
                                             </div>
 
-                                            <div>
+                                            <!-- <div>
                                                 <span class="mx-2 txt-large">pronostic : </span>
                                                 <span class=" txt-large">Pronostic Here !!!</span>
 
@@ -66,7 +66,7 @@
                                                     <span class="mx-2">result : </span>
                                                     <span>Result here !!!</span>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
 
 

@@ -26,7 +26,44 @@ export class PronosticsComponent implements OnInit {
   panelOpenState = false;
   ufcEvents!: UfcEventsElement[];
 
-  ufcEventsToDisplay!: EventsFightersAndIpsg
+  ufcEventsToDisplay: EventsFightersAndIpsg = {
+    Women: {
+      First: {
+        womenStrawweight: [],
+        womenBantamweight: [],
+        womenFeatherweight: [],
+        womenFlyweight: []
+      },
+      Second: {
+        womenStrawweight: [],
+        womenBantamweight: [],
+        womenFeatherweight: [],
+        womenFlyweight: []
+      }
+    },
+    Men: {
+      First: {
+        menBantamweight: [],
+        menFeatherweight: [],
+        menFlyweight: [],
+        menHeavyweight: [],
+        menLightHeavyweight: [],
+        menLightweight: [],
+        menMiddleweight: [],
+        menWelterweight: []
+      },
+      Second: {
+        menBantamweight: [],
+        menFeatherweight: [],
+        menFlyweight: [],
+        menHeavyweight: [],
+        menLightHeavyweight: [],
+        menLightweight: [],
+        menMiddleweight: [],
+        menWelterweight: []
+      }
+    }
+  };
 
   womenStrawweight!: WomenStrawweight;
   womenBantamweight!: WomenBantamweight;
@@ -61,7 +98,15 @@ export class PronosticsComponent implements OnInit {
     this.menMiddleweight = new MenMiddleweight(this.rankingsService, this.otherSpringService);
     this.menWelterweight = new MenWelterweight(this.rankingsService, this.otherSpringService);
 
-    // this.getFightersIpsg();
+    this.getFightersIpsg();
+  }
+
+  trierParDateDecroissante() {
+    this.ufcEvents.sort((a, b) => {
+      const dateA = new Date(a.DateTime);
+      const dateB = new Date(b.DateTime);
+      return dateB.getTime() - dateA.getTime();
+    });
   }
 
   loadUfcEvents() {
@@ -70,6 +115,7 @@ export class PronosticsComponent implements OnInit {
         next: (data) => {
           if (data.length > 0) {
             this.ufcEvents = data;
+            this.trierParDateDecroissante();
           }
         },
 
@@ -84,12 +130,18 @@ export class PronosticsComponent implements OnInit {
 
           if (data.length > 0) {
             let ufcEventElement: FighterAndEventToDisplayElement;
+            this.womenStrawweight.rankingByIpsg();
 
             for (let element of this.ufcEvents) {
+
+              // console.log(element);
+
+
               for (let fightElement of element.Fights) {
                 // console.log(fightElement.Fighters);
+                // Women
 
-                for (let rankingElement of this.womenStrawweight.rankingByIpsgArray) {
+                for (let rankingElement of this.womenStrawweight.getRankingByIpsgArray()) {
                   if (fightElement.Fighters[0]?.FirstName + " " + fightElement.Fighters[0]?.LastName == rankingElement.Name) {
 
                     ufcEventElement = {
@@ -248,6 +300,8 @@ export class PronosticsComponent implements OnInit {
                     this.ufcEventsToDisplay.Women.Second.womenFlyweight.push(ufcEventElement);
                   }
                 }
+
+                // Men 
 
                 for (let rankingElement of this.menBantamweight.rankingByIpsgArray) {
                   if (fightElement.Fighters[0]?.FirstName + " " + fightElement.Fighters[0]?.LastName == rankingElement.Name) {
@@ -570,6 +624,9 @@ export class PronosticsComponent implements OnInit {
                 }
               }
             }
+
+            console.log(this.ufcEventsToDisplay);
+
           }
         },
 

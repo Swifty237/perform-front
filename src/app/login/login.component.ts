@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   formLogin!: FormGroup;
   message = "";
+  errorMessage = "";
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
@@ -21,6 +22,15 @@ export class LoginComponent implements OnInit {
       username: this.formBuilder.control(""),
       password: this.formBuilder.control("")
     })
+
+    if (this.authService.accessToken == null) {
+      this.errorMessage = "Vous devez être connecter pour acceder à cette page !"
+    } else {
+      this.errorMessage = "";
+    }
+
+    // console.log(this.errorMessage);
+
   }
 
   handleLogin() {
@@ -31,6 +41,7 @@ export class LoginComponent implements OnInit {
       next: data => {
 
         this.message = "";
+        this.errorMessage = "";
         this.authService.loadProfile(data);
         this.router.navigateByUrl("/ngr-home");
       },
@@ -38,7 +49,7 @@ export class LoginComponent implements OnInit {
       error: err => {
 
         if (err.status == 401) {
-          this.message = "Identifiant ou mot de passe invalid"
+          this.message = "Invalid username or password !"
         }
       }
     })
