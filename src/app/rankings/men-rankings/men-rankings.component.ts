@@ -29,7 +29,7 @@ export class MenRankingsComponent {
   selectedRanking = "";
 
   selectLabels: SelectRankingLabel[] = [
-    { value: 'ipsg', viewValue: '-- Performance index --' },
+    { value: 'ipsg', viewValue: '-- Fighter quality  index --' },
     { value: 'fights', viewValue: '-- Number of fights --' },
     { value: 'wins', viewValue: '-- Winning percentage --' },
     { value: 'kowins', viewValue: '-- Winning percentage by knockout --' },
