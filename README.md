@@ -14,7 +14,7 @@ To test the perform MMA application click on the following link =>
 
 The other bricks and micro services constituting the Perform MMA application:
 
-* <a href="https://gitlab.com/perform_project/perform-front">perform-back-nodejs</a>
+* <a href="https://gitlab.com/perform_project/perform-back-nodejs">perform-back-nodejs</a>
 * <a href="https://gitlab.com/perform_project/perform-robot">perform-robot</a>
 * <a href="https://gitlab.com/perform_project/perform-back-spring">perform-back-spring</a>
 
