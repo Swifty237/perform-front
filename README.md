@@ -4,7 +4,7 @@ perform-front
 
 # Description
 
-Perform-front is a REST API which was designed with Angular to be part of a set of separate bricks and micro services which communicate with each other as needed. This set of bricks and micro services constitute the architecture of a web application named perform MMA, it manages users interarctions with the web application.
+Perform-front is a frontend application designed with Angular to be part of a set of separate bricks and micro services which communicate with each other as needed. This set of bricks and micro services constitute the architecture of a web application named perform MMA. Perform-front manages users interarctions with the web application.
 
 Click on the following link for more details on Perform MMA web application =>
 <a href="https://docs.google.com/presentation/d/e/2PACX-1vSzRUSTdUaM2xpnRheKOzhWK3UeApCFwF-Qn_Nl0KEetrUcBNHhpZ1nt6GdtnWPDutZzQquVGiIEMkr/pub?start=false&loop=false&delayms=3000">Perform MMA presentation</a> <br>
