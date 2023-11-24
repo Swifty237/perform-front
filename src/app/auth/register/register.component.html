@@ -1,0 +1,108 @@
+<!-- Login section-->
+<section id="login" class="">
+    <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+
+            <div class="col-lg-8" id="layoutAuthentication">
+
+                <div class="row justify-content-center">
+
+                    <div class="col-10">
+                        <div class="card mat-elevation-z8 border-0 rounded-lg" style="background-color: #ecf0f1;">
+
+                            <div class="card-header">
+                                <h3 class="text-center font-weight-light my-4">Create Account</h3>
+                            </div>
+                            <div class="card-body">
+
+                                <!-- Register form -->
+                                <form [formGroup]="formRegister" (ngSubmit)="handleRegister()">
+                                    <div class="row mb-3">
+
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3 mb-md-0 form-group">
+                                                <input class="form-control" id="inputName" type="text"
+                                                    formControlName="username" placeholder="Username"
+                                                    (blur)="validateField('username')" required
+                                                    [ngClass]="{'border-2 border-danger': formRegister.get('username')?.invalid && (formRegister.get('username')?.dirty || formRegister.get('username')?.touched)}" />
+                                                <label for="inputName">Username</label>
+
+                                                <div class="ps-2 pt-2 text-danger"
+                                                    *ngIf="formRegister.get('username')?.invalid && (formRegister.get('username')?.dirty || formRegister.get('username')?.touched)">
+                                                    <p style="font-size: small;">Enter your username !</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-floating form-group">
+                                                <input class="form-control" id="inputEmail" type="email"
+                                                    placeholder="name@example.com" formControlName="email"
+                                                    (blur)="validateField('email')" required
+                                                    [ngClass]="{'border-2 border-danger': formRegister.get('email')?.invalid && (formRegister.get('email')?.dirty || formRegister.get('email')?.touched)}" />
+                                                <label for="inputEmail">Email address</label>
+
+                                                <div class="ps-2 pt-2 text-danger"
+                                                    *ngIf="formRegister.get('email')?.invalid && (formRegister.get('email')?.dirty || formRegister.get('email')?.touched)">
+                                                    <p style="font-size: small;">Enter your email address !</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row mb-3">
+
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3 mb-md-0 form-group">
+                                                <input class="form-control" id="inputPassword" type="password"
+                                                    placeholder="Create a password" formControlName="password"
+                                                    (blur)="validateField('password')" required
+                                                    [ngClass]="{'border-2 border-danger': formRegister.get('password')?.invalid && (formRegister.get('password')?.dirty || formRegister.get('password')?.touched)}" />
+                                                <label for="inputPassword">Password</label>
+
+                                                <div class="ps-2 pt-2 text-danger"
+                                                    *ngIf="formRegister.get('password')?.invalid && (formRegister.get('password')?.dirty || formRegister.get('password')?.touched)">
+                                                    <p style="font-size: small;">Enter your password !</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3 mb-md-0 form-group">
+                                                <input class="form-control" id="inputPasswordConfirm" type="password"
+                                                    placeholder="Confirm password" formControlName="passwordConfirm"
+                                                    (blur)="validateField('passwordConfirm')" required
+                                                    [ngClass]="{'border-2 border-danger': formRegister.get('passwordConfirm')?.invalid && (formRegister.get('passwordConfirm')?.dirty || formRegister.get('passwordConfirm')?.touched)}" />
+                                                <label for="inputPasswordConfirm">Confirm Password</label>
+
+                                                <div class="ps-2 pt-2 text-danger"
+                                                    *ngIf="formRegister.get('passwordConfirm')?.invalid && (formRegister.get('passwordConfirm')?.dirty || formRegister.get('passwordConfirm')?.touched)">
+                                                    <p style="font-size: small;">Enter your password again to confirm !
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="mt-4 mb-0">
+                                        <div class="d-grid">
+                                            <button class="btn btn-primary btn-block">Create Account</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                            <div class="card-footer text-center py-3">
+                                <div class="small"><a routerLink="/ngr-login">Have an account? Go to login</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AuthService } from '../common/services/spring-services/auth.service';
+import { AuthService } from '../common/services/spring-backend/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-header',

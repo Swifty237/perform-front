@@ -1,67 +1,9 @@
-<div class="row app-sub-container">
-    <app-header [(opened)]="openedOnParent"></app-header>
+<div>
+  <app-header [(opened)]="openedOnParent"></app-header>
 
-    <div *ngIf="openedOnParent" class="col-10 col-md-6 d-flex flex-column justify-content-center d-xxl-none drawer">
+  <div>
+    <router-outlet></router-outlet>
+  </div>
 
-        <mat-sidenav-container style="background-color: transparent">
-
-            <mat-sidenav-content>
-                <div class="d-flex flex-column align-items-center my-4">
-
-                    <div class="d-flex justify-content-end align-items-center">
-                        <form [formGroup]="searchForm">
-                            <div class="d-flex">
-                                <button class="search-btn">
-                                    <mat-icon>search</mat-icon>
-                                </button>
-                                <input class="col-7 col-lg-10" formControlName="searchInput" matInput
-                                    placeholder="Search here !" value="">
-                            </div>
-
-                        </form>
-                    </div>
-
-                    <ul style="height: fit-content;" (click)="handleDrawer()"
-                        class="col-6 d-flex flex-column align-items-start justify-content-between my-5 py-5 nav-items">
-                        <li class="py-2 txt-large"><a class="nav-link" routerLink='/ngr-home'>Home</a></li>
-                        <li class="py-2 txt-large"><a class="nav-link" routerLink='/ngr-user/ngr-rankings'>Rankings</a>
-                        </li>
-                        <li class="py-2 txt-large"><a class="nav-link"
-                                routerLink='/ngr-user/ngr-preferences'>Preferences</a></li>
-                        <li class="py-2 txt-large"><a class="nav-link"
-                                routerLink='/ngr-user/ngr-pronostics'>Pronostics</a></li>
-                        <li class="py-2 txt-large"><a class="nav-link" routerLink='/ngr-user/ngr-charts'>Charts</a>
-                        </li>
-                        <li class="py-2 txt-large"><a class="nav-link" routerLink='/ngr-help'>Help</a></li>
-                    </ul>
-                </div>
-            </mat-sidenav-content>
-
-        </mat-sidenav-container>
-    </div>
-
-
-    <div style="margin-top: 5.7vh;">
-        <!-- <div *ngIf="authService.isAuthenticated==true" class="d-flex justify-content-between">
-            <div style="width: 15vw;">
-                <ul class="nav-items">
-                    <li>
-                        <button *ngIf="this.authService.roles.includes('ADMIN')" class="nav-item">
-                            <a style="text-decoration-line: none;" routerLink='/ngr-admin'>Administration</a>
-                        </button>
-                    </li>
-                    <li>
-                        <button *ngIf="this.authService.roles.includes('MOD')" class="nav-item">
-                            <a style="text-decoration-line: none;" routerLink='/ngr-mod'>Modération</a>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-
-        </div> -->
-
-        <router-outlet></router-outlet>
-    </div>
-
-    <app-footer [opened]="openedOnParent"></app-footer>
+  <app-footer [opened]="openedOnParent"></app-footer>
 </div>

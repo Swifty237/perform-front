@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "app-front": {
+    "perform-front": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -30,11 +30,13 @@
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss",
-              "src/assets/bootstrap/bootstrap-grid.min.css"
+              "src/assets/bootstrap/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/script/script.js",
+              "src/assets/bootstrap/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -73,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "app-front:build:production"
+              "browserTarget": "perform-front:build:production"
             },
             "development": {
-              "browserTarget": "app-front:build:development"
+              "browserTarget": "perform-front:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "app-front:build"
+            "browserTarget": "perform-front:build"
           }
         },
         "test": {
@@ -101,7 +103,6 @@
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -111,6 +112,6 @@
     }
   },
   "cli": {
-    "analytics": "1191fb7e-9773-4aac-9c39-4da7b451f24b"
+    "analytics": "42fdfd46-b283-4b4b-beab-afe7244e2403"
   }
 }

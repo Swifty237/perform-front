@@ -25,6 +25,7 @@
     font-size: 1.5em;
     color: #e74c3c;
     text-shadow: 15px 15px #2c3e50;
+    font-family: 'StalinistOne';
 }
 
 .logo-row {
@@ -41,21 +42,6 @@
     font-size: 1.5em;
     color: #e74c3c;
     text-shadow: 15px 15px #2c3e50;
-}
-
-
-.nav-item {
-    padding: 0.3em 1em;
-    border-radius: 15%;
-    background: linear-gradient(135deg, #34495e, #34495e, #7f8c8d);
-    background-size: 180% 180%;
-    animation: color 35s ease infinite;
-    margin-right: 0.5em;
-}
-
-.nav-link {
-    text-decoration-line: none;
-    color: whitesmoke;
 }
 
 .user-link {
