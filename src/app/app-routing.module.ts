@@ -14,16 +14,6 @@ import { ModoComponent } from './user-roles/modo/modo.component';
 import { AdminComponent } from './user-roles/admin/admin.component';
 import { authenticationGuard } from './common/guards/authentication/authentication.guard';
 
-// import { RegisterComponent } from './register/register.component';
-// import { LoginComponent } from './login/login.component';
-// import { ProfileComponent } from './profile/profile.component';
-// import { BoardUserComponent } from './board-user/board-user.component';
-// import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
-// import { BoardAdminComponent } from './board-admin/board-admin.component';
-// import { authenticationGuard } from './common/guards/authentication.guard';
-// import { PreferencesComponent } from './preferences/preferences.component';
-// import { ChartsComponent } from './charts/charts.component';
-
 const routes: Routes = [
   { path: '', redirectTo: 'ngr-home', pathMatch: 'full' },
   { path: 'ngr-home', component: HomeComponent },

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ProfileElement } from '../common/elements-types/profile-element';
 import { OtherSpringService } from '../common/services/spring-backend/other/other-spring.service';
@@ -19,11 +19,14 @@ export class ProfilesComponent {
   formProfile!: FormGroup
   panelOpenState = false;
 
-  constructor(private formBuilder: FormBuilder, private otherSpringService: OtherSpringService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private otherSpringService: OtherSpringService,
+    private elementRef: ElementRef) { }
 
   ngOnInit(): void {
     this.formProfile = this.formBuilder.group({
-      preferenceName: this.formBuilder.control("")
+      profileDescription: this.formBuilder.control("")
     });
 
     this.loadFighterProfiles();
@@ -63,22 +66,23 @@ export class ProfilesComponent {
       });
   }
 
-  handlePreference() {
+  handleProfile() {
     if (this.profileToPost.id == 0) {
-      this.handlePostPreference();
+      this.handlePostProfile();
     }
 
     if (this.profileToPost.id > 0) {
-      this.handleUpdatePreference();
+      this.handleUpdateProfile();
     }
   }
 
-  handlePostPreference() {
-    const profileNameToSend = this.formProfile.value.profileName;
-    if (profileNameToSend != null) {
-      this.profileToPost.name = profileNameToSend;
+  // Post the profile to database
+  handlePostProfile() {
+    const descriptionToSend = this.formProfile.value.profileDescription;
+    if (descriptionToSend != null) {
+      this.profileToPost.description = descriptionToSend;
     } else {
-      this.profileToPost.name = "preference" + this.profileToPost.id;
+      this.profileToPost.description = "preference" + this.profileToPost.id;
     }
 
     this.otherSpringService.postFighterProfile$(this.profileToPost)
@@ -91,8 +95,8 @@ export class ProfilesComponent {
       });
   }
 
-  handleUpdatePreference() {
-    let input = this.formProfile.value.profileName;
+  handleUpdateProfile() {
+    let input = this.formProfile.value.profileDescription;
     let isNamePresent = false;
     let isInputEqualPost = false;
 
@@ -104,10 +108,10 @@ export class ProfilesComponent {
 
     console.log("intput after = " + input);
 
-    if (this.profileToPost.name == input) {
+    if (this.profileToPost.description == input) {
 
       isInputEqualPost = true;
-      console.log("preferenceToPost.name = " + this.profileToPost.name);
+      console.log("preferenceToPost.name = " + this.profileToPost.description);
       console.log("preferenceToPost.id = " + this.profileToPost.id);
     }
 
@@ -125,13 +129,13 @@ export class ProfilesComponent {
 
                   this.profilesAfterDeletion = data;
 
-                  const profileNameToSend = this.formProfile.value.profileName;
+                  const profileDescriptionToSend = this.formProfile.value.profileDescription;
 
-                  if (profileNameToSend != null) {
-                    this.profileToPost.name = profileNameToSend;
+                  if (profileDescriptionToSend != null) {
+                    this.profileToPost.description = profileDescriptionToSend;
 
                     for (let fighterProfile of this.profilesAfterDeletion) {
-                      if (this.profileToPost.name == fighterProfile.name) {
+                      if (this.profileToPost.description == fighterProfile.description) {
                         isNamePresent = true;
                       }
                     }
@@ -168,13 +172,13 @@ export class ProfilesComponent {
         });
     } else {
 
-      const profileNameToSend = this.formProfile.value.profileName;
+      const profileDescriptionToSend = this.formProfile.value.profileDescription;
 
-      if (profileNameToSend != null) {
-        this.profileToPost.name = profileNameToSend;
+      if (profileDescriptionToSend != null) {
+        this.profileToPost.description = profileDescriptionToSend;
 
         for (let fighterProfile of this.profiles) {
-          if (this.profileToPost.name == fighterProfile.name) {
+          if (this.profileToPost.description == fighterProfile.description) {
             isNamePresent = true;
           }
         }
@@ -226,7 +230,7 @@ export class ProfilesComponent {
     this.formProfile.reset();
     this.profileToPost = {
       id: 0,
-      name: '',
+      description: '',
       fights: 1,
       wins: 1,
       kowins: 1,
@@ -236,7 +240,7 @@ export class ProfilesComponent {
       takedowns: 1,
       takedowndefense: 1,
       takedownsratio: 1,
-      ipsg: 1,
+      level: 1,
       isActive: false
     };
   }
@@ -275,6 +279,13 @@ export class ProfilesComponent {
             }
           });
       }, 100)
+    }
+  }
+
+  scrollToSection(sectionId: string) {
+    const element = this.elementRef.nativeElement.querySelector(`#${sectionId}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
     }
   }
 }

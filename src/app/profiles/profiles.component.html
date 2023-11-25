@@ -1,12 +1,17 @@
 <!-- Fighter profiles -->
-<section id="about" class="bg-dark">
+<section id="profileView" class="bg-dark">
     <div class="container px-4">
         <div class="row gx-4 justify-content-center">
             <div class="col-lg-8">
 
-                <h2 class="text-light">Fighter profiles</h2>
+                <div class="d-flex justify-content-between">
+                    <h2 class="text-light">Fighter profiles</h2>
+                    <button class="btn btn-outline-light mb-2" (click)="scrollToSection('creation')">
+                        Go to creation
+                    </button>
+                </div>
 
-                <div class="border border-4 border-light">
+                <div class="border border-4 border-light mat-elevation-z8">
 
                     <mat-paginator [pageSizeOptions]="[4, 5]" showFirstLastButtons class="bg-light"
                         aria-label="Select page of periodic elements">
@@ -15,7 +20,7 @@
                     <mat-list *ngFor="let element of profiles">
                         <mat-list-item class="mb-3">
                             <div class="d-flex justify-content-between">
-                                <p (click)="loadProfile(element.id)" class="text-light">{{element.name}}</p>
+                                <p (click)="loadProfile(element.id)" class="text-light">{{element.description}}</p>
 
                                 <div *ngIf="element.isActive == false" class="border-2 d-flex justify-content-between">
 
@@ -75,12 +80,22 @@
 
 
 <!-- Create profile -->
-<section class="bg-light" id="services">
+<section class="bg-light" id="creation">
     <div class="container px-4">
         <div class="row gx-4 justify-content-center">
             <div class="col-lg-8">
 
-                <h2>Create your prefered fighter profile</h2>
+                <div class="d-flex justify-content-between">
+                    <h2>Create your prefered fighter profile</h2>
+                    <div>
+                        <button class="btn btn-outline-dark" (click)="scrollToSection('profileView')">
+                            Go top
+                        </button>
+                        <button class="btn btn-outline-dark ms-2" (click)="scrollToSection('bottom')">
+                            Go bottom
+                        </button>
+                    </div>
+                </div>
 
                 <div class="mat-elevation-z8">
                     <mat-accordion>
@@ -88,194 +103,149 @@
 
                             <mat-expansion-panel-header>
                                 <mat-panel-title class="d-none d-lg-flex justify-content-center">
-                                    <span class="">Click here !</span>
+                                    <span>Click here !</span>
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
 
-                            <mat-divider class=""></mat-divider>
-
                             <div class="col-12 mb-2">
-                                <p class="text-muted text-center">In this section we suggest you to create a fighter
-                                    profile
-                                    according to
-                                    very specific criteria.
-                                </p>
 
-                                <mat-divider></mat-divider>
+                                <form [formGroup]="formProfile" (ngSubmit)="handleProfile()" class="mt-4">
 
-                                <mat-list class="">
+                                    <mat-form-field class="d-flex">
+                                        <mat-label>Some description to recognize your profile</mat-label>
+                                        <input width="100%" formControlName="profileDescription" matInput
+                                            placeholder="Ex. Striker and little grappler" [value]="inputValue">
+                                    </mat-form-field>
 
-                                    <mat-list-item class="pb-4" style="height: fit-content;">
-                                        <form [formGroup]="formProfile" (ngSubmit)="handlePreference()" class="mt-4">
-                                            <mat-form-field class="d-flex">
-                                                <mat-label>Name profile</mat-label>
-                                                <input width="100%" formControlName="preferenceName" matInput
-                                                    placeholder="Ex. Preference" [value]="inputValue">
-                                            </mat-form-field>
-
-                                        </form>
-                                    </mat-list-item>
-
-                                    <mat-list-item class="pb-4" style="height: fit-content;">
-                                        <div>
-                                            <p class="txt-bold txt-center">Number of fights : </p>
-
-                                            <mat-radio-group class="d-flex justify-content-around"
-                                                [(ngModel)]="profileToPost.fights" aria-label="Select an option">
-                                                <mat-radio-button value="1">Not important</mat-radio-button>
-                                                <mat-radio-button value="2">Important</mat-radio-button>
-                                                <mat-radio-button value="3">Very important</mat-radio-button>
-                                                <mat-radio-button value="4">Essential</mat-radio-button>
-                                            </mat-radio-group>
-
-                                        </div>
-                                    </mat-list-item>
+                                    <p class="fw-bold text-justify">Add this sentence beforehand and finish each of the
+                                        sentences below -- To compare two mma fighters...</p>
 
                                     <mat-divider></mat-divider>
 
-                                    <mat-list-item class="pb-4" style="height: fit-content; background-color: #ecf0f1;">
-                                        <div>
-                                            <p class="txt-bold txt-center">Wins : </p>
+                                    <div class="row my-5">
+                                        <p class="">the experience criterion is...</p>
 
-                                            <mat-radio-group class="d-flex justify-content-around"
-                                                [(ngModel)]="profileToPost.wins" aria-label="Select an option">
-                                                <mat-radio-button value="1">Not important</mat-radio-button>
-                                                <mat-radio-button value="2">Important</mat-radio-button>
-                                                <mat-radio-button value="3">Very important</mat-radio-button>
-                                                <mat-radio-button value="4">Essential</mat-radio-button>
-                                            </mat-radio-group>
-
-                                        </div>
-                                    </mat-list-item>
+                                        <mat-radio-group class="d-flex justify-content-around"
+                                            [value]="profileToPost.fights" aria-label="Select an option">
+                                            <mat-radio-button value="1">Not important</mat-radio-button>
+                                            <mat-radio-button value="2">Important</mat-radio-button>
+                                            <mat-radio-button value="3">Very important</mat-radio-button>
+                                            <mat-radio-button value="4">Essential</mat-radio-button>
+                                        </mat-radio-group>
+                                    </div>
 
                                     <mat-divider></mat-divider>
 
-                                    <mat-list-item class="pb-4" style="height: fit-content;">
-                                        <div>
+                                    <div class="row my-5">
+                                        <p>the winning percentage is...</p>
 
-                                            <p class="txt-bold txt-center">Wins by knockout : </p>
-
-                                            <mat-radio-group class="d-flex justify-content-around"
-                                                [(ngModel)]="profileToPost.kowins" aria-label="Select an option">
-                                                <mat-radio-button value="1">Not important</mat-radio-button>
-                                                <mat-radio-button value="2">Important</mat-radio-button>
-                                                <mat-radio-button value="3">Very important</mat-radio-button>
-                                                <mat-radio-button value="4">Essential</mat-radio-button>
-                                            </mat-radio-group>
-
-                                        </div>
-                                    </mat-list-item>
+                                        <mat-radio-group class="d-flex justify-content-around"
+                                            [value]="profileToPost.wins" aria-label="Select an option">
+                                            <mat-radio-button value="1">Not important</mat-radio-button>
+                                            <mat-radio-button value="2">Important</mat-radio-button>
+                                            <mat-radio-button value="3">Very important</mat-radio-button>
+                                            <mat-radio-button value="4">Essential</mat-radio-button>
+                                        </mat-radio-group>
+                                    </div>
 
                                     <mat-divider></mat-divider>
 
-                                    <mat-list-item class="pb-4" style="height: fit-content; background-color: #ecf0f1;">
-                                        <div>
+                                    <div class="row my-5">
+                                        <p>the winning by KO percentage is...</p>
 
-                                            <p class="txt-bold txt-center">Wins by submission : </p>
-
-                                            <mat-radio-group class="d-flex justify-content-around"
-                                                [(ngModel)]="profileToPost.submissionwins"
-                                                aria-label="Select an option">
-                                                <mat-radio-button value="1">Not important</mat-radio-button>
-                                                <mat-radio-button value="2">Important</mat-radio-button>
-                                                <mat-radio-button value="3">Very important</mat-radio-button>
-                                                <mat-radio-button value="4">Essential</mat-radio-button>
-                                            </mat-radio-group>
-
-                                        </div>
-                                    </mat-list-item>
+                                        <mat-radio-group class="d-flex justify-content-around"
+                                            [value]="profileToPost.kowins" aria-label="Select an option">
+                                            <mat-radio-button value="1">Not important</mat-radio-button>
+                                            <mat-radio-button value="2">Important</mat-radio-button>
+                                            <mat-radio-button value="3">Very important</mat-radio-button>
+                                            <mat-radio-button value="4">Essential</mat-radio-button>
+                                        </mat-radio-group>
+                                    </div>
 
                                     <mat-divider></mat-divider>
 
-                                    <mat-list-item class="pb-4" style="height: fit-content;">
-                                        <div>
+                                    <div class="row my-5">
+                                        <p>the winning by submission percentage is...</p>
 
-                                            <p class="txt-bold txt-center">Successful strikes : </p>
-
-                                            <mat-radio-group class="d-flex justify-content-around"
-                                                [(ngModel)]="profileToPost.strikes" aria-label="Select an option">
-                                                <mat-radio-button value="1">Not important</mat-radio-button>
-                                                <mat-radio-button value="2">Important</mat-radio-button>
-                                                <mat-radio-button value="3">Very important</mat-radio-button>
-                                                <mat-radio-button value="4">Essential</mat-radio-button>
-                                            </mat-radio-group>
-
-                                        </div>
-                                    </mat-list-item>
+                                        <mat-radio-group class="d-flex justify-content-around"
+                                            [value]="profileToPost.submissionwins" aria-label="Select an option">
+                                            <mat-radio-button value="1">Not important</mat-radio-button>
+                                            <mat-radio-button value="2">Important</mat-radio-button>
+                                            <mat-radio-button value="3">Very important</mat-radio-button>
+                                            <mat-radio-button value="4">Essential</mat-radio-button>
+                                        </mat-radio-group>
+                                    </div>
 
                                     <mat-divider></mat-divider>
 
-                                    <mat-list-item class="pb-4" style="height: fit-content; background-color: #ecf0f1;">
-                                        <div>
+                                    <div class="row my-5">
+                                        <p>the striking accuracy is...</p>
 
-                                            <p class="txt-bold txt-center">Blows given / taken ratio : </p>
-
-                                            <mat-radio-group class="d-flex justify-content-around"
-                                                [(ngModel)]="profileToPost.strikesratio" aria-label="Select an option">
-                                                <mat-radio-button value="1">Not important</mat-radio-button>
-                                                <mat-radio-button value="2">Important</mat-radio-button>
-                                                <mat-radio-button value="3">Very important</mat-radio-button>
-                                                <mat-radio-button value="4">Essential</mat-radio-button>
-                                            </mat-radio-group>
-
-                                        </div>
-                                    </mat-list-item>
+                                        <mat-radio-group class="d-flex justify-content-around"
+                                            [value]="profileToPost.strikes" aria-label="Select an option">
+                                            <mat-radio-button value="1">Not important</mat-radio-button>
+                                            <mat-radio-button value="2">Important</mat-radio-button>
+                                            <mat-radio-button value="3">Very important</mat-radio-button>
+                                            <mat-radio-button value="4">Essential</mat-radio-button>
+                                        </mat-radio-group>
+                                    </div>
 
                                     <mat-divider></mat-divider>
 
-                                    <mat-list-item class="pb-4" style="height: fit-content;">
-                                        <div>
+                                    <div class="row my-5">
+                                        <p>the ratio of blows given and blows received is...
+                                        </p>
 
-                                            <p class="txt-bold txt-center">Successful takedowns : </p>
-
-                                            <mat-radio-group class="d-flex justify-content-around"
-                                                [(ngModel)]="profileToPost.takedowns" aria-label="Select an option">
-                                                <mat-radio-button value="1">Not important</mat-radio-button>
-                                                <mat-radio-button value="2">Important</mat-radio-button>
-                                                <mat-radio-button value="3">Very important</mat-radio-button>
-                                                <mat-radio-button value="4">Essential</mat-radio-button>
-                                            </mat-radio-group>
-
-                                        </div>
-                                    </mat-list-item>
+                                        <mat-radio-group class="d-flex justify-content-around"
+                                            [value]="profileToPost.strikesratio" aria-label="Select an option">
+                                            <mat-radio-button value="1">Not important</mat-radio-button>
+                                            <mat-radio-button value="2">Important</mat-radio-button>
+                                            <mat-radio-button value="3">Very important</mat-radio-button>
+                                            <mat-radio-button value="4">Essential</mat-radio-button>
+                                        </mat-radio-group>
+                                    </div>
 
                                     <mat-divider></mat-divider>
 
-                                    <mat-list-item class="pb-4" style="height: fit-content; background-color: #ecf0f1;">
-                                        <div>
+                                    <div class="row my-5">
+                                        <p>the successfull takedown percentage is...</p>
 
-                                            <p class="txt-bold txt-center">Takedown defenses : </p>
-
-                                            <mat-radio-group class="d-flex justify-content-around"
-                                                [(ngModel)]="profileToPost.takedowndefense"
-                                                aria-label="Select an option">
-                                                <mat-radio-button value="1">Not important</mat-radio-button>
-                                                <mat-radio-button value="2">Important</mat-radio-button>
-                                                <mat-radio-button value="3">Very important</mat-radio-button>
-                                                <mat-radio-button value="4">Essential</mat-radio-button>
-                                            </mat-radio-group>
-
-                                        </div>
-                                    </mat-list-item>
+                                        <mat-radio-group class="d-flex justify-content-around"
+                                            [value]="profileToPost.takedowns" aria-label="Select an option">
+                                            <mat-radio-button value="1">Not important</mat-radio-button>
+                                            <mat-radio-button value="2">Important</mat-radio-button>
+                                            <mat-radio-button value="3">Very important</mat-radio-button>
+                                            <mat-radio-button value="4">Essential</mat-radio-button>
+                                        </mat-radio-group>
+                                    </div>
 
                                     <mat-divider></mat-divider>
 
-                                    <mat-list-item class="pb-4" style="height: fit-content;">
-                                        <div>
+                                    <div class="row my-5">
+                                        <p>the takedown defense percentage is...</p>
 
-                                            <p class="txt-bold txt-center">Takedowns attempted / suffered ratio : </p>
+                                        <mat-radio-group class="d-flex justify-content-around"
+                                            [value]="profileToPost.takedowndefense" aria-label="Select an option">
+                                            <mat-radio-button value="1">Not important</mat-radio-button>
+                                            <mat-radio-button value="2">Important</mat-radio-button>
+                                            <mat-radio-button value="3">Very important</mat-radio-button>
+                                            <mat-radio-button value="4">Essential</mat-radio-button>
+                                        </mat-radio-group>
+                                    </div>
 
-                                            <mat-radio-group class="d-flex justify-content-around"
-                                                [(ngModel)]="profileToPost.takedownsratio"
-                                                aria-label="Select an option">
-                                                <mat-radio-button value="1">Not important</mat-radio-button>
-                                                <mat-radio-button value="2">Important</mat-radio-button>
-                                                <mat-radio-button value="3">Very important</mat-radio-button>
-                                                <mat-radio-button value="4">Essential</mat-radio-button>
-                                            </mat-radio-group>
+                                    <mat-divider></mat-divider>
 
-                                        </div>
-                                    </mat-list-item>
+                                    <div class="row my-5">
+                                        <p>the ratio of takedowns given and takedowns received is...</p>
+
+                                        <mat-radio-group class="d-flex justify-content-around"
+                                            [value]="profileToPost.takedownsratio" aria-label="Select an option">
+                                            <mat-radio-button value="1">Not important</mat-radio-button>
+                                            <mat-radio-button value="2">Important</mat-radio-button>
+                                            <mat-radio-button value="3">Very important</mat-radio-button>
+                                            <mat-radio-button value="4">Essential</mat-radio-button>
+                                        </mat-radio-group>
+                                    </div>
 
                                     <mat-divider></mat-divider>
 
@@ -289,15 +259,21 @@
                                             </svg>
                                             <span>Create profile</span>
                                         </button>
+
                                     </div>
+                                </form>
 
-
-                                </mat-list>
                             </div>
 
                         </mat-expansion-panel>
                     </mat-accordion>
 
+                </div>
+
+                <div id="bottom" class="d-flex justify-content-end">
+                    <button class="btn btn-outline-dark mt-4" (click)="scrollToSection('profileView')">
+                        Go to profiles view
+                    </button>
                 </div>
 
             </div>

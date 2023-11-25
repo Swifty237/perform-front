@@ -6,7 +6,7 @@ import { AuthService } from '../auth.service';
 import { ProfileElement } from 'src/app/common/elements-types/profile-element';
 
 const AUTH_API = environment.backSpringUrl + '/performmma/';
-const PREF_API = environment.backSpringUrl + '/preference/';
+const PREF_API = environment.backSpringUrl + '/profile/';
 
 const options = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -28,23 +28,19 @@ export class OtherSpringService {
     return this.http.get(AUTH_API + 'roles', options);
   }
 
-  postFighterProfile$(preference: ProfileElement): Observable<ProfileElement> {
-    return this.http.post<ProfileElement>(PREF_API + 'newpreference/' + this.authService.userId, preference, options);
+  postFighterProfile$(profile: ProfileElement): Observable<ProfileElement> {
+    return this.http.post<ProfileElement>(PREF_API + 'newprofile/' + this.authService.userId, profile, options);
   }
 
-  // updatePreference(toModifyPreferenceId: number, modifiedPreference: PreferenceElement): Observable<PreferenceElement> {
-  //   return this.http.post<PreferenceElement>(PREF_API + 'update/' + this.authService.userId + "/" + toModifyPreferenceId, modifiedPreference, options);
-  // }
-
-  loadFighterProfile$(preferenceId: number): Observable<ProfileElement> {
-    return this.http.get<ProfileElement>(PREF_API + "userpreference/" + this.authService.userId + "/" + preferenceId, options);
+  loadFighterProfile$(profileId: number): Observable<ProfileElement> {
+    return this.http.get<ProfileElement>(PREF_API + "loadprofile/" + this.authService.userId + "/" + profileId, options);
   }
 
   loadAllFighterProfiles$(): Observable<ProfileElement[]> {
-    return this.http.get<ProfileElement[]>(PREF_API + 'preferences/' + this.authService.userId, options);
+    return this.http.get<ProfileElement[]>(PREF_API + 'profiles/' + this.authService.userId, options);
   }
 
-  deleteFighterProfile$(preferenceId: number): Observable<ProfileElement> {
-    return this.http.delete<ProfileElement>(PREF_API + "delete/" + this.authService.userId + "/" + preferenceId, options);
+  deleteFighterProfile$(profileId: number): Observable<ProfileElement> {
+    return this.http.delete<ProfileElement>(PREF_API + "delete/" + this.authService.userId + "/" + profileId, options);
   }
 }

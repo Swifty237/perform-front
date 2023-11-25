@@ -1,6 +1,6 @@
 export type ProfileElement = {
     id: number
-    name: string
+    description: string
     fights: number
     wins: number
     kowins: number
@@ -10,6 +10,6 @@ export type ProfileElement = {
     takedowns: number
     takedowndefense: number
     takedownsratio: number
-    ipsg: number
+    level: number
     isActive: Boolean
 }
