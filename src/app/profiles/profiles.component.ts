@@ -332,54 +332,54 @@ export class ProfilesComponent {
     }
   }
 
-  getAnswer(id: string) {
+  getAnswer(id: string, selectedValue: number) {
 
     this.selectSentence();
 
     switch (id) {
       case 'fights':
-        console.log("fights :" + this.formProfile.value.fights);
-        this.endSentences[0].response = this.convertSelection(this.formProfile.value.fights);
+        console.log("fights :" + selectedValue);
+        this.endSentences[0].response = this.convertSelection(selectedValue);
         break;
 
       case 'wins':
-        console.log("wins :" + this.formProfile.value.wins);
-        this.endSentences[1].response = this.convertSelection(this.formProfile.value.wins);
+        console.log("wins :" + selectedValue);
+        this.endSentences[1].response = this.convertSelection(selectedValue);
         break;
 
       case 'kowins':
-        console.log("kowins :" + this.formProfile.value.kowins);
-        this.endSentences[2].response = this.convertSelection(this.formProfile.value.kowins);
+        console.log("kowins :" + selectedValue);
+        this.endSentences[2].response = this.convertSelection(selectedValue);
         break;
 
       case 'submissionwins':
-        console.log("submissionwins :" + this.formProfile.value.submissionwins);
-        this.endSentences[3].response = this.convertSelection(this.formProfile.value.submissionwins);
+        console.log("submissionwins :" + selectedValue);
+        this.endSentences[3].response = this.convertSelection(selectedValue);
         break;
 
       case 'strikes':
-        console.log("strikes :" + this.formProfile.value.strikes);
-        this.endSentences[4].response = this.convertSelection(this.formProfile.value.strikes);
+        console.log("strikes :" + selectedValue);
+        this.endSentences[4].response = this.convertSelection(selectedValue);
         break;
 
       case 'takedowns':
-        console.log("takedowns :" + this.formProfile.value.takedowns);
-        this.endSentences[5].response = this.convertSelection(this.formProfile.value.takedowns);
+        console.log("takedowns :" + selectedValue);
+        this.endSentences[6].response = this.convertSelection(selectedValue);
         break;
 
       case 'takedowndefense':
-        console.log("takedowndefense :" + this.formProfile.value.takedowndefense);
-        this.endSentences[6].response = this.convertSelection(this.formProfile.value.takedowndefense);
+        console.log("takedowndefense :" + selectedValue);
+        this.endSentences[7].response = this.convertSelection(selectedValue);
         break;
 
       case 'strikesratio':
-        console.log("strikesratio :" + this.formProfile.value.strikesratio);
-        this.endSentences[7].response = this.convertSelection(this.formProfile.value.strikesratio);
+        console.log("strikesratio :" + selectedValue);
+        this.endSentences[5].response = this.convertSelection(selectedValue);
         break;
 
       case 'takedownsratio':
-        console.log("takedownsratio :" + this.formProfile.value.takedownsratio);
-        this.endSentences[8].response = this.convertSelection(this.formProfile.value.takedownsratio);
+        console.log("takedownsratio :" + selectedValue);
+        this.endSentences[8].response = this.convertSelection(selectedValue);
         break;
 
       default:
@@ -407,6 +407,10 @@ export class ProfilesComponent {
 
     return "";
 
+  }
+
+  isKeyOfProfileElement(key: string): key is keyof ProfileElement {
+    return key in this.profileToPost;
   }
 
   updateProfileToPostProperty(id: string, value: number) {

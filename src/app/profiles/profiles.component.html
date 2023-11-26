@@ -135,27 +135,32 @@
                                             <mat-divider></mat-divider>
 
                                             <p class="mt-4">
-                                                {{startSentence}} {{sentence.criteria}} {{sentence.response}}
+                                                {{startSentence}}
+                                                <span class="fw-bold ms-2"
+                                                    [ngClass]="{'text-primary': sentence.response != '...' }">{{sentence.criteria}}
+                                                    {{sentence.response}}</span>
                                             </p>
 
 
                                             <!-- Each profile attribute to post  -->
                                             <mat-radio-group class="d-flex justify-content-around" id={{sentence.id}}
-                                                formControlName="{{sentence.id}}" aria-label="Select an option">
+                                                formControlName="{{sentence.id}}"
+                                                [value]="isKeyOfProfileElement(sentence.id) ? profileToPost[sentence.id] : null"
+                                                aria-label="Select an option">
 
-                                                <mat-radio-button value="1" (click)="getAnswer(sentence.id)">
+                                                <mat-radio-button value="1" (click)="getAnswer(sentence.id, 1)">
                                                     not important
                                                 </mat-radio-button>
 
-                                                <mat-radio-button value="2" (click)="getAnswer(sentence.id)">
+                                                <mat-radio-button value="2" (click)="getAnswer(sentence.id, 2)">
                                                     important
                                                 </mat-radio-button>
 
-                                                <mat-radio-button value="3" (click)="getAnswer(sentence.id)">
+                                                <mat-radio-button value="3" (click)="getAnswer(sentence.id, 3)">
                                                     very important
                                                 </mat-radio-button>
 
-                                                <mat-radio-button value="4" (click)="getAnswer(sentence.id)">
+                                                <mat-radio-button value="4" (click)="getAnswer(sentence.id, 4)">
                                                     essential
                                                 </mat-radio-button>
                                             </mat-radio-group>
