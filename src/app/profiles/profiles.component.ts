@@ -1,9 +1,9 @@
 import { Component, ElementRef } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfileElement } from '../common/elements-types/profile-element';
 import { OtherSpringService } from '../common/services/spring-backend/other/other-spring.service';
 
-export type sentenceElement = {
+export type SentenceElement = {
   id: string,
   criteria: string,
   response: string
@@ -25,8 +25,10 @@ export class ProfilesComponent {
   endSentence = "";
   selectedIndex: number = 0;
   selectedAnswer: string = 'fights';
+  successMessage = "";
+  selectedIndexValues: number[] = [];
 
-  endSentences: sentenceElement[] = [
+  endSentences: SentenceElement[] = [
     { id: "fights", criteria: "experience criteria is", response: "..." },
     { id: "wins", criteria: "winning percentage is", response: "..." },
     { id: "kowins", criteria: "winning by KO percentage is", response: "..." },
@@ -48,20 +50,28 @@ export class ProfilesComponent {
 
   ngOnInit(): void {
     this.formProfile = this.formBuilder.group({
-      profileDescription: this.formBuilder.control(""),
-      fights: this.formBuilder.control(""),
-      wins: this.formBuilder.control(""),
-      kowins: this.formBuilder.control(""),
-      submissionwins: this.formBuilder.control(""),
-      strikes: this.formBuilder.control(""),
-      strikesratio: this.formBuilder.control(""),
-      takedowns: this.formBuilder.control(""),
-      takedowndefense: this.formBuilder.control(""),
-      takedownsratio: this.formBuilder.control(""),
+      profileDescription: this.formBuilder.control("", Validators.required),
+      fights: this.formBuilder.control("", Validators.required),
+      wins: this.formBuilder.control("", Validators.required),
+      kowins: this.formBuilder.control("", Validators.required),
+      submissionwins: this.formBuilder.control("", Validators.required),
+      strikes: this.formBuilder.control("", Validators.required),
+      strikesratio: this.formBuilder.control("", Validators.required),
+      takedowns: this.formBuilder.control("", Validators.required),
+      takedowndefense: this.formBuilder.control("", Validators.required),
+      takedownsratio: this.formBuilder.control("", Validators.required),
     });
 
     this.loadFighterProfiles();
     this.handleReset();
+  }
+
+  validateField(field: string) {
+    const control = this.getControl(field);
+
+    if (control && control.invalid) {
+      control.markAsTouched();
+    }
   }
 
   loadFighterProfiles() {
@@ -97,30 +107,110 @@ export class ProfilesComponent {
       });
   }
 
+  getControl(field: string) {
+    return this.formProfile.get(field);
+  }
+
   handleProfile() {
 
-    console.log(this.formProfile.value.profileDescription);
+    const description = this.getControl("profileDescription");
+    const fights = this.getControl("fights");
+    const wins = this.getControl("wins");
+    const kowins = this.getControl("kowins");
+    const submissionwins = this.getControl("submissionwins");
+    const strikes = this.getControl("strikes");
+    const strikesratio = this.getControl("strikesratio");
+    const takedowns = this.getControl("takedowns");
+    const takedowndefense = this.getControl("takedowndefense");
+    const takedownsratio = this.getControl("takedownsratio");
 
-    console.log(this.formProfile.value.fights);
-    console.log(this.formProfile.value.wins);
-    console.log(this.formProfile.value.kowins);
-    console.log(this.formProfile.value.submissionwins);
-    console.log(this.formProfile.value.strikes);
-    console.log(this.formProfile.value.strikesratio);
-    console.log(this.formProfile.value.takedowns);
-    console.log(this.formProfile.value.takedowndefense);
-    console.log(this.formProfile.value.takedownsratio);
+    if (fights && fights.invalid) {
+      this.validateField("fights");
+      return
+    }
+
+    if (wins && wins.invalid) {
+      this.validateField("wins");
+      return
+    }
+
+    if (kowins && kowins.invalid) {
+      this.validateField("kowins");
+      return
+    }
+
+    if (submissionwins && submissionwins.invalid) {
+      this.validateField("submissionwins");
+      return
+    }
+
+    if (strikes && strikes.invalid) {
+      this.validateField("strikes");
+      return
+    }
+
+    if (strikesratio && strikesratio.invalid) {
+      this.validateField("strikesratio");
+      return
+    }
+
+    if (takedowns && takedowns.invalid) {
+      this.validateField("takedowns");
+      return
+    }
+
+    if (takedowndefense && takedowndefense.invalid) {
+      this.validateField("takedowndefense");
+      return
+    }
+
+    if (takedownsratio && takedownsratio.invalid) {
+      this.validateField("takedownsratio");
+      return
+    }
+
+    if (takedownsratio && takedownsratio.valid) {
+      if (description && description.invalid) {
+        this.validateField("profileDescription");
+        return
+      }
+    }
+
+    this.handlePostProfile();
+
+    // console.log(this.formProfile.value.profileDescription);
+    // console.log(this.formProfile.value.fights);
+    // console.log(this.formProfile.value.wins);
+    // console.log(this.formProfile.value.kowins);
+    // console.log(this.formProfile.value.submissionwins);
+    // console.log(this.formProfile.value.strikes);
+    // console.log(this.formProfile.value.strikesratio);
+    // console.log(this.formProfile.value.takedowns);
+    // console.log(this.formProfile.value.takedowndefense);
+    // console.log(this.formProfile.value.takedownsratio);
+
+    this.endSentences.forEach(sentenceItem => {
+      sentenceItem.response = "..."
+    })
+
+    this.selectedIndex = 0;
+    this.selectedIndexValues = [];
+    this.formProfile.reset();
+    this.successMessage = "saved !"
   }
 
   // Post the profile to database
   handlePostProfile() {
-    const descriptionToSend = this.formProfile.value.profileDescription;
-
-    if (descriptionToSend != null) {
-      this.profileToPost.description = descriptionToSend;
-    } else {
-      this.profileToPost.description = "preference" + this.profileToPost.id;
-    }
+    this.profileToPost.description = this.formProfile.value.profileDescription
+    this.profileToPost.fights = this.formProfile.value.fights;
+    this.profileToPost.wins = this.formProfile.value.wins;
+    this.profileToPost.kowins = this.formProfile.value.kowins;
+    this.profileToPost.submissionwins = this.formProfile.value.submissionwins;
+    this.profileToPost.strikes = this.formProfile.value.strikes;
+    this.profileToPost.strikesratio = this.formProfile.value.strikesratio;
+    this.profileToPost.takedowns = this.formProfile.value.takedowns;
+    this.profileToPost.takedowndefense = this.formProfile.value.takedowndefense;
+    this.profileToPost.takedownsratio = this.formProfile.value.takedownsratio;
 
     this.otherSpringService.postFighterProfile$(this.profileToPost)
       .subscribe({
@@ -326,59 +416,62 @@ export class ProfilesComponent {
     }
   }
 
-  selectSentence() {
-    if (this.selectedIndex <= this.endSentences.length - 1) {
+  getIndexInEnSentences(index: string): number {
+    let indexInEndsentences = 0
+    this.endSentences.forEach(sentenceItem => {
+      if (sentenceItem.id == index) {
+        indexInEndsentences = this.endSentences.indexOf(sentenceItem)
+      }
+    })
+    return indexInEndsentences;
+  }
+
+  selectSentence(index: string) {
+    if (this.selectedIndex <= this.endSentences.length - 1 && this.getIndexInEnSentences(index) == this.selectedIndex) {
+      this.selectedIndexValues.push(this.selectedIndex)
       this.selectedIndex++;
     }
   }
 
-  getAnswer(id: string, selectedValue: number) {
+  manageAnswer(id: string, selectedValue: number) {
 
-    this.selectSentence();
+    this.resetSuccessMessage();
+    this.selectSentence(id);
 
     switch (id) {
       case 'fights':
-        console.log("fights :" + selectedValue);
         this.endSentences[0].response = this.convertSelection(selectedValue);
         break;
 
       case 'wins':
-        console.log("wins :" + selectedValue);
         this.endSentences[1].response = this.convertSelection(selectedValue);
         break;
 
       case 'kowins':
-        console.log("kowins :" + selectedValue);
         this.endSentences[2].response = this.convertSelection(selectedValue);
         break;
 
       case 'submissionwins':
-        console.log("submissionwins :" + selectedValue);
         this.endSentences[3].response = this.convertSelection(selectedValue);
         break;
 
       case 'strikes':
-        console.log("strikes :" + selectedValue);
         this.endSentences[4].response = this.convertSelection(selectedValue);
         break;
 
       case 'takedowns':
-        console.log("takedowns :" + selectedValue);
         this.endSentences[6].response = this.convertSelection(selectedValue);
         break;
 
       case 'takedowndefense':
-        console.log("takedowndefense :" + selectedValue);
         this.endSentences[7].response = this.convertSelection(selectedValue);
         break;
 
       case 'strikesratio':
-        console.log("strikesratio :" + selectedValue);
         this.endSentences[5].response = this.convertSelection(selectedValue);
         break;
 
       case 'takedownsratio':
-        console.log("takedownsratio :" + selectedValue);
         this.endSentences[8].response = this.convertSelection(selectedValue);
         break;
 
@@ -413,7 +506,7 @@ export class ProfilesComponent {
     return key in this.profileToPost;
   }
 
-  updateProfileToPostProperty(id: string, value: number) {
-
+  resetSuccessMessage() {
+    this.successMessage = "";
   }
 }

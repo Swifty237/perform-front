@@ -15,6 +15,8 @@ export class LoginComponent {
 
   message = "";
   errorMessage = "";
+  invalidUsername = "";
+  invalidPassword = "";
 
   constructor(private _formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
@@ -35,16 +37,34 @@ export class LoginComponent {
   }
 
   validateField(field: string) {
-    const control = this.loginForm.get(field);
+    const control = this.getControl(field);
 
     if (control && control.invalid) {
       control.markAsTouched();
     }
   }
 
+  getControl(field: string) {
+    return this.loginForm.get(field);
+  }
+
   handleLogin() {
     let username = this.loginForm.value.username
     let password = this.loginForm.value.password
+
+    const controlUsername = this.getControl("username");
+    const controlPassword = this.getControl("password");
+
+    if (controlUsername && controlUsername.invalid) {
+      this.validateField("username");
+      return
+    }
+
+    if (controlPassword && controlPassword.invalid) {
+      this.validateField("password");
+      return
+    }
+
 
     this.authService.login$(username, password).subscribe({
       next: data => {
@@ -62,5 +82,7 @@ export class LoginComponent {
         }
       }
     })
+
+
   }
 }

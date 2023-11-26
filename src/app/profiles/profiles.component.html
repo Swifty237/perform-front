@@ -99,7 +99,8 @@
 
                 <div class="mat-elevation-z8">
                     <mat-accordion>
-                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+                            (click)="resetSuccessMessage()">
 
                             <mat-expansion-panel-header>
                                 <mat-panel-title class="d-none d-lg-flex justify-content-center">
@@ -118,20 +119,7 @@
 
                                     <div *ngFor="let sentence of endSentences; let i = index">
 
-                                        <!-- <div class="row" *ngIf="i < selectedIndex">
-
-                                            <p *ngIf="i == 0" class="text-justify fw-bold fs-4 text-center pb-4">
-                                                Responses
-                                            </p>
-
-                                            <p class="">
-                                                {{startSentence}} {{sentence.criteria}} {{sentence.response}}
-                                            </p>
-                                        </div> -->
-
-
                                         <div class="row mb-5" *ngIf="i <= selectedIndex">
-
                                             <mat-divider></mat-divider>
 
                                             <p class="mt-4">
@@ -148,31 +136,50 @@
                                                 [value]="isKeyOfProfileElement(sentence.id) ? profileToPost[sentence.id] : null"
                                                 aria-label="Select an option">
 
-                                                <mat-radio-button value="1" (click)="getAnswer(sentence.id, 1)">
+                                                <mat-radio-button value="1" (click)="manageAnswer(sentence.id, 1)">
                                                     not important
                                                 </mat-radio-button>
 
-                                                <mat-radio-button value="2" (click)="getAnswer(sentence.id, 2)">
+                                                <mat-radio-button value="2" (click)="manageAnswer(sentence.id, 2)">
                                                     important
                                                 </mat-radio-button>
 
-                                                <mat-radio-button value="3" (click)="getAnswer(sentence.id, 3)">
+                                                <mat-radio-button value="3" (click)="manageAnswer(sentence.id, 3)">
                                                     very important
                                                 </mat-radio-button>
 
-                                                <mat-radio-button value="4" (click)="getAnswer(sentence.id, 4)">
+                                                <mat-radio-button value="4" (click)="manageAnswer(sentence.id, 4)">
                                                     essential
                                                 </mat-radio-button>
                                             </mat-radio-group>
+
+                                            <div class="ps-2 pt-2 text-danger"
+                                                *ngIf="formProfile.get(sentence.id)?.invalid && (formProfile.get(sentence.id)?.dirty || formProfile.get(sentence.id)?.touched)">
+                                                <span class="ms-5">Click not important if you want to skip !</span>
+                                            </div>
+
                                         </div>
 
                                     </div>
 
-                                    <mat-form-field class="d-flex mt-5">
-                                        <mat-label>Give some description to recognize this fighter profile</mat-label>
+                                    <mat-form-field class="d-flex mt-5"
+                                        *ngIf="selectedIndexValues.length == endSentences.length">
+                                        <mat-label>
+                                            Give some description to recognize this fighter profile
+                                        </mat-label>
                                         <input width="100%" formControlName="profileDescription" matInput
-                                            placeholder="Ex. Striker and little grappler" [value]="inputValue">
+                                            placeholder="Ex. Striker and good grappler" [value]="inputValue">
+                                        <label></label>
                                     </mat-form-field>
+
+                                    <div class="ps-2 pt-2 text-danger"
+                                        *ngIf="formProfile.get('profileDescription')?.invalid && (formProfile.get('profileDescription')?.dirty || formProfile.get('profileDescription')?.touched)">
+                                        <span>Invalid description !</span>
+                                    </div>
+
+                                    <div class="ps-2 pt-2 text-success">
+                                        <span>{{successMessage}}</span>
+                                    </div>
 
 
                                     <div class="d-flex justify-content-center">
