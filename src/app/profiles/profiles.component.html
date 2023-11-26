@@ -107,147 +107,68 @@
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
 
+                            <mat-divider></mat-divider>
+
                             <div class="col-12 mb-2">
+                                <form [formGroup]="formProfile" (ngSubmit)="handleProfile()">
 
-                                <form [formGroup]="formProfile" (ngSubmit)="handleProfile()" class="mt-4">
+                                    <p class="text-justify fw-bold fs-4 text-center my-5">
+                                        What is the best end for sentences below ?
+                                    </p>
 
-                                    <mat-form-field class="d-flex">
-                                        <mat-label>Some description to recognize your profile</mat-label>
+                                    <div *ngFor="let sentence of endSentences; let i = index">
+
+                                        <!-- <div class="row" *ngIf="i < selectedIndex">
+
+                                            <p *ngIf="i == 0" class="text-justify fw-bold fs-4 text-center pb-4">
+                                                Responses
+                                            </p>
+
+                                            <p class="">
+                                                {{startSentence}} {{sentence.criteria}} {{sentence.response}}
+                                            </p>
+                                        </div> -->
+
+
+                                        <div class="row mb-5" *ngIf="i <= selectedIndex">
+
+                                            <mat-divider></mat-divider>
+
+                                            <p class="mt-4">
+                                                {{startSentence}} {{sentence.criteria}} {{sentence.response}}
+                                            </p>
+
+
+                                            <!-- Each profile attribute to post  -->
+                                            <mat-radio-group class="d-flex justify-content-around" id={{sentence.id}}
+                                                formControlName="{{sentence.id}}" aria-label="Select an option">
+
+                                                <mat-radio-button value="1" (click)="getAnswer(sentence.id)">
+                                                    not important
+                                                </mat-radio-button>
+
+                                                <mat-radio-button value="2" (click)="getAnswer(sentence.id)">
+                                                    important
+                                                </mat-radio-button>
+
+                                                <mat-radio-button value="3" (click)="getAnswer(sentence.id)">
+                                                    very important
+                                                </mat-radio-button>
+
+                                                <mat-radio-button value="4" (click)="getAnswer(sentence.id)">
+                                                    essential
+                                                </mat-radio-button>
+                                            </mat-radio-group>
+                                        </div>
+
+                                    </div>
+
+                                    <mat-form-field class="d-flex mt-5">
+                                        <mat-label>Give some description to recognize this fighter profile</mat-label>
                                         <input width="100%" formControlName="profileDescription" matInput
                                             placeholder="Ex. Striker and little grappler" [value]="inputValue">
                                     </mat-form-field>
 
-                                    <p class="fw-bold text-justify">Add this sentence beforehand and finish each of the
-                                        sentences below -- To compare two mma fighters...</p>
-
-                                    <mat-divider></mat-divider>
-
-                                    <div class="row my-5">
-                                        <p class="">the experience criterion is...</p>
-
-                                        <mat-radio-group class="d-flex justify-content-around"
-                                            [value]="profileToPost.fights" aria-label="Select an option">
-                                            <mat-radio-button value="1">Not important</mat-radio-button>
-                                            <mat-radio-button value="2">Important</mat-radio-button>
-                                            <mat-radio-button value="3">Very important</mat-radio-button>
-                                            <mat-radio-button value="4">Essential</mat-radio-button>
-                                        </mat-radio-group>
-                                    </div>
-
-                                    <mat-divider></mat-divider>
-
-                                    <div class="row my-5">
-                                        <p>the winning percentage is...</p>
-
-                                        <mat-radio-group class="d-flex justify-content-around"
-                                            [value]="profileToPost.wins" aria-label="Select an option">
-                                            <mat-radio-button value="1">Not important</mat-radio-button>
-                                            <mat-radio-button value="2">Important</mat-radio-button>
-                                            <mat-radio-button value="3">Very important</mat-radio-button>
-                                            <mat-radio-button value="4">Essential</mat-radio-button>
-                                        </mat-radio-group>
-                                    </div>
-
-                                    <mat-divider></mat-divider>
-
-                                    <div class="row my-5">
-                                        <p>the winning by KO percentage is...</p>
-
-                                        <mat-radio-group class="d-flex justify-content-around"
-                                            [value]="profileToPost.kowins" aria-label="Select an option">
-                                            <mat-radio-button value="1">Not important</mat-radio-button>
-                                            <mat-radio-button value="2">Important</mat-radio-button>
-                                            <mat-radio-button value="3">Very important</mat-radio-button>
-                                            <mat-radio-button value="4">Essential</mat-radio-button>
-                                        </mat-radio-group>
-                                    </div>
-
-                                    <mat-divider></mat-divider>
-
-                                    <div class="row my-5">
-                                        <p>the winning by submission percentage is...</p>
-
-                                        <mat-radio-group class="d-flex justify-content-around"
-                                            [value]="profileToPost.submissionwins" aria-label="Select an option">
-                                            <mat-radio-button value="1">Not important</mat-radio-button>
-                                            <mat-radio-button value="2">Important</mat-radio-button>
-                                            <mat-radio-button value="3">Very important</mat-radio-button>
-                                            <mat-radio-button value="4">Essential</mat-radio-button>
-                                        </mat-radio-group>
-                                    </div>
-
-                                    <mat-divider></mat-divider>
-
-                                    <div class="row my-5">
-                                        <p>the striking accuracy is...</p>
-
-                                        <mat-radio-group class="d-flex justify-content-around"
-                                            [value]="profileToPost.strikes" aria-label="Select an option">
-                                            <mat-radio-button value="1">Not important</mat-radio-button>
-                                            <mat-radio-button value="2">Important</mat-radio-button>
-                                            <mat-radio-button value="3">Very important</mat-radio-button>
-                                            <mat-radio-button value="4">Essential</mat-radio-button>
-                                        </mat-radio-group>
-                                    </div>
-
-                                    <mat-divider></mat-divider>
-
-                                    <div class="row my-5">
-                                        <p>the ratio of blows given and blows received is...
-                                        </p>
-
-                                        <mat-radio-group class="d-flex justify-content-around"
-                                            [value]="profileToPost.strikesratio" aria-label="Select an option">
-                                            <mat-radio-button value="1">Not important</mat-radio-button>
-                                            <mat-radio-button value="2">Important</mat-radio-button>
-                                            <mat-radio-button value="3">Very important</mat-radio-button>
-                                            <mat-radio-button value="4">Essential</mat-radio-button>
-                                        </mat-radio-group>
-                                    </div>
-
-                                    <mat-divider></mat-divider>
-
-                                    <div class="row my-5">
-                                        <p>the successfull takedown percentage is...</p>
-
-                                        <mat-radio-group class="d-flex justify-content-around"
-                                            [value]="profileToPost.takedowns" aria-label="Select an option">
-                                            <mat-radio-button value="1">Not important</mat-radio-button>
-                                            <mat-radio-button value="2">Important</mat-radio-button>
-                                            <mat-radio-button value="3">Very important</mat-radio-button>
-                                            <mat-radio-button value="4">Essential</mat-radio-button>
-                                        </mat-radio-group>
-                                    </div>
-
-                                    <mat-divider></mat-divider>
-
-                                    <div class="row my-5">
-                                        <p>the takedown defense percentage is...</p>
-
-                                        <mat-radio-group class="d-flex justify-content-around"
-                                            [value]="profileToPost.takedowndefense" aria-label="Select an option">
-                                            <mat-radio-button value="1">Not important</mat-radio-button>
-                                            <mat-radio-button value="2">Important</mat-radio-button>
-                                            <mat-radio-button value="3">Very important</mat-radio-button>
-                                            <mat-radio-button value="4">Essential</mat-radio-button>
-                                        </mat-radio-group>
-                                    </div>
-
-                                    <mat-divider></mat-divider>
-
-                                    <div class="row my-5">
-                                        <p>the ratio of takedowns given and takedowns received is...</p>
-
-                                        <mat-radio-group class="d-flex justify-content-around"
-                                            [value]="profileToPost.takedownsratio" aria-label="Select an option">
-                                            <mat-radio-button value="1">Not important</mat-radio-button>
-                                            <mat-radio-button value="2">Important</mat-radio-button>
-                                            <mat-radio-button value="3">Very important</mat-radio-button>
-                                            <mat-radio-button value="4">Essential</mat-radio-button>
-                                        </mat-radio-group>
-                                    </div>
-
-                                    <mat-divider></mat-divider>
 
                                     <div class="d-flex justify-content-center">
                                         <button class=" btn btn-primary mt-4 d-flex align-items-center">

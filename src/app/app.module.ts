@@ -10,7 +10,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules-created/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-// import { AppHttpInterceptor } from './common/interceptors/app-http.interceptor';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { RankingsComponent } from './rankings/rankings.component';
 import { ProfilesComponent } from './profiles/profiles.component';
