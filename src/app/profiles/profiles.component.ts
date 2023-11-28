@@ -20,6 +20,26 @@ export class ProfilesComponent {
   inputValue!: String;
   errorMessage!: String
   profiles!: ProfileElement[];
+  activeProfile!: ProfileElement;
+  inactiveProfiles: ProfileElement[] = [];
+
+  defaultActiveProfile: ProfileElement = {
+
+    id: 0,
+    description: "Default profile",
+    fights: 1,
+    wins: 1,
+    kowins: 1,
+    submissionwins: 1,
+    strikes: 1,
+    strikesratio: 1,
+    takedowns: 1,
+    takedowndefense: 1,
+    takedownsratio: 1,
+    level: 1,
+    isActive: true
+  }
+
   profilesAfterDeletion!: ProfileElement[];
   startSentence = "To compare two mma fighters the ";
   endSentence = "";
@@ -49,6 +69,9 @@ export class ProfilesComponent {
     private elementRef: ElementRef) { }
 
   ngOnInit(): void {
+
+    this.initActiveProfile();
+
     this.formProfile = this.formBuilder.group({
       profileDescription: this.formBuilder.control("", Validators.required),
       fights: this.formBuilder.control("", Validators.required),
@@ -66,6 +89,96 @@ export class ProfilesComponent {
     this.handleReset();
   }
 
+  handleActivateDefault(activeElement: ProfileElement) {
+
+    this.otherSpringService.deleteFighterProfile$(activeElement.id)
+      .subscribe({
+        next: () => {
+
+          activeElement.isActive = false;
+          this.otherSpringService.postFighterProfile$(activeElement)
+            .subscribe({
+              next: () => {
+                this.initActiveProfile();
+                this.loadFighterProfiles();
+              },
+              error: (err: any) => console.log(err.status)
+            });
+        }
+      })
+  }
+
+  handleActivate(activeElement: ProfileElement, elementToActivate: ProfileElement) {
+
+    if (activeElement.id != 0) {
+
+      this.otherSpringService.deleteFighterProfile$(activeElement.id)
+        .subscribe({
+          next: () => {
+
+            activeElement.isActive = false;
+            this.otherSpringService.postFighterProfile$(activeElement)
+              .subscribe({
+                next: () => this.loadFighterProfiles(),
+                error: (err: any) => console.log(err.status)
+              });
+          }
+        })
+    }
+
+    elementToActivate.isActive = true;
+
+    setTimeout(() => {
+      this.otherSpringService.deleteFighterProfile$(elementToActivate.id)
+        .subscribe({
+          next: () => {
+
+            elementToActivate.isActive = true;
+            this.otherSpringService.postFighterProfile$(elementToActivate)
+              .subscribe({
+                next: () => {
+                  console.log("elementToActivate :");
+                  console.log(elementToActivate);
+                  this.loadFighterProfiles()
+                },
+                error: (err: any) => console.log(err.status)
+              });
+          }
+        });
+    }, 100)
+
+  }
+
+
+  // To activate the default profile
+  initActiveProfile() {
+    this.activeProfile = this.defaultActiveProfile;
+  }
+
+
+  loadActiveProfile(tab: ProfileElement[]) {
+
+    tab.forEach(profile => {
+      if (profile.isActive) {
+        this.activeProfile = profile;
+      }
+    })
+
+    if (!this.activeProfile) {
+      this.initActiveProfile();
+    }
+  }
+
+  loadInactiveProfiles(tab: ProfileElement[]) {
+    this.inactiveProfiles = [];
+
+    tab.forEach(profile => {
+      if (!profile.isActive) {
+        this.inactiveProfiles.push(profile);
+      }
+    })
+  }
+
   validateField(field: string) {
     const control = this.getControl(field);
 
@@ -79,13 +192,18 @@ export class ProfilesComponent {
       .subscribe({
         next: (data: ProfileElement[]) => {
           data.sort((a, b) => b.id - a.id);
-          this.profiles = data;
+
+          console.log("data :");
+          console.log(data);
+
+          this.loadActiveProfile(data);
+          this.loadInactiveProfiles(data);
         },
         error: (err: any) => console.error('An error occurred:', err)
       })
   }
 
-  loadProfile(profileId: number) {
+  loadProfileToModify(profileId: number) {
     this.otherSpringService.loadFighterProfile$(profileId)
       .subscribe({
         next: (data: any) => {
@@ -177,17 +295,6 @@ export class ProfilesComponent {
     }
 
     this.handlePostProfile();
-
-    // console.log(this.formProfile.value.profileDescription);
-    // console.log(this.formProfile.value.fights);
-    // console.log(this.formProfile.value.wins);
-    // console.log(this.formProfile.value.kowins);
-    // console.log(this.formProfile.value.submissionwins);
-    // console.log(this.formProfile.value.strikes);
-    // console.log(this.formProfile.value.strikesratio);
-    // console.log(this.formProfile.value.takedowns);
-    // console.log(this.formProfile.value.takedowndefense);
-    // console.log(this.formProfile.value.takedownsratio);
 
     this.endSentences.forEach(sentenceItem => {
       sentenceItem.response = "..."
@@ -372,42 +479,6 @@ export class ProfilesComponent {
     };
   }
 
-  handleActivate(fighterProfile: ProfileElement) {
-
-    if (fighterProfile.isActive == false) {
-
-      for (let element of this.profiles) {
-
-        if (element.isActive == true && element.id != fighterProfile.id) {
-          this.otherSpringService.deleteFighterProfile$(element.id)
-            .subscribe({
-              next: () => {
-
-                element.isActive = false;
-                this.otherSpringService.postFighterProfile$(element)
-                  .subscribe({
-                    next: () => this.loadFighterProfiles()
-                  });
-              }
-            });
-        }
-      }
-
-      setTimeout(() => {
-        this.otherSpringService.deleteFighterProfile$(fighterProfile.id)
-          .subscribe({
-            next: () => {
-
-              fighterProfile.isActive = true;
-              this.otherSpringService.postFighterProfile$(fighterProfile)
-                .subscribe({
-                  next: () => this.loadFighterProfiles()
-                });
-            }
-          });
-      }, 100)
-    }
-  }
 
   scrollToSection(sectionId: string) {
     const element = this.elementRef.nativeElement.querySelector(`#${sectionId}`);

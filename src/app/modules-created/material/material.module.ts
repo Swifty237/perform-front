@@ -12,6 +12,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 
@@ -32,7 +33,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatDividerModule,
     MatSelectModule,
     MatListModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTabsModule
   ]
 })
 export class MaterialModule { }
