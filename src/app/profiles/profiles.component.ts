@@ -193,9 +193,6 @@ export class ProfilesComponent {
         next: (data: ProfileElement[]) => {
           data.sort((a, b) => b.id - a.id);
 
-          console.log("data :");
-          console.log(data);
-
           this.loadActiveProfile(data);
           this.loadInactiveProfiles(data);
         },

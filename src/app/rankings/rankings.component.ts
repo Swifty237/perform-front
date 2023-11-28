@@ -16,6 +16,8 @@ import {
   SelectedLabelElement
 } from '../common/elements-types/ranking-element';
 import { map } from 'rxjs';
+import { ProfileElement } from '../common/elements-types/profile-element';
+import { OtherSpringService } from '../common/services/spring-backend/other/other-spring.service';
 
 @Component({
   selector: 'app-rankings',
@@ -23,8 +25,6 @@ import { map } from 'rxjs';
   styleUrls: ['./rankings.component.scss']
 })
 export class RankingsComponent implements OnInit {
-
-  // levels: FightersAndLevelElement[] = [];
 
   menLevels: FightersAndLevelElement[] = [];
   womenLevels: FightersAndLevelElement[] = [];
@@ -75,7 +75,26 @@ export class RankingsComponent implements OnInit {
     { value: 'women-straw', viewValue: 'Women\'s Strawweight' }
   ];
 
-  constructor(private _rankingService: RankingService) { }
+  defaultActiveProfile: ProfileElement = {
+    id: 0,
+    description: "Default profile",
+    fights: 1,
+    wins: 1,
+    kowins: 1,
+    submissionwins: 1,
+    strikes: 1,
+    strikesratio: 1,
+    takedowns: 1,
+    takedowndefense: 1,
+    takedownsratio: 1,
+    level: 1,
+    isActive: true
+  }
+
+  divider!: number;
+  activeProfile!: ProfileElement;
+
+  constructor(private _rankingService: RankingService, private _otherSpringService: OtherSpringService) { }
 
   ngOnInit(): void {
 
@@ -90,6 +109,17 @@ export class RankingsComponent implements OnInit {
     this.getTakedownRElements(this.selectedDivision);
 
     this.getLevelElements(this.selectedDivision);
+    this.activeProfile = this.defaultActiveProfile;
+
+    this.divider = parseInt(this.activeProfile.fights.toString()) +
+      parseInt(this.activeProfile.wins.toString()) +
+      parseInt(this.activeProfile.kowins.toString()) +
+      parseInt(this.activeProfile.strikes.toString()) +
+      parseInt(this.activeProfile.strikesratio.toString()) +
+      parseInt(this.activeProfile.submissionwins.toString()) +
+      parseInt(this.activeProfile.takedowns.toString()) +
+      parseInt(this.activeProfile.takedowndefense.toString()) +
+      parseInt(this.activeProfile.takedownsratio.toString());
   }
 
   onSelectionChange(event: any) {
@@ -557,214 +587,204 @@ export class RankingsComponent implements OnInit {
     })
   }
 
+  loadActiveProfile(tab: ProfileElement[]) {
+
+    tab.forEach(profile => {
+      if (profile.isActive) {
+        this.activeProfile = profile;
+      }
+    })
+
+    if (!this.activeProfile) {
+      this.activeProfile = this.defaultActiveProfile;
+    }
+  }
+
   // Level
   getLevelElements(selection: string) {
 
     this.menLevels = [];
     this.womenLevels = [];
 
-    this.menSelectLabels.forEach(elt => {
-      if (elt.value == selection) {
+    this._otherSpringService.loadAllFighterProfiles$()
+      .subscribe({
+        next: (data: ProfileElement[]) => {
 
-        this._rankingService.getRankingsLevel$()
-          .pipe(
-            map(items => {
-              items.forEach(item => {
-                (item["Division"] == elt.viewValue + " Division") ? this.menLevels.push(item) : null;
-              })
-            })
-          )
-          .subscribe(
-            () => {
+          this.loadActiveProfile(data);
 
-              this.menLevels.forEach(elt => {
+          this.menSelectLabels.forEach(elt => {
 
-                if (elt == this.menLevels[0]) {
+            if (elt.value == selection) {
 
-                  console.log(elt.Name);
-                  console.log("0 - " + elt.Level);
-                }
+              this._rankingService.getRankingsLevel$()
+                .pipe(
+                  map(items => {
+                    items.forEach(item => {
+                      (item["Division"] == elt.viewValue + " Division") ? this.menLevels.push(item) : null;
+                    })
+                  })
+                )
+                .subscribe(
+                  () => {
+
+                    this.menLevels.forEach(elt => {
+
+                      this.menFights.forEach(item => {
+                        if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
+                          elt.Level += item.Rank * this.activeProfile.fights;
+                        }
+                      })
+
+                      this.menWins.forEach(item => {
+                        if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
+                          elt.Level += item.Rank * this.activeProfile.wins;
+                        }
+                      })
+
+                      this.menKoWins.forEach(item => {
+                        if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
+                          elt.Level += item.Rank * this.activeProfile.kowins;
+                        }
+                      })
+
+                      this.menStrikes.forEach(item => {
+                        if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
+                          elt.Level += item.Rank * this.activeProfile.strikes;
+                        }
+                      })
 
 
-                this.menFights.forEach(item => {
-                  if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                    elt.Level += item.Rank;
-                  }
-                })
-
-                if (elt == this.menLevels[0]) {
-                  console.log("1 - " + elt.Level);
-                }
+                      this.menStrikeRatio.forEach(item => {
+                        if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
+                          elt.Level += item.Rank * this.activeProfile.strikesratio;
+                        }
+                      })
 
 
+                      this.menSubmissionsWins.forEach(item => {
+                        if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
+                          elt.Level += item.Rank * this.activeProfile.submissionwins;
+                        }
+                      })
 
-                this.menWins.forEach(item => {
-                  if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                    elt.Level += item.Rank;
-                  }
-                })
 
-                if (elt == this.menLevels[0]) {
-                  console.log("2 - " + elt.Level);
-                }
+                      this.menTakedowns.forEach(item => {
+                        if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
+                          elt.Level += item.Rank * this.activeProfile.takedowns;
+                        }
+                      })
 
-                this.menKoWins.forEach(item => {
-                  if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                    elt.Level += item.Rank;
-                  }
-                })
+                      this.menTakedownDefenses.forEach(item => {
+                        if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
+                          elt.Level += item.Rank * this.activeProfile.takedowndefense;
+                        }
+                      })
 
-                if (elt == this.menLevels[0]) {
-                  console.log("3 - " + elt.Level);
-                }
+                      this.menTakedownRatio.forEach(item => {
 
-                this.menStrikes.forEach(item => {
-                  if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                    elt.Level += item.Rank;
-                  }
-                })
+                        if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
+                          elt.Level += item.Rank * this.activeProfile.takedownsratio;
+                          elt.Level = parseFloat(((elt.Level) / this.divider).toFixed(2));
+                        }
+                      })
+                    })
 
-                if (elt == this.menLevels[0]) {
-                  console.log("4 - " + elt.Level);
-                }
+                    this.menLevels = this.menLevels.sort(this.compareLevel);
+                    this.addRank(this.menLevels);
+                    this.dataSource = new MatTableDataSource<FightersAndLevelElement>(this.menLevels);
+                    this.dataSource.paginator = this.paginator;
+                  })
+            }
+          })
 
-                this.menStrikeRatio.forEach(item => {
-                  if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                    elt.Level += item.Rank;
-                  }
-                })
+          this.womenSelectLabels.forEach(elt => {
+            if (elt.value == selection) {
 
-                if (elt == this.menLevels[0]) {
-                  console.log("5 - " + elt.Level);
-                }
+              this._rankingService.getRankingsLevel$()
+                .pipe(
+                  map(items => {
+                    items.forEach(item => {
+                      (item["Division"] == elt.viewValue + " Division") ? this.womenLevels.push(item) : null;
+                    })
+                  })
+                )
+                .subscribe(
+                  () => {
+                    this.womenLevels.forEach(elt => {
 
-                this.menSubmissionsWins.forEach(item => {
-                  if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                    elt.Level += item.Rank;
-                  }
-                })
+                      this.womenFights.forEach(item => {
+                        if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
+                          elt.Level += item.Rank * this.activeProfile.fights;
+                        }
+                      })
 
-                if (elt == this.menLevels[0]) {
-                  console.log("6 - " + elt.Level);
-                }
+                      this.womenWins.forEach(item => {
+                        if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
+                          elt.Level += item.Rank * this.activeProfile.wins;
+                        }
+                      })
 
-                this.menTakedowns.forEach(item => {
-                  if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                    elt.Level += item.Rank;
-                  }
-                })
+                      this.womenKoWins.forEach(item => {
+                        if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
+                          elt.Level += item.Rank * this.activeProfile.kowins;
+                        }
+                      })
 
-                if (elt == this.menLevels[0]) {
-                  console.log("7 - " + elt.Level);
-                }
+                      this.womenStrikes.forEach(item => {
+                        if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
+                          elt.Level += item.Rank * this.activeProfile.strikes;
+                        }
+                      })
 
-                this.menTakedownDefenses.forEach(item => {
-                  if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                    elt.Level += item.Rank;
-                  }
-                })
+                      this.womenStrikeRatio.forEach(item => {
+                        if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
+                          elt.Level += item.Rank * this.activeProfile.strikesratio;
+                        }
+                      })
 
-                if (elt == this.menLevels[0]) {
-                  console.log("8 - " + elt.Level);
-                }
+                      this.womenSubmissionsWins.forEach(item => {
+                        if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
+                          elt.Level += item.Rank * this.activeProfile.submissionwins;
+                        }
+                      })
 
-                this.menTakedownRatio.forEach(item => {
-                  if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                    elt.Level = parseFloat(((elt.Level + item.Rank) / 9).toFixed(2));
-                  }
-                })
+                      this.womenTakedowns.forEach(item => {
+                        if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
+                          elt.Level += item.Rank * this.activeProfile.takedowns;
+                        }
+                      })
 
-                if (elt == this.menLevels[0]) {
-                  console.log("9 - " + elt.Level);
-                }
-              })
+                      this.womenTakedownDefenses.forEach(item => {
+                        if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
+                          elt.Level += item.Rank * this.activeProfile.takedowndefense;
+                        }
+                      })
 
-              this.menLevels = this.menLevels.sort(this.compareLevel);
-              this.addRank(this.menLevels);
-              this.dataSource = new MatTableDataSource<FightersAndLevelElement>(this.menLevels);
-              this.dataSource.paginator = this.paginator;
-            })
-      }
-    })
+                      this.womenTakedownRatio.forEach(item => {
+                        if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
+                          elt.Level += item.Rank * this.activeProfile.takedownsratio;
+                          elt.Level = parseFloat(((elt.Level) / this.divider).toFixed(2));
+                        }
+                      })
+                    })
 
-    this.womenSelectLabels.forEach(elt => {
-      if (elt.value == selection) {
+                    this.womenLevels = this.womenLevels.sort(this.compareLevel);
+                    this.addRank(this.womenLevels);
+                    this.dataSource = new MatTableDataSource<FightersAndLevelElement>(this.womenLevels);
+                    this.dataSource.paginator = this.paginator;
 
-        this._rankingService.getRankingsLevel$()
-          .pipe(
-            map(items => {
-              items.forEach(item => {
-                (item["Division"] == elt.viewValue + " Division") ? this.womenLevels.push(item) : null;
-              })
-            })
-          )
-          .subscribe(
-            () => {
-              this.womenLevels.forEach(elt => {
+                  })
+            }
+          })
 
-                this.womenFights.forEach(item => {
-                  if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                    elt.Level += item.Rank;
-                  }
-                })
 
-                this.womenWins.forEach(item => {
-                  if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                    elt.Level += item.Rank;
-                  }
-                })
 
-                this.womenKoWins.forEach(item => {
-                  if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                    elt.Level += item.Rank;
-                  }
-                })
 
-                this.womenStrikes.forEach(item => {
-                  if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                    elt.Level += item.Rank;
-                  }
-                })
 
-                this.womenStrikeRatio.forEach(item => {
-                  if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                    elt.Level += item.Rank;
-                  }
-                })
 
-                this.womenSubmissionsWins.forEach(item => {
-                  if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                    elt.Level += item.Rank;
-                  }
-                })
-
-                this.womenTakedowns.forEach(item => {
-                  if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                    elt.Level += item.Rank;
-                  }
-                })
-
-                this.womenTakedownDefenses.forEach(item => {
-                  if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                    elt.Level += item.Rank;
-                  }
-                })
-
-                this.womenTakedownRatio.forEach(item => {
-                  if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                    elt.Level = parseFloat(((elt.Level + item.Rank) / 9).toFixed(2));
-                  }
-                })
-              })
-
-              this.womenLevels = this.womenLevels.sort(this.compareLevel);
-              this.addRank(this.womenLevels);
-              this.dataSource = new MatTableDataSource<FightersAndLevelElement>(this.womenLevels);
-              this.dataSource.paginator = this.paginator;
-
-            })
-      }
-    })
+        },
+        error: (err: any) => console.error('An error occurred:', err)
+      })
   }
 
   compareLevel = (a: FightersAndLevelElement, b: FightersAndLevelElement) => {

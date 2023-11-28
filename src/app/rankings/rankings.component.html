@@ -43,7 +43,12 @@
 
                 <mat-tab-group>
                     <mat-tab label="By level index">
-                        <h2 class="my-4">Ranking by level index</h2>
+                        <h2 class="my-5">Ranking by level index</h2>
+
+                        <div class="mb-5 fs-5 d-flex justify-content-center">
+                            <span class="text-decoration-underline me-5">Acitve fighter profile:</span>
+                            <span class="fw-bold">{{activeProfile.description}}</span>
+                        </div>
 
                         <table mat-table [dataSource]="dataSource" class="border mat-elevation-z8">
                             <ng-container matColumnDef="rank">
@@ -61,7 +66,7 @@
                                     [ngClass]="{'text-light bg-warning fw-bold d-flex align-items-center fs-5': element.Rank === 1, 'bg-light': element.Rank != 1}">
 
                                     <div *ngIf="element.Rank == 1">
-                                        <img style="width: 7em; height: 7em;" src="/assets/img/champion_belt.png"
+                                        <img style="width: 4em; height: 4em;" src="/assets/img/champion_belt.png"
                                             alt="">
                                     </div>
 
@@ -86,7 +91,7 @@
                     </mat-tab>
 
                     <mat-tab label="Others rankings">
-                        <h2 class="my-4">Others rankings</h2>
+                        <h2 class="my-5">Others rankings</h2>
 
                         <div class="mat-elevation-z8">
                             <mat-accordion>
@@ -156,14 +161,3 @@
         </div>
     </div>
 </section>
-
-<!-- Other rankings section-->
-<!-- <section class="bg-light" id="other">
-    <div class="container px-4">
-        <div class="row gx-4 justify-content-center">
-            <div class="col-lg-8">
-                
-            </div>
-        </div>
-    </div>
-</section> -->

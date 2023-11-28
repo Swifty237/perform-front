@@ -16,7 +16,7 @@ import { authenticationGuard } from './common/guards/authentication/authenticati
 
 const routes: Routes = [
   { path: '', redirectTo: 'ngr-home', pathMatch: 'full' },
-  { path: 'ngr-home', component: ProfilesComponent },
+  { path: 'ngr-home', component: HomeComponent },
   { path: 'ngr-register', component: RegisterComponent },
   { path: 'ngr-login', component: LoginComponent },
   // { path: 'ngr-help', component: PerformHelpComponent },
