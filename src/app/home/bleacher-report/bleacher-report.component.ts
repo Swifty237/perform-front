@@ -20,8 +20,10 @@ export class BleacherReportComponent {
 
   displayedColumns: string[] = ['image', 'text'];
   dataSource = new MatTableDataSource<any>();
+  smallScreenDataSource = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatPaginator) smallScreenPaginator!: MatPaginator;
 
   constructor(private ufcNewsService: UfcNewsService) { }
 
@@ -49,7 +51,9 @@ export class BleacherReportComponent {
             this.bigCard = this.bleacherReport[0];
             this.smallCard = this.bleacherReport.slice(1);
             this.dataSource = new MatTableDataSource<any>(this.smallCard);
+            this.smallScreenDataSource = new MatTableDataSource<any>(this.bleacherReport);
             this.dataSource.paginator = this.paginator;
+            this.smallScreenDataSource.paginator = this.smallScreenPaginator;
 
           }
         },

@@ -1,20 +1,21 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top d-flex justify-content-between" id="mainNav">
-    <div class="container px-4">
-        <div class="row gx-4 justify-content-center w-100">
-            <div class="col-lg-8">
+    <div class="container">
+        <div class="d-flex justify-content-center w-100">
+            <div class="col-lg-8 w-100">
 
-                <div class="d-flex justify-content-between w-100">
+                <div class="d-flex justify-content-between">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                         aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    <a class="navbar-brand logo" routerLink="/ngr-home">PERFORM <span class="text-white">MMA</span></a>
+                    <a class="navbar-brand logo fs-5" routerLink="/ngr-home">PERFORM <span
+                            class="text-white">MMA</span></a>
 
                     <!-- is displayed when the screen goes above 1200px -->
-                    <div class="collapse navbar-collapse d-none d-xl-flex" id="navbarResponsive">
+                    <div class="d-none d-xl-flex" id="navbarResponsive">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
                                 <a class="nav-link" routerLink="/ngr-home">Home</a>
@@ -34,10 +35,18 @@
                         </ul>
                     </div>
 
-                    <ul class="navbar-nav me-4 col-2 d-xl-none">
-                        <li class="nav-item d-flex align-items-center justify-content-around w-100">
+                    <ul class="navbar-nav me-4 col-2 d-xl-none d-flex justify-content-center align-items-center">
 
-                            <div class="btn btn-outline-secondary">
+                        <li *ngIf="this.authService.isAuthenticated==true"
+                            class="nav-item d-flex align-items-center justify-content-center mb-2 mb-xl-0">
+                            <div class="ms-2 text-success d-flex fw-bold">{{authService.username |
+                                titlecase}}
+                            </div>
+                        </li>
+
+                        <li class="nav-item d-flex align-items-center">
+
+                            <div *ngIf="this.authService.isAuthenticated==false" class="btn btn-outline-secondary">
                                 <a class="nav-link d-flex align-items-center justify-content-center"
                                     routerLink="/ngr-login" role="button">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
@@ -46,10 +55,7 @@
                                             d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
                                     </svg>
 
-                                    <div *ngIf="this.authService.isAuthenticated==false" class="ms-2">login</div>
-
-                                    <div *ngIf="this.authService.isAuthenticated==true" class="ms-2">
-                                        {{authService.username}}</div>
+                                    <div class="ms-2">login</div>
                                 </a>
                             </div>
 
@@ -102,11 +108,15 @@
         </div>
     </div>
 
-    <!-- User Profile -->
-    <ul class="navbar-nav me-4 col-2 d-none d-xl-block">
-        <li class="nav-item d-flex align-items-center justify-content-around w-100">
+    <!-- User Profile - is displayed when the screen goes above 1200px -->
+    <ul class="navbar-nav col-2 d-none d-xl-flex">
+        <li *ngIf="this.authService.isAuthenticated==true" class="nav-item d-flex align-items-center">
+            <div class="ms-2 text-success fw-bold">{{authService.username | titlecase}}</div>
+        </li>
 
-            <div class="btn btn-outline-secondary">
+        <li class="nav-item d-flex align-items-center justify-content-end pe-4 w-100">
+
+            <div *ngIf="this.authService.isAuthenticated==false" class="btn btn-outline-secondary">
                 <a class="nav-link d-flex align-items-center justify-content-center" routerLink="/ngr-login"
                     role="button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
@@ -114,9 +124,7 @@
                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
                     </svg>
 
-                    <div *ngIf="this.authService.isAuthenticated==false" class="ms-2">login</div>
-
-                    <div *ngIf="this.authService.isAuthenticated==true" class="ms-2">{{authService.username}}</div>
+                    <div class="ms-2">login</div>
                 </a>
             </div>
 

@@ -20,8 +20,10 @@ export class BusinessInsiderComponent {
 
   displayedColumns: string[] = ['image', 'text'];
   dataSource = new MatTableDataSource<any>();
+  smallScreenDataSource = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatPaginator) smallScreenPaginator!: MatPaginator;
 
   constructor(private ufcNewsService: UfcNewsService) { }
 
@@ -49,7 +51,9 @@ export class BusinessInsiderComponent {
             this.bigCard = this.businessInsider[0];
             this.smallCard = this.businessInsider.slice(1);
             this.dataSource = new MatTableDataSource<any>(this.smallCard);
+            this.smallScreenDataSource = new MatTableDataSource<any>(this.businessInsider);
             this.dataSource.paginator = this.paginator;
+            this.smallScreenDataSource.paginator = this.smallScreenPaginator;
 
           }
         },
