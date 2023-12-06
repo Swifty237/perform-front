@@ -13,12 +13,14 @@ import { ChartsComponent } from './charts/charts.component';
 import { ModoComponent } from './user-roles/modo/modo.component';
 import { AdminComponent } from './user-roles/admin/admin.component';
 import { authenticationGuard } from './common/guards/authentication/authentication.guard';
+import { AuthenticationErrorComponent } from './auth/authentication-error/authentication-error.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'ngr-home', pathMatch: 'full' },
   { path: 'ngr-home', component: HomeComponent },
   { path: 'ngr-register', component: RegisterComponent },
   { path: 'ngr-login', component: LoginComponent },
+  { path: 'ngr-errorAuthen', component: AuthenticationErrorComponent },
   // { path: 'ngr-help', component: PerformHelpComponent },
   { path: 'ngr-admin', component: AdminComponent, canActivate: [authenticationGuard] },
   { path: 'ngr-modo', component: ModoComponent, canActivate: [authenticationGuard] },

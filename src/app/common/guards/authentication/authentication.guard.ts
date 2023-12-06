@@ -11,6 +11,6 @@ export const authenticationGuard: CanActivateFn = (route: ActivatedRouteSnapshot
     return true;
   }
 
-  inject(Router).navigateByUrl("/ngr-login");
+  inject(Router).navigateByUrl("/ngr-errorAuthen");
   return false;
 };

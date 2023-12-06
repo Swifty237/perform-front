@@ -33,6 +33,7 @@ import { AdminComponent } from './user-roles/admin/admin.component';
 import { ModoComponent } from './user-roles/modo/modo.component';
 import { UserComponent } from './user-roles/user/user.component';
 import { ReqHttpInterceptor } from './common/interceptor/req-http.interceptor';
+import { AuthenticationErrorComponent } from './auth/authentication-error/authentication-error.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { ReqHttpInterceptor } from './common/interceptor/req-http.interceptor';
     RegisterComponent,
     AdminComponent,
     ModoComponent,
-    UserComponent
+    UserComponent,
+    AuthenticationErrorComponent
   ],
   imports: [
     BrowserModule,

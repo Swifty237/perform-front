@@ -1,0 +1,80 @@
+<!-- Login section-->
+<section id="login" class="">
+    <div class="container px-4">
+        <div class="row gx-4 justify-content-center">
+
+            <div class="col-lg-8" id="layoutAuthentication">
+
+                <p class="text-danger text-center">Vous devez être connecté pour accéder à cette page !</p>
+
+                <div class="row justify-content-center">
+
+                    <div class="col-lg-8">
+                        <div class="card mat-elevation-z8 border-0 rounded-lg" style="background-color: #ecf0f1;">
+
+                            <div class="card-header">
+                                <h3 class="text-center my-4">Login</h3>
+                            </div>
+
+                            <div class="card-body">
+                                <form [formGroup]="loginForm" (ngSubmit)="handleLogin()">
+
+                                    <div class="form-floating mb-3 form-group">
+                                        <input class="form-control" id="inputName" type="text"
+                                            placeholder="name@example.com" formControlName="username"
+                                            (blur)="validateField('username')" required
+                                            [ngClass]="{'border-2 border-danger': loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)}" />
+                                        <label for="inputName">Username or email address</label>
+
+                                        <div class="ps-2 pt-2 text-danger"
+                                            *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)">
+                                            <p style="font-size: small;">Enter your username or email address !</p>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-floating mb-3 form-group">
+                                        <input class="form-control" id="inputPassword" type="password"
+                                            placeholder="Password" formControlName="password"
+                                            (blur)="validateField('password')" required
+                                            [ngClass]="{'border-2 border-danger': loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)}" />
+                                        <label for="inputPassword">Password</label>
+
+                                        <div class="ps-2 pt-2 text-danger"
+                                            *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+                                            <p style="font-size: small;">Enter your password !</p>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-check mb-3 form-group">
+                                        <input class="form-check-input" id="inputRememberPassword" type="checkbox" />
+                                        <label class="form-check-label" for="inputRememberPassword">
+                                            Remember Password
+                                        </label>
+                                    </div>
+
+                                    <!-- <a class="mt-4 small d-flex justify-content-end" href="password.html">
+                                        Forgot Password?
+                                    </a> -->
+
+                                    <div class="d-grid mt-4 mb-0 form-group">
+                                        <button class="btn btn-primary">Login</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="card-footer text-center py-3">
+                                <div class="small">
+                                    <a routerLink="/ngr-register">Need an account? Sign up!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

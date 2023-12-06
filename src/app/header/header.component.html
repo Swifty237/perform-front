@@ -4,15 +4,19 @@
         <div class="d-flex justify-content-center w-100">
             <div class="col-lg-8 w-100">
 
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-around">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                         aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    <a class="navbar-brand logo fs-5" routerLink="/ngr-home">PERFORM <span
-                            class="text-white">MMA</span></a>
+                    <a class="navbar-brand logo d-flex align-items-center" routerLink="/ngr-home">
+                        <div class="fs-5 me-3">
+                            PERFORM <span class="text-white">MMA</span>
+                        </div>
+                        <img class="logo_img" src="/assets/img/fighter_logo.png" alt="logo">
+                    </a>
 
                     <!-- is displayed when the screen goes above 1200px -->
                     <div class="d-none d-xl-flex" id="navbarResponsive">
