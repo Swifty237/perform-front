@@ -3,7 +3,7 @@
     <div class="container px-4">
         <div class="row gx-4 justify-content-center">
 
-            <div class="col-lg-8 my-5 p-4">
+            <div class="col-lg-8 my-5">
 
                 <mat-tab-group [backgroundColor]="" [color]="">
                     <mat-tab label="Fighter profiles">
@@ -100,114 +100,101 @@
                             <h2 class="text-light my-4">Create your prefered fighter profile</h2>
                         </div>
 
-                        <div class="mat-elevation-z8">
-                            <mat-accordion>
-                                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
-                                    (click)="resetSuccessMessage()">
+                        <div class="mat-elevation-z8 bg-light d-flex justify-content-center">
 
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title class="d-none d-lg-flex justify-content-center">
-                                            <span>Click here !</span>
-                                        </mat-panel-title>
-                                    </mat-expansion-panel-header>
+                            <mat-divider></mat-divider>
 
-                                    <mat-divider></mat-divider>
+                            <div class="col-11 mb-2">
+                                <form [formGroup]="formProfile" (ngSubmit)="handleProfile()">
 
-                                    <div class="col-12 mb-2">
-                                        <form [formGroup]="formProfile" (ngSubmit)="handleProfile()">
+                                    <p class="text-justify fw-bold fs-4 text-center my-5">
+                                        What is the best end for sentences below ?
+                                    </p>
 
-                                            <p class="text-justify fw-bold fs-4 text-center my-5">
-                                                What is the best end for sentences below ?
+                                    <div *ngFor="let sentence of endSentences; let i = index">
+
+                                        <div class="row mb-5" *ngIf="i <= selectedIndex">
+                                            <mat-divider></mat-divider>
+
+                                            <p class="mt-4">
+                                                {{startSentence}}
+                                                <span class="fw-bold ms-2"
+                                                    [ngClass]="{'text-primary': sentence.response != '...' }">{{sentence.criteria}}
+                                                    {{sentence.response}}</span>
                                             </p>
 
-                                            <div *ngFor="let sentence of endSentences; let i = index">
 
-                                                <div class="row mb-5" *ngIf="i <= selectedIndex">
-                                                    <mat-divider></mat-divider>
+                                            <!-- Each profile attribute to post  -->
+                                            <mat-radio-group class="d-flex justify-content-around" id={{sentence.id}}
+                                                formControlName="{{sentence.id}}"
+                                                [value]="isKeyOfProfileElement(sentence.id) ? profileToPost[sentence.id] : null"
+                                                aria-label="Select an option">
 
-                                                    <p class="mt-4">
-                                                        {{startSentence}}
-                                                        <span class="fw-bold ms-2"
-                                                            [ngClass]="{'text-primary': sentence.response != '...' }">{{sentence.criteria}}
-                                                            {{sentence.response}}</span>
-                                                    </p>
+                                                <div class="d-lg-flex justify-content-between w-100">
+                                                    <mat-radio-button value="1" (click)="manageAnswer(sentence.id, 1)">
+                                                        not important
+                                                    </mat-radio-button>
 
+                                                    <mat-radio-button value="2" (click)="manageAnswer(sentence.id, 2)">
+                                                        important
+                                                    </mat-radio-button>
 
-                                                    <!-- Each profile attribute to post  -->
-                                                    <mat-radio-group class="d-flex justify-content-around"
-                                                        id={{sentence.id}} formControlName="{{sentence.id}}"
-                                                        [value]="isKeyOfProfileElement(sentence.id) ? profileToPost[sentence.id] : null"
-                                                        aria-label="Select an option">
+                                                    <mat-radio-button value="3" (click)="manageAnswer(sentence.id, 3)">
+                                                        very important
+                                                    </mat-radio-button>
 
-                                                        <mat-radio-button value="1"
-                                                            (click)="manageAnswer(sentence.id, 1)">
-                                                            not important
-                                                        </mat-radio-button>
-
-                                                        <mat-radio-button value="2"
-                                                            (click)="manageAnswer(sentence.id, 2)">
-                                                            important
-                                                        </mat-radio-button>
-
-                                                        <mat-radio-button value="3"
-                                                            (click)="manageAnswer(sentence.id, 3)">
-                                                            very important
-                                                        </mat-radio-button>
-
-                                                        <mat-radio-button value="4"
-                                                            (click)="manageAnswer(sentence.id, 4)">
-                                                            essential
-                                                        </mat-radio-button>
-                                                    </mat-radio-group>
-
-                                                    <div class="ps-2 pt-2 text-danger"
-                                                        *ngIf="formProfile.get(sentence.id)?.invalid && (formProfile.get(sentence.id)?.dirty || formProfile.get(sentence.id)?.touched)">
-                                                        <span class="ms-5">Click not important if you want to skip
-                                                            !</span>
-                                                    </div>
-
+                                                    <mat-radio-button value="4" (click)="manageAnswer(sentence.id, 4)">
+                                                        essential
+                                                    </mat-radio-button>
                                                 </div>
-
-                                            </div>
-
-                                            <mat-form-field class="d-flex mt-5"
-                                                *ngIf="selectedIndexValues.length == endSentences.length">
-                                                <mat-label>
-                                                    Give some description to recognize this fighter profile
-                                                </mat-label>
-                                                <input width="100%" formControlName="profileDescription" matInput
-                                                    placeholder="Ex. Striker and good grappler" [value]="inputValue">
-                                                <label></label>
-                                            </mat-form-field>
+                                            </mat-radio-group>
 
                                             <div class="ps-2 pt-2 text-danger"
-                                                *ngIf="formProfile.get('profileDescription')?.invalid && (formProfile.get('profileDescription')?.dirty || formProfile.get('profileDescription')?.touched)">
-                                                <span>Invalid description !</span>
+                                                *ngIf="formProfile.get(sentence.id)?.invalid && (formProfile.get(sentence.id)?.dirty || formProfile.get(sentence.id)?.touched)">
+                                                <span class="ms-5">Click not important if you want to skip
+                                                    !</span>
                                             </div>
 
-                                            <div class="ps-2 pt-2 text-success">
-                                                <span>{{successMessage}}</span>
-                                            </div>
-
-
-                                            <div class="d-flex justify-content-center">
-                                                <button class=" btn btn-primary mt-4 d-flex align-items-center">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                        fill="currentColor" class="bi bi-plus-circle-fill me-2"
-                                                        viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
-                                                    </svg>
-                                                    <span>Create profile</span>
-                                                </button>
-
-                                            </div>
-                                        </form>
+                                        </div>
 
                                     </div>
 
-                                </mat-expansion-panel>
-                            </mat-accordion>
+                                    <mat-form-field class="d-flex mt-5"
+                                        *ngIf="selectedIndexValues.length == endSentences.length">
+                                        <mat-label>
+                                            Give some description to recognize this fighter profile
+                                        </mat-label>
+                                        <input width="100%" formControlName="profileDescription" matInput
+                                            placeholder="Ex. Striker and good grappler" [value]="inputValue">
+                                        <label></label>
+                                    </mat-form-field>
+
+                                    <div class="ps-2 pt-2 text-danger"
+                                        *ngIf="formProfile.get('profileDescription')?.invalid && (formProfile.get('profileDescription')?.dirty || formProfile.get('profileDescription')?.touched)">
+                                        <span>Invalid description !</span>
+                                    </div>
+
+                                    <div class="ps-2 pt-2 text-success">
+                                        <span>{{successMessage}}</span>
+                                    </div>
+
+
+                                    <div class="d-flex justify-content-center">
+                                        <button class=" btn btn-primary my-4 d-flex align-items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-plus-circle-fill me-2"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
+                                            </svg>
+                                            <span>Create profile</span>
+                                        </button>
+
+                                    </div>
+                                </form>
+
+                            </div>
+
 
                         </div>
 

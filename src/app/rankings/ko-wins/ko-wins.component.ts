@@ -78,9 +78,6 @@ export class KoWinsComponent {
                 element["Rank"] = i + 1;
               }
 
-              console.log(this.menFights);
-
-
               this.dataSource = new MatTableDataSource<FightersAndKoWinsElement>(this.menFights);
               this.dataSource.paginator = this.paginator;
             })
