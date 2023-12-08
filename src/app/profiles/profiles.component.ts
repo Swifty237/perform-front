@@ -137,8 +137,6 @@ export class ProfilesComponent {
             this.otherSpringService.postFighterProfile$(elementToActivate)
               .subscribe({
                 next: () => {
-                  console.log("elementToActivate :");
-                  console.log(elementToActivate);
                   this.loadFighterProfiles()
                 },
                 error: (err: any) => console.log(err.status)
@@ -331,19 +329,14 @@ export class ProfilesComponent {
     let isNamePresent = false;
     let isInputEqualPost = false;
 
-    console.log("intput = " + input);
-
     if (input == null) {
       input = this.inputValue;
     }
 
-    console.log("intput after = " + input);
 
     if (this.profileToPost.description == input) {
 
       isInputEqualPost = true;
-      console.log("preferenceToPost.name = " + this.profileToPost.description);
-      console.log("preferenceToPost.id = " + this.profileToPost.id);
     }
 
     if (isInputEqualPost) {

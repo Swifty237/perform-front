@@ -39,8 +39,6 @@ export class HeaderComponent implements OnInit {
 
   closeNavigation() {
 
-    console.log("closeNavigation");
-
     const navToggler = document.getElementById('navToggler');
     if (navToggler?.classList.contains('collapsed')) {
       return;
