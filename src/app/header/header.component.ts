@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ElementRef } from '@angular/core';
 import { AuthService } from '../common/services/spring-backend/auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -16,7 +16,12 @@ export class HeaderComponent implements OnInit {
   @Input() opened!: boolean
   @Output() openedChange = new EventEmitter<boolean>();
 
-  constructor(public authService: AuthService, private router: Router, private formBuilder: FormBuilder) { }
+  constructor(
+    public authService: AuthService,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private elementRef: ElementRef
+  ) { }
 
   ngOnInit(): void {
     this.searchForm = this.formBuilder.group({
@@ -30,5 +35,17 @@ export class HeaderComponent implements OnInit {
 
   handleDrawer(): void {
     this.openedChange.emit(!this.opened);
+  }
+
+  closeNavigation() {
+
+    console.log("closeNavigation");
+
+    const navToggler = document.getElementById('navToggler');
+    if (navToggler?.classList.contains('collapsed')) {
+      return;
+    }
+    navToggler?.click();
+
   }
 }
