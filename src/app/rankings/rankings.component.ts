@@ -632,60 +632,60 @@ export class RankingsComponent implements OnInit {
 
                       this.menFights.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank.valueOf() * this.activeProfile.fights.valueOf();
+                          elt.Level += parseInt(item.Rank.toString()) * parseInt(this.activeProfile.fights.toString());
                         }
                       })
 
                       this.menWins.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank.valueOf() * this.activeProfile.wins.valueOf();
+                          elt.Level += parseInt(item.Rank.toString()) * parseInt(this.activeProfile.wins.toString());
                         }
                       })
 
                       this.menKoWins.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank.valueOf() * this.activeProfile.kowins.valueOf();
+                          elt.Level += parseInt(item.Rank.toString()) * parseInt(this.activeProfile.kowins.toString());
                         }
                       })
 
                       this.menStrikes.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank.valueOf() * this.activeProfile.strikes.valueOf();
+                          elt.Level += parseInt(item.Rank.toString()) * parseInt(this.activeProfile.strikes.toString());
                         }
                       })
 
 
                       this.menStrikeRatio.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank.valueOf() * this.activeProfile.strikesratio.valueOf();
+                          elt.Level += parseInt(item.Rank.toString()) * parseInt(this.activeProfile.strikesratio.toString());
                         }
                       })
 
 
                       this.menSubmissionsWins.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank.valueOf() * this.activeProfile.submissionwins.valueOf();
+                          elt.Level += parseInt(item.Rank.toString()) * parseInt(this.activeProfile.submissionwins.toString());
                         }
                       })
 
 
                       this.menTakedowns.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank.valueOf() * this.activeProfile.takedowns.valueOf();
+                          elt.Level += parseInt(item.Rank.toString()) * parseInt(this.activeProfile.takedowns.toString());
                         }
                       })
 
                       this.menTakedownDefenses.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank.valueOf() * this.activeProfile.takedowndefense.valueOf();
+                          elt.Level += parseInt(item.Rank.toString()) * parseInt(this.activeProfile.takedowndefense.toString());
                         }
                       })
 
                       this.menTakedownRatio.forEach(item => {
 
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank.valueOf() * this.activeProfile.takedownsratio.valueOf();
-                          elt.Level = parseFloat(((elt.Level.valueOf()) / this.divider.valueOf()).toFixed(2));
+                          elt.Level += parseInt(item.Rank.toString()) * parseInt(this.activeProfile.takedownsratio.toString());
+                          elt.Level = parseFloat(((elt.Level) / this.divider).toFixed(2));
                         }
                       })
                     })
@@ -715,56 +715,56 @@ export class RankingsComponent implements OnInit {
 
                       this.womenFights.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank.valueOf() * this.activeProfile.fights.valueOf();
+                          elt.Level += item.Rank * this.activeProfile.fights;
                         }
                       })
 
                       this.womenWins.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank.valueOf() * this.activeProfile.wins.valueOf();
+                          elt.Level += parseInt(item.Rank.toString()) * parseInt(this.activeProfile.wins.toString());
                         }
                       })
 
                       this.womenKoWins.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank.valueOf() * this.activeProfile.kowins.valueOf();
+                          elt.Level += parseInt(item.Rank.toString()) * parseInt(this.activeProfile.kowins.toString());
                         }
                       })
 
                       this.womenStrikes.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank.valueOf() * this.activeProfile.strikes.valueOf();
+                          elt.Level += parseInt(item.Rank.toString()) * parseInt(this.activeProfile.strikes.toString());
                         }
                       })
 
                       this.womenStrikeRatio.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank.valueOf() * this.activeProfile.strikesratio.valueOf();
+                          elt.Level += parseInt(item.Rank.toString()) * parseInt(this.activeProfile.strikesratio.toString());
                         }
                       })
 
                       this.womenSubmissionsWins.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank.valueOf() * this.activeProfile.submissionwins.valueOf();
+                          elt.Level += parseInt(item.Rank.toString()) * parseInt(this.activeProfile.submissionwins.toString());
                         }
                       })
 
                       this.womenTakedowns.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank.valueOf() * this.activeProfile.takedowns.valueOf();
+                          elt.Level += parseInt(item.Rank.toString()) * parseInt(this.activeProfile.takedowns.toString());
                         }
                       })
 
                       this.womenTakedownDefenses.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank.valueOf() * this.activeProfile.takedowndefense.valueOf();
+                          elt.Level += parseInt(item.Rank.toString()) * parseInt(this.activeProfile.takedowndefense.toString());
                         }
                       })
 
                       this.womenTakedownRatio.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank * this.activeProfile.takedownsratio;
-                          elt.Level = parseFloat(((elt.Level.valueOf()) / this.divider.valueOf()).toFixed(2));
+                          elt.Level += parseInt(item.Rank.toString()) * parseInt(this.activeProfile.takedownsratio.toString());
+                          elt.Level = parseFloat(((parseInt(elt.Level.toString())) / parseInt(this.divider.toString())).toFixed(2));
                         }
                       })
                     })
@@ -789,7 +789,7 @@ export class RankingsComponent implements OnInit {
   }
 
   compareLevel = (a: FightersAndLevelElement, b: FightersAndLevelElement) => {
-    return a.Level.valueOf() - b.Level.valueOf();
+    return parseInt(a.Level.toString()) - parseInt(b.Level.toString());
   }
 
   addRank = (tab: FightersAndLevelElement[]) => {
