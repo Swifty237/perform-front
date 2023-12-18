@@ -587,6 +587,7 @@ export class RankingsComponent implements OnInit {
     })
   }
 
+  // Method which allows you to choose the fighter profile with which the level calculations will be made
   loadActiveProfile(tab: ProfileElement[]) {
 
     tab.forEach(profile => {
@@ -600,8 +601,8 @@ export class RankingsComponent implements OnInit {
     }
   }
 
-  // Level
-  getLevelElements(selection: string) {
+  // Method which allows you to calculate and display the rank of all fighters
+  getLevelElements(division: string) {
 
     this.menLevels = [];
     this.womenLevels = [];
@@ -614,7 +615,7 @@ export class RankingsComponent implements OnInit {
 
           this.menSelectLabels.forEach(elt => {
 
-            if (elt.value == selection) {
+            if (elt.value == division) {
 
               this._rankingService.getRankingsLevel$()
                 .pipe(
@@ -631,60 +632,60 @@ export class RankingsComponent implements OnInit {
 
                       this.menFights.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank * this.activeProfile.fights;
+                          elt.Level += item.Rank.valueOf() * this.activeProfile.fights.valueOf();
                         }
                       })
 
                       this.menWins.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank * this.activeProfile.wins;
+                          elt.Level += item.Rank.valueOf() * this.activeProfile.wins.valueOf();
                         }
                       })
 
                       this.menKoWins.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank * this.activeProfile.kowins;
+                          elt.Level += item.Rank.valueOf() * this.activeProfile.kowins.valueOf();
                         }
                       })
 
                       this.menStrikes.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank * this.activeProfile.strikes;
+                          elt.Level += item.Rank.valueOf() * this.activeProfile.strikes.valueOf();
                         }
                       })
 
 
                       this.menStrikeRatio.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank * this.activeProfile.strikesratio;
+                          elt.Level += item.Rank.valueOf() * this.activeProfile.strikesratio.valueOf();
                         }
                       })
 
 
                       this.menSubmissionsWins.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank * this.activeProfile.submissionwins;
+                          elt.Level += item.Rank.valueOf() * this.activeProfile.submissionwins.valueOf();
                         }
                       })
 
 
                       this.menTakedowns.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank * this.activeProfile.takedowns;
+                          elt.Level += item.Rank.valueOf() * this.activeProfile.takedowns.valueOf();
                         }
                       })
 
                       this.menTakedownDefenses.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank * this.activeProfile.takedowndefense;
+                          elt.Level += item.Rank.valueOf() * this.activeProfile.takedowndefense.valueOf();
                         }
                       })
 
                       this.menTakedownRatio.forEach(item => {
 
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank * this.activeProfile.takedownsratio;
-                          elt.Level = parseFloat(((elt.Level) / this.divider).toFixed(2));
+                          elt.Level += item.Rank.valueOf() * this.activeProfile.takedownsratio.valueOf();
+                          elt.Level = parseFloat(((elt.Level.valueOf()) / this.divider.valueOf()).toFixed(2));
                         }
                       })
                     })
@@ -698,7 +699,7 @@ export class RankingsComponent implements OnInit {
           })
 
           this.womenSelectLabels.forEach(elt => {
-            if (elt.value == selection) {
+            if (elt.value == division) {
 
               this._rankingService.getRankingsLevel$()
                 .pipe(
@@ -714,56 +715,56 @@ export class RankingsComponent implements OnInit {
 
                       this.womenFights.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank * this.activeProfile.fights;
+                          elt.Level += item.Rank.valueOf() * this.activeProfile.fights.valueOf();
                         }
                       })
 
                       this.womenWins.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank * this.activeProfile.wins;
+                          elt.Level += item.Rank.valueOf() * this.activeProfile.wins.valueOf();
                         }
                       })
 
                       this.womenKoWins.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank * this.activeProfile.kowins;
+                          elt.Level += item.Rank.valueOf() * this.activeProfile.kowins.valueOf();
                         }
                       })
 
                       this.womenStrikes.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank * this.activeProfile.strikes;
+                          elt.Level += item.Rank.valueOf() * this.activeProfile.strikes.valueOf();
                         }
                       })
 
                       this.womenStrikeRatio.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank * this.activeProfile.strikesratio;
+                          elt.Level += item.Rank.valueOf() * this.activeProfile.strikesratio.valueOf();
                         }
                       })
 
                       this.womenSubmissionsWins.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank * this.activeProfile.submissionwins;
+                          elt.Level += item.Rank.valueOf() * this.activeProfile.submissionwins.valueOf();
                         }
                       })
 
                       this.womenTakedowns.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank * this.activeProfile.takedowns;
+                          elt.Level += item.Rank.valueOf() * this.activeProfile.takedowns.valueOf();
                         }
                       })
 
                       this.womenTakedownDefenses.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
-                          elt.Level += item.Rank * this.activeProfile.takedowndefense;
+                          elt.Level += item.Rank.valueOf() * this.activeProfile.takedowndefense.valueOf();
                         }
                       })
 
                       this.womenTakedownRatio.forEach(item => {
                         if (elt.Name === item.Name && elt.FighterId === item.FighterId) {
                           elt.Level += item.Rank * this.activeProfile.takedownsratio;
-                          elt.Level = parseFloat(((elt.Level) / this.divider).toFixed(2));
+                          elt.Level = parseFloat(((elt.Level.valueOf()) / this.divider.valueOf()).toFixed(2));
                         }
                       })
                     })
@@ -788,7 +789,7 @@ export class RankingsComponent implements OnInit {
   }
 
   compareLevel = (a: FightersAndLevelElement, b: FightersAndLevelElement) => {
-    return a.Level - b.Level;
+    return a.Level.valueOf() - b.Level.valueOf();
   }
 
   addRank = (tab: FightersAndLevelElement[]) => {
